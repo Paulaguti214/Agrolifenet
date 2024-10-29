@@ -1,6 +1,9 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using Agrolifenet;
 using Agrolifenet.Dominio.Entidades;
 
-Console.WriteLine("Hello, World!");
-Usuario usuario = new(2);
-Console.WriteLine(usuario.IdUsuario.ToString());
+var clase = new ConeccionaBD();
+//clase.Insertar();
+//clase.Actualizar();
+//clase.Eliminar();
+clase.Buscar();
