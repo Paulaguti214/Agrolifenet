@@ -9,6 +9,7 @@
         public bool EstadoRaza { get; set; }
         public int IdTipoAnimal { get; set; }
 
+
         public Raza(
             int idRaza,
             string tipodeRaza,
