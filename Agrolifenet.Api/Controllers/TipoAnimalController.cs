@@ -37,6 +37,18 @@ namespace Agrolifenet.Api.Controllers
 
             return await _tipoAnimalServicio.SeleccionarTipoAnimal(idTipoanimal);
         }
+        [HttpDelete(Name = "EliminarTipoAnimal")]
+        public async Task EliminarTipoAnimal(int idTipoanimal)
+        {
+
+            await _tipoAnimalServicio.EliminarTipoAnimal(idTipoanimal);
+        }
+        [HttpPut(Name = "ActualizarTipoanimal")]
+        public async Task ActualizarTipoanimal(int idTipoanimal, string tiposdeanimal,   Boolean estadoTipoanimal)
+        {
+
+            await _tipoAnimalServicio.ActualizarTipoAnimal(idTipoanimal, tiposdeanimal,  estadoTipoanimal);
+        }
 
 
     }

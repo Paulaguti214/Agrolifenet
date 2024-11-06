@@ -10,6 +10,8 @@ namespace Agrolifenet.Infraestructura.Adaptador
         private readonly string NombreProcedimientoGuardar = "InsertarTipoanimal";
         private readonly string NombreProcedimientoListarTipoAnimal = "ListarTipoanimal";
         private readonly string NombreProcedimientoSeleccionarTipoAnimal = "BuscarTipoanimal";
+        private readonly string NombreProcedimientoEliminarTipoAnimal = "EliminarTipoanimal";
+        private readonly string NombreProcedimientoActualizarTipoAnimal = "ActualizarTipoanimal";
 
         public TipoAnimalRepositorio(IDbConnection baseDeDatos) : base(baseDeDatos) { }
 
@@ -36,6 +38,25 @@ namespace Agrolifenet.Infraestructura.Adaptador
             return await SeleccionarAsync(NombreProcedimientoSeleccionarTipoAnimal, new
             {
                 idTipoanimal
+            });
+        }
+        public async Task EliminarTipoAnimal(int idTipoanimal)
+        {
+            await EliminarAsync(NombreProcedimientoEliminarTipoAnimal, new
+            {
+                idTipoanimal
+            });
+        }
+
+        public async Task ActualizarTipoAnimal(int idTipoanimal, string tiposdeanimal, DateTime fechademodificacionTipoanimal,
+            Boolean estadoTipoanimal)
+        {
+            await ActualiozarAsync(NombreProcedimientoActualizarTipoAnimal, new
+            {
+                idTipoanimal,
+                tiposdeanimal,
+                fechademodificacionTipoanimal,
+                estadoTipoanimal
             });
         }
     }

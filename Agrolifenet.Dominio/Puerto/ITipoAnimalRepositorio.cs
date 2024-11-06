@@ -11,5 +11,10 @@ namespace Agrolifenet.Dominio.Puerto
         Task<IEnumerable<TipoAnimal>> ListarTipoAnimal();
         Task<TipoAnimal> SeleccionarTipoAnimal(int idTipoanimal);
 
+        Task  EliminarTipoAnimal(int idTipoanimal);
+
+        Task ActualizarTipoAnimal(int idTipoanimal, string tiposdeanimal, DateTime fechademodificacionTipoanimal,
+            Boolean estadoTipoanimal);
+
     }
 }

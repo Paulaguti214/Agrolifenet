@@ -1,12 +1,12 @@
 ﻿using Agrolifenet.Dominio.Entidades;
 using Agrolifenet.Dominio.Puerto;
 using Agrolifenet.Dominio.Servicios;
-using Agrolifenet.Infraestructura.Adaptador;
 
 namespace Agrolifenet.Infraestructura.Servicios
 {
     internal class TipoAnimalServicio : ITipoAnimalServicio
     {
+        
         private readonly ITipoAnimalRepositorio _tipoAnimalRepositorio;
         public TipoAnimalServicio(ITipoAnimalRepositorio tipoAnimalRepositorio)
         {
@@ -29,6 +29,18 @@ namespace Agrolifenet.Infraestructura.Servicios
         {
             return await _tipoAnimalRepositorio.SeleccionarTipoAnimal(idTipoanimal);
         }
+
+
+
+        public async Task EliminarTipoAnimal(int idTipoanimal)
+        {
+            await _tipoAnimalRepositorio.EliminarTipoAnimal(idTipoanimal);
+        }
+        public async Task ActualizarTipoAnimal(int idTipoanimal, string tiposdeanimal,  Boolean estadoTipoanimal)
+        {
+            var fechaActual = DateTime.Now;
+            await _tipoAnimalRepositorio.ActualizarTipoAnimal(idTipoanimal, tiposdeanimal, fechaActual, estadoTipoanimal);
+        }
     }
-    
+
 }
