@@ -1,5 +1,7 @@
-﻿using Agrolifenet.Dominio.Puerto;
+﻿using Agrolifenet.Dominio.Entidades;
+using Agrolifenet.Dominio.Puerto;
 using Agrolifenet.Dominio.Servicios;
+using Agrolifenet.Infraestructura.Adaptador;
 
 namespace Agrolifenet.Infraestructura.Servicios
 {
@@ -11,9 +13,22 @@ namespace Agrolifenet.Infraestructura.Servicios
             _tipoAnimalRepositorio = tipoAnimalRepositorio;
         }
 
-        public async Task Agregar(string tipoAnimal)
+        public async Task Agregar(string tiposdeanimal, Boolean estadoTipoanimal)
         {
-            await _tipoAnimalRepositorio.AgregarAsync(tipoAnimal);
+            var fechaActual = DateTime.Now;
+
+            await _tipoAnimalRepositorio.AgregarAsync(tiposdeanimal, fechaActual, fechaActual, estadoTipoanimal);
+        }
+
+        public Task<IEnumerable<TipoAnimal>> ListarTipoAnimal()
+        {
+            return _tipoAnimalRepositorio.ListarTipoAnimal();
+        }
+
+        public async Task<TipoAnimal> SeleccionarTipoAnimal(int idTipoanimal)
+        {
+            return await _tipoAnimalRepositorio.SeleccionarTipoAnimal(idTipoanimal);
         }
     }
+    
 }

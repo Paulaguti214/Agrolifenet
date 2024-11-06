@@ -19,28 +19,9 @@
             FechadecreacionTipoAnimal = fechadecreacionTipoAnimal;
             FechademodificacionTipoAnimal = fechademodificacionTipoAnimal;
             EstadoTipoAnimal = estadoTipoAnimal;
-        }
-        public int Guardar()
-        {
-            return 0;
-        }
-        public bool Actualizar()
-        {
-            return true;
-        }
-        public bool Eliminar()
-        {
-            return false;
-        }
-        public TipoAnimal Buscar()
-        {
-            return new TipoAnimal(default, default!, default, default, default);
-        }
-        public List<TipoAnimal> Listar(TipoAnimal tipoAnimal)
-        {
-            return new List<TipoAnimal>();
-        }
+        }  
 
+       
     }
 }
 

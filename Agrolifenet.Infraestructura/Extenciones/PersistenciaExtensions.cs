@@ -18,7 +18,12 @@ namespace Agrolifenet.Infraestructura.Extenciones
             svc.AddTransient<IDbConnection>(db => new SqlConnection(cadenaConexion));
 
             svc.AddTransient(typeof(IRepositorio<>), typeof(Repositorio<>));
+
             svc.AddTransient<ITipoAnimalRepositorio, TipoAnimalRepositorio>();
+
+
+
+
 
             return svc;
         }

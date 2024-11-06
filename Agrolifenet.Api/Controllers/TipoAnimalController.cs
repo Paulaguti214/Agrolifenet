@@ -1,3 +1,4 @@
+using Agrolifenet.Dominio.Entidades;
 using Agrolifenet.Dominio.Servicios;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,10 +17,27 @@ namespace Agrolifenet.Api.Controllers
             _tipoAnimalServicio = tipoAnimalServicio;
         }
 
-        [HttpGet(Name = "AgregarTipoAnimal")]
-        public async Task AgregarTipoAnimal(string tipoAnimal)
+        [HttpPost(Name = "AgregarTipoAnimal")]
+        public async Task AgregarTipoAnimal(string Tiposdeanimal, Boolean estadoTipoanimal)
         {
-            await _tipoAnimalServicio.Agregar(tipoAnimal);
+
+            await _tipoAnimalServicio.Agregar(Tiposdeanimal, estadoTipoanimal);
         }
+
+        //[HttpGet(Name = "ListarTipoAnimal")]
+        //public async Task<IEnumerable<TipoAnimal>> ListarTipoAnimal()
+        //{
+
+        //    return await _tipoAnimalServicio.ListarTipoAnimal();
+        //}
+
+        [HttpGet(Name = "SeleccionarTipoAnimal")]
+        public async Task<TipoAnimal> SeleccionarTipoAnimal(int idTipoanimal)
+        {
+
+            return await _tipoAnimalServicio.SeleccionarTipoAnimal(idTipoanimal);
+        }
+
+
     }
 }
