@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35303.130
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Agrolifenet", "Agrolifenet\Agrolifenet.csproj", "{5FDAEFB4-3250-4820-BFF5-4798CF609701}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Agrolifenet.Dominio", "Agrolifenet.Dominio\Agrolifenet.Dominio.csproj", "{8B21652B-B545-4569-8A9A-A8B6C4108A25}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agrolifenet.Infraestructura", "Agrolifenet.Infraestructura\Agrolifenet.Infraestructura.csproj", "{6D04E490-ED6D-47FF-9E84-19C0BFB9DD4C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agrolifenet.Api", "Agrolifenet.Api\Agrolifenet.Api.csproj", "{AACA76A7-4FA8-4C5F-91D8-89151BF01770}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agrolifenet.Front", "Agrolifenet.Front\Agrolifenet.Front\Agrolifenet.Front.csproj", "{20C533EC-E79E-49F1-96FC-F8CF2BE2CCB7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agrolifenet.Front.Client", "Agrolifenet.Front\Agrolifenet.Front.Client\Agrolifenet.Front.Client.csproj", "{2B2C02E1-55A0-4FC5-9E8F-01561BB5DA88}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5FDAEFB4-3250-4820-BFF5-4798CF609701}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5FDAEFB4-3250-4820-BFF5-4798CF609701}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5FDAEFB4-3250-4820-BFF5-4798CF609701}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5FDAEFB4-3250-4820-BFF5-4798CF609701}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8B21652B-B545-4569-8A9A-A8B6C4108A25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8B21652B-B545-4569-8A9A-A8B6C4108A25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B21652B-B545-4569-8A9A-A8B6C4108A25}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +31,14 @@ Global
 		{AACA76A7-4FA8-4C5F-91D8-89151BF01770}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AACA76A7-4FA8-4C5F-91D8-89151BF01770}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AACA76A7-4FA8-4C5F-91D8-89151BF01770}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20C533EC-E79E-49F1-96FC-F8CF2BE2CCB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20C533EC-E79E-49F1-96FC-F8CF2BE2CCB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20C533EC-E79E-49F1-96FC-F8CF2BE2CCB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20C533EC-E79E-49F1-96FC-F8CF2BE2CCB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B2C02E1-55A0-4FC5-9E8F-01561BB5DA88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B2C02E1-55A0-4FC5-9E8F-01561BB5DA88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B2C02E1-55A0-4FC5-9E8F-01561BB5DA88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B2C02E1-55A0-4FC5-9E8F-01561BB5DA88}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -17,37 +17,36 @@ namespace Agrolifenet.Api.Controllers
             _tipoAnimalServicio = tipoAnimalServicio;
         }
 
-        [HttpPost(Name = "AgregarTipoAnimal")]
+        [HttpPost("AgregarTipoAnimal")]
         public async Task AgregarTipoAnimal(string Tiposdeanimal, Boolean estadoTipoanimal)
         {
 
             await _tipoAnimalServicio.Agregar(Tiposdeanimal, estadoTipoanimal);
         }
 
-        //[HttpGet(Name = "ListarTipoAnimal")]
-        //public async Task<IEnumerable<TipoAnimal>> ListarTipoAnimal()
-        //{
+        [HttpGet("ListarTipoAnimal")]
+        public async Task<IEnumerable<TipoAnimal>> ListarTipoAnimal()
+        {
+            return await _tipoAnimalServicio.ListarTipoAnimal();
+        }
 
-        //    return await _tipoAnimalServicio.ListarTipoAnimal();
-        //}
-
-        [HttpGet(Name = "SeleccionarTipoAnimal")]
+        [HttpGet("SeleccionarTipoAnimal/{idTipoanimal}")]
         public async Task<TipoAnimal> SeleccionarTipoAnimal(int idTipoanimal)
         {
 
             return await _tipoAnimalServicio.SeleccionarTipoAnimal(idTipoanimal);
         }
-        [HttpDelete(Name = "EliminarTipoAnimal")]
+        [HttpDelete("EliminarTipoAnimal")]
         public async Task EliminarTipoAnimal(int idTipoanimal)
         {
 
             await _tipoAnimalServicio.EliminarTipoAnimal(idTipoanimal);
         }
-        [HttpPut(Name = "ActualizarTipoanimal")]
-        public async Task ActualizarTipoanimal(int idTipoanimal, string tiposdeanimal,   Boolean estadoTipoanimal)
+        [HttpPut("ActualizarTipoanimal")]
+        public async Task ActualizarTipoanimal(int idTipoanimal, string tiposdeanimal, Boolean estadoTipoanimal)
         {
 
-            await _tipoAnimalServicio.ActualizarTipoAnimal(idTipoanimal, tiposdeanimal,  estadoTipoanimal);
+            await _tipoAnimalServicio.ActualizarTipoAnimal(idTipoanimal, tiposdeanimal, estadoTipoanimal);
         }
 
 

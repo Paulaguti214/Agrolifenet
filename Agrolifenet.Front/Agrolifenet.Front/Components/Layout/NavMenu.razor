@@ -1,0 +1,51 @@
+﻿@* <div class="top-row ps-3 navbar navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="">Agrolifenet.Front</a>
+    </div>
+</div>
+ *@
+<input type="checkbox" title="Navigation menu" class="navbar-toggler" />
+
+<div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
+    <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0" style="color: var(--bs-blue);background: var(--bs-green);">
+        <div class="container-fluid d-flex flex-column p-0">
+            <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+                <div class="sidebar-brand-icon rotate-n-15"><img class="img-fluid" src="assets/img/avatars/Logo%20agrolifenet.png" width="55" style="transform: rotate(15deg);"></div>
+                <div class="sidebar-brand-text mx-3"><span>Agrolifenet</span></div>
+            </a>
+            <hr class="sidebar-divider my-0">
+            <ul class="navbar-nav text-light" id="accordionSidebar">
+                <li class="nav-item"><a class="nav-link active" href="Home.html"><i class="fas fa-home fa-2x1"></i><span>Inicio</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="RegistroAnimal.html"><img class="img-fluid" src="assets/img/Icono/animales%20de%20granja.png" width="25" style="color: rgb(247,243,243);background: rgba(255,255,255,0);border-color: rgb(247,243,243);filter: brightness(200%) contrast(200%) grayscale(100%) hue-rotate(360deg) invert(100%) saturate(200%) sepia(100%);transform: translate(-4px) scale(0.85);"><span>Registro de Animal</span></a><a class="nav-link" href="Cargos.html"><i class="fa fa-users"></i><span>Cargos</span></a></li>
+                <li class="nav-item"></li>
+                <li class="nav-item"><a class="nav-link" href="Perfil.html"><i class="fas fa-user"></i><span>Perfil</span></a></li>
+                <li class="nav-item"></li>
+                <li class="nav-item"></li>
+                <li class="nav-item"><a class="nav-link" href="Registrar.html"><i class="fas fa-user-circle"></i><span>Registrar</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="Venta.html"><i class="fa fa-dollar"></i><span>Ventas</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="HistorialClinico.html"><i class="fas fa-stethoscope"></i><span>Historial Clínico</span></a></li>
+            </ul>
+            <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
+        </div>
+    </nav>
+
+    @* <nav class="flex-column">
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="counter">
+                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Counter
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="weather">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Weather
+            </NavLink>
+        </div>
+    </nav> *@
+</div>
