@@ -9,6 +9,7 @@ namespace Agrolifenet.Infraestructura.Extenciones
         public static IServiceCollection AgregarServiciosDominio(this IServiceCollection svc)
         {
             svc.AddScoped<ITipoAnimalServicio, TipoAnimalServicio>();
+            svc.AddScoped<IUsurioServicio, UsuarioServicio>();
 
 
             return svc;
