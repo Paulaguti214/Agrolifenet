@@ -1,4 +1,4 @@
-﻿using Agrolifenet.Dominio.Servicios;
+﻿using Agrolifenet.Front.Autenticacion;
 using Microsoft.AspNetCore.Components;
 
 namespace Agrolifenet.Front.Components.Pages
@@ -6,7 +6,7 @@ namespace Agrolifenet.Front.Components.Pages
     public partial class Login : ComponentBase
     {
         [Inject]
-        private IUsurioServicio usurioServicio { get; set; }
+        private ProveedorAutenticacion usurioServicio { get; set; }
 
         [Inject]
         private NavigationManager Navigation { get; set; }
@@ -16,15 +16,16 @@ namespace Agrolifenet.Front.Components.Pages
 
         private async void OnValidSubmit()
         {
-            var usuario = await usurioServicio.Logeo(loginModelo.Usuario, loginModelo.Contrasenia);
-            if (usuario is not null)
-            {
-                Navigation.NavigateTo("/");
-            }
-            else
-            {
-                errorMessage = "Inicio de sesión fallido. Por favor, verifica tus credenciales.";
-            }
+            await usurioServicio.LoginAsync(loginModelo.Usuario, loginModelo.Contrasenia);
+            Navigation.NavigateTo("/");
+            //if (usuario is not null)
+            //{
+
+            //}
+            //else
+            //{
+            //    errorMessage = "Inicio de sesión fallido. Por favor, verifica tus credenciales.";
+            //}
         }
     }
 }

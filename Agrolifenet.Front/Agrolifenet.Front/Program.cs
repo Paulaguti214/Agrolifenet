@@ -1,3 +1,4 @@
+using Agrolifenet.Front.Autenticacion;
 using Agrolifenet.Front.Components;
 using Agrolifenet.Infraestructura.Extenciones;
 
@@ -11,6 +12,9 @@ builder.Services.AddRazorComponents()
 
 builder.Services.AgregarServiciosPersistencia(config);
 builder.Services.AgregarServiciosDominio();
+
+builder.Services.AddAuthorizationCore();
+builder.Services.AddScoped<ProveedorAutenticacion>();
 
 var app = builder.Build();
 
