@@ -13,18 +13,6 @@ builder.Services.AddSwaggerGen();
 builder.Services.AgregarServiciosPersistencia(config);
 builder.Services.AgregarServiciosDominio();
 
-//builder.Services.AddSwaggerGen(c =>
-//{
-//    c.SwaggerDoc("v1", new() { Title = "Agro Life Net", Version = "v1" });
-
-//    var xmlFilename = $"{typeof(Program).Assembly.GetName().Name}.xml";
-//    c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
-   
-
-//    c.CustomSchemaIds(type => type.ToString());
-
-//});
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

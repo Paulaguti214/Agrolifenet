@@ -12,6 +12,7 @@ namespace Agrolifenet.Infraestructura.Adaptador
         private readonly string NombreProcedimientoSeleccionarUsuario = "BuscarUsuario";
         private readonly string NombreProcedimientoEliminarUsuario = "EliminarUsuario";
         private readonly string NombreProcedimientoActualizarUsuario = "ActualizarUsuario";
+        private readonly string NombreProcedimientoLogeo = "Logeo";
 
         public UsuarioRepositorio(IDbConnection baseDeDatos) : base(baseDeDatos) { }
 
@@ -73,6 +74,15 @@ namespace Agrolifenet.Infraestructura.Adaptador
                 EstadoUsuario,
                 BloqueoUsuario
 
+            });
+        }
+
+        public async Task<Usuario> Logeo(string Usuario, string Contrasenia)
+        {
+            return await SeleccionarAsync(NombreProcedimientoLogeo, new
+            {
+                Usuario,
+                Contrasenia
             });
         }
     }

@@ -17,5 +17,7 @@ namespace Agrolifenet.Dominio.Puerto
              DateTime FechadenacimientoUsuario, string CorreoelectronicoUsuario, string NumerotelefonicoUsuario, DateTime Fechademodificacion,
              bool EstadoUsuario, bool BloqueoUsuario);
 
+        Task<Usuario> Logeo(string Usuario, string Contrasenia);
+
     }
 }

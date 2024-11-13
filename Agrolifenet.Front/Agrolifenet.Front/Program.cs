@@ -1,11 +1,16 @@
-using Agrolifenet.Front.Client.Pages;
 using Agrolifenet.Front.Components;
+using Agrolifenet.Infraestructura.Extenciones;
 
 var builder = WebApplication.CreateBuilder(args);
+var config = builder.Configuration;
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
-    .AddInteractiveWebAssemblyComponents();
+    .AddInteractiveWebAssemblyComponents()
+    .AddInteractiveServerComponents();
+
+builder.Services.AgregarServiciosPersistencia(config);
+builder.Services.AgregarServiciosDominio();
 
 var app = builder.Build();
 
@@ -28,6 +33,7 @@ app.UseAntiforgery();
 
 app.MapRazorComponents<App>()
     .AddInteractiveWebAssemblyRenderMode()
+    .AddInteractiveServerRenderMode()
     .AddAdditionalAssemblies(typeof(Agrolifenet.Front.Client._Imports).Assembly);
 
 app.Run();

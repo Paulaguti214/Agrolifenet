@@ -40,5 +40,10 @@ namespace Agrolifenet.Infraestructura.Servicios
             var fechaActual = DateTime.Now;
             await _usuarioRepositorio.ActualizarUsuario(idUsuario,IdentificacionUsuario, NombreUsuario, ApellidoUsuario, FechadenacimientoUsuario, CorreoelectronicoUsuario, NumerotelefonicoUsuario, fechaActual, EstadoUsuario,  BloqueoUsuario);
         }
+
+        public async Task<Usuario> Logeo(string Usuario, string Contrasenia)
+        {
+            return await _usuarioRepositorio.Logeo(Usuario, Contrasenia);
+        }
     }
 }

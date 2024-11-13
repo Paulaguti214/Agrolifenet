@@ -13,5 +13,7 @@ namespace Agrolifenet.Dominio.Servicios
         Task ActualizarUsuario(int idUsuario, string IdentificacionUsuario, string NombreUsuario, string ApellidoUsuario,
              DateTime FechadenacimientoUsuario, string CorreoelectronicoUsuario, string NumerotelefonicoUsuario,
              bool EstadoUsuario, bool BloqueoUsuario);
+
+        Task<Usuario> Logeo(string Usuario, string Contrasenia);
     }
 }

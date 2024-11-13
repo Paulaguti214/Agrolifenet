@@ -1,0 +1,60 @@
+﻿@using Agrolifenet.Front.Components.Layout
+@rendermode InteractiveServer
+
+@layout LoginLayaut
+@page "/Login"
+
+
+<div class="bg-gradient-primary" style="background: rgb(62,208,156);">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-9 col-lg-12 col-xl-10">
+                <div class="card shadow-lg o-hidden border-0 my-5">
+                    <div class="card-body p-0">
+                        <div class="row">
+                            <div class="col-lg-6 d-none d-lg-flex">
+                                <div class="flex-grow-1 bg-login-image" style="background: url(&quot;assets/img/Icono/LogoAgroLifeNet.png&quot;) center / contain no-repeat, rgba(62,208,156,0.73);"></div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h4 class="text-dark mb-4">Bienvenido</h4>
+                                    </div>
+                                    <div class="user">
+                                        <EditForm Model="@loginModelo" OnValidSubmit="OnValidSubmit" FormName="FrmLogin">
+                                            <DataAnnotationsValidator />
+                                            <ValidationSummary />
+                                            <div class="mb-3">
+                                                <InputText @bind-Value="@loginModelo.Usuario" class="form-control form-control-user" placeholder="Correo Electronico o Usuario" />
+                                            </div>
+                                            <div class="mb-3">
+                                                <InputText @bind-Value="@loginModelo.Contrasenia" class="form-control form-control-user" placeholder="Contraseña" type="password" />
+                                            </div>
+                                            <div class="mb-3">
+                                                <div class="custom-control custom-checkbox small">
+                                                    <div class="form-check"><input class="form-check-input custom-control-input" type="checkbox" id="formCheck-1"><label class="form-check-label custom-control-label" for="formCheck-1">Recordar</label></div>
+                                                </div>
+                                            </div>
+                                            <button class="btn btn-success d-block btn-user w-100">Login</button>
+                                        </EditForm> 
+                                        @if (!string.IsNullOrEmpty(errorMessage))
+                                        {
+                                            <p style="color: red;">@errorMessage</p>
+                                        }
+                                        <hr>
+                                        <hr>
+                                    </div>                                  
+
+                                    <a class="btn btn-link d-block btn-facebook w-100" role="button"><i class="fab fa-facebook-f"></i>&nbsp;facebook</a><a class="btn btn-link d-block btn-google w-100" role="button"><i class="fab fa-google"></i>&nbsp;google</a>
+                                    <div class="text-center"><a class="small" href="forgot-password.html">¿Olvido su contraseña?</a></div>
+                                    <div class="text-center"><a class="small" href="Registrar.html">Crear cuenta</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
