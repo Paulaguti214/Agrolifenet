@@ -1,30 +1,27 @@
 ﻿using Agrolifenet.Dominio.Entidades;
 using Agrolifenet.Dominio.Puerto;
 using Agrolifenet.Infraestructura.Adaptador.BaseRepositorio;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Agrolifenet.Infraestructura.Adaptador
 {
-   public class UsuarioRepositorio : Repositorio<Usuario> , IUsuarioRepositorio
+    public class UsuarioRepositorio : Repositorio<Usuario>, IUsuarioRepositorio
     {
-        private readonly string NombreProcedimientoGuardar = "insertarUsuario";
+        private readonly string NombreProcedimientoGuardarUsuario = "insertarUsuario";
+        private readonly string NombreProcedimientoListarUsuario = "ListarUsuario";
+        private readonly string NombreProcedimientoSeleccionarUsuario = "BuscarUsuario";
+        private readonly string NombreProcedimientoEliminarUsuario = "EliminarUsuario";
+        private readonly string NombreProcedimientoActualizarUsuario = "ActualizarUsuario";
+
         public UsuarioRepositorio(IDbConnection baseDeDatos) : base(baseDeDatos) { }
 
-        public Task ActualizarUsuario(int idTipoanimal, string tiposdeanimal, DateTime fechademodificacionTipoanimal, bool estadoTipoanimal)
-        {
-            throw new NotImplementedException();
-        }
 
-        public async Task AgregarAsync(int IdentificacionUsuario, string NombreUsuario, string ApellidoUsuario,
+
+        public async Task AgregarAsync( string IdentificacionUsuario, string NombreUsuario, string ApellidoUsuario,
              DateTime FechadenacimientoUsuario, string CorreoelectronicoUsuario, string NumerotelefonicoUsuario,
              bool EstadoUsuario, DateTime FechadecreacionUsuario, DateTime Fechademodificacion, bool BloqueoUsuario)
         {
-            await AgregarAsync(NombreProcedimientoGuardar, new
+            await AgregarAsync(NombreProcedimientoGuardarUsuario, new
             {
                 IdentificacionUsuario,
                 NombreUsuario,
@@ -39,20 +36,44 @@ namespace Agrolifenet.Infraestructura.Adaptador
 
             });
         }
-
-        public Task EliminarUsuario(int idTipoanimal)
+        public async Task<IEnumerable<Usuario>> ListarUsuario()
         {
-            throw new NotImplementedException();
+            return await ListAsync(NombreProcedimientoListarUsuario);
+        }
+        public async Task<Usuario> SeleccionarUsuario(string identificacionUsuario, string? tipodecargo)
+        {
+            return await SeleccionarAsync(NombreProcedimientoSeleccionarUsuario, new
+            {
+                identificacionUsuario,
+                tipodecargo
+            });
         }
 
-        public Task<IEnumerable<Usuario>> ListarUsuario()
+        public async Task EliminarUsuario(int idUsuario)
         {
-            throw new NotImplementedException();
+            await EliminarAsync(NombreProcedimientoEliminarUsuario, new
+            {
+                idUsuario
+            });
         }
-
-        public Task<Usuario> SeleccionarUsuario(int idTipoanimal)
+        public async Task ActualizarUsuario(int idUsuario, string IdentificacionUsuario, string NombreUsuario, string ApellidoUsuario,
+             DateTime FechadenacimientoUsuario, string CorreoelectronicoUsuario, string NumerotelefonicoUsuario, DateTime Fechademodificacion,
+             bool EstadoUsuario,  bool BloqueoUsuario)
         {
-            throw new NotImplementedException();
+            await ActualiozarAsync(NombreProcedimientoActualizarUsuario, new
+            {
+                idUsuario,
+                IdentificacionUsuario,
+                NombreUsuario,
+                ApellidoUsuario,
+                FechadenacimientoUsuario,
+                CorreoelectronicoUsuario,
+                NumerotelefonicoUsuario,
+                @Fechademodificacion,
+                EstadoUsuario,
+                BloqueoUsuario
+
+            });
         }
     }
 }

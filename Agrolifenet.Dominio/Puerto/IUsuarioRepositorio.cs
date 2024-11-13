@@ -5,16 +5,17 @@ namespace Agrolifenet.Dominio.Puerto
 {
     public interface IUsuarioRepositorio : IRepositorio<Usuario>
     {
-        Task AgregarAsync(int IdentificacionUsuario, string NombreUsuario, string ApellidoUsuario,
+        Task AgregarAsync(string IdentificacionUsuario, string NombreUsuario, string ApellidoUsuario,
              DateTime FechadenacimientoUsuario, string CorreoelectronicoUsuario, string NumerotelefonicoUsuario,
              bool EstadoUsuario, DateTime FechadecreacionUsuario, DateTime Fechademodificacion, bool BloqueoUsuario);
         Task<IEnumerable<Usuario>> ListarUsuario();
-        Task<Usuario> SeleccionarUsuario(int idTipoanimal);
+        Task<Usuario> SeleccionarUsuario(string identificacionUsuario, string? tipodecargo);
 
-        Task EliminarUsuario(int idTipoanimal);
+        Task EliminarUsuario(int idUsuario);
 
-        Task ActualizarUsuario(int idTipoanimal, string tiposdeanimal, DateTime fechademodificacionTipoanimal,
-            Boolean estadoTipoanimal);
+        Task ActualizarUsuario(int idUsuario, string IdentificacionUsuario, string NombreUsuario, string ApellidoUsuario,
+             DateTime FechadenacimientoUsuario, string CorreoelectronicoUsuario, string NumerotelefonicoUsuario, DateTime Fechademodificacion,
+             bool EstadoUsuario, bool BloqueoUsuario);
 
     }
 }

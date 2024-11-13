@@ -27,10 +27,11 @@ namespace Agrolifenet.Api.Controllers
         [HttpGet("ListarTipoAnimal")]
         public async Task<IEnumerable<TipoAnimal>> ListarTipoAnimal()
         {
+
             return await _tipoAnimalServicio.ListarTipoAnimal();
         }
 
-        [HttpGet("SeleccionarTipoAnimal/{idTipoanimal}")]
+        [HttpGet("SeleccionarTipoAnimal")]
         public async Task<TipoAnimal> SeleccionarTipoAnimal(int idTipoanimal)
         {
 
@@ -43,7 +44,7 @@ namespace Agrolifenet.Api.Controllers
             await _tipoAnimalServicio.EliminarTipoAnimal(idTipoanimal);
         }
         [HttpPut("ActualizarTipoanimal")]
-        public async Task ActualizarTipoanimal(int idTipoanimal, string tiposdeanimal, Boolean estadoTipoanimal)
+        public async Task ActualizarTipoanimal(int idTipoanimal, string tiposdeanimal,   Boolean estadoTipoanimal)
         {
 
             await _tipoAnimalServicio.ActualizarTipoAnimal(idTipoanimal, tiposdeanimal, estadoTipoanimal);
