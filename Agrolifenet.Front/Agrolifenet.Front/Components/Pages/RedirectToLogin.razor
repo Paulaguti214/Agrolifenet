@@ -1,16 +1,19 @@
 ﻿@inject NavigationManager NavigationManager
+@inject AuthenticationStateProvider AuthenticationStateProvider
 
 @code {
 
-    [CascadingParameter] protected Task<AuthenticationState> AuthStat { get; set; }
-
-    protected async override Task OnInitializedAsync()
+    protected override async Task OnInitializedAsync()
     {
-        base.OnInitialized();
-        var user = (await AuthStat).User;
-        if (!user.Identity.IsAuthenticated)
+        // Obtiene el estado de autenticación
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+
+        // Verifica si el usuario no está autenticado
+        if (user == null || user.Identity == null || !user.Identity.IsAuthenticated)
         {
-            NavigationManager.NavigateTo($"/Login?returnUrl={Uri.EscapeDataString(NavigationManager.Uri)}");
+            // Redirige a la página de inicio de sesión
+            NavigationManager.NavigateTo("/login",true);
         }
     }
 }

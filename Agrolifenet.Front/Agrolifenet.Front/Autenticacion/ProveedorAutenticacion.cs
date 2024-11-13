@@ -1,52 +1,22 @@
-﻿using Agrolifenet.Dominio.Entidades;
-using Agrolifenet.Dominio.Servicios;
-using Microsoft.AspNetCore.Components.Authorization;
-using System.Security.Claims;
+﻿using Microsoft.AspNetCore.Components.Authorization;
 
 namespace Agrolifenet.Front.Autenticacion
 {
-    public class ProveedorAutenticacion(IUsurioServicio usurioServicio) : AuthenticationStateProvider
+    public class ProveedorAutenticacion : AuthenticationStateProvider
     {
-        private Usuario _usuarioInformacion = default!;
+        private AuthenticationState estadoAutenticacion;
 
-        public async Task LoginAsync(string usuario, string constrasenia)
+        public ProveedorAutenticacion(PersonalizarAuthenticationService personalizarAuthenticationService)
         {
-            _usuarioInformacion = await usurioServicio.Logeo(usuario, constrasenia);
+            estadoAutenticacion = new AuthenticationState(personalizarAuthenticationService.CurrentUser);
 
-            var identity = new ClaimsIdentity(new[]
+            personalizarAuthenticationService.UserChanged += (usuarioNuevo) =>
             {
-                new Claim(ClaimTypes.Name, _usuarioInformacion.IdentificacionUsuario.ToString())
-            },
-            "apiauth_type");
-
-            var user = new ClaimsPrincipal(identity);
-            NotifyAuthenticationStateChanged(Task.FromResult(new AuthenticationState(user)));
+                estadoAutenticacion = new AuthenticationState(usuarioNuevo);
+                NotifyAuthenticationStateChanged(Task.FromResult(estadoAutenticacion));
+            };
         }
 
-        public override Task<AuthenticationState> GetAuthenticationStateAsync()
-        {
-            if (_usuarioInformacion != null)
-            {
-                var identity = new ClaimsIdentity(new[]
-                {
-                new Claim(ClaimTypes.Name,_usuarioInformacion.IdentificacionUsuario.ToString()),
-            }, "apiauth_type");
-
-                var user = new ClaimsPrincipal(identity);
-                return Task.FromResult(new AuthenticationState(user));
-            }
-            else
-            {
-                var anonymous = new ClaimsPrincipal(new ClaimsIdentity());
-                return Task.FromResult(new AuthenticationState(anonymous));
-            }
-        }
-
-        public async Task LogoutAsync()
-        {
-            _usuarioInformacion = default!;
-            var anonymous = new ClaimsPrincipal(new ClaimsIdentity());
-            NotifyAuthenticationStateChanged(Task.FromResult(new AuthenticationState(anonymous)));
-        }
+        public override Task<AuthenticationState> GetAuthenticationStateAsync() => Task.FromResult(estadoAutenticacion);
     }
 }

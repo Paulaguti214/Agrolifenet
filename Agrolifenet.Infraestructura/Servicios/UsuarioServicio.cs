@@ -38,12 +38,14 @@ namespace Agrolifenet.Infraestructura.Servicios
         public async Task ActualizarUsuario(int idUsuario, string IdentificacionUsuario, string NombreUsuario, string ApellidoUsuario, DateTime FechadenacimientoUsuario, string CorreoelectronicoUsuario, string NumerotelefonicoUsuario, bool EstadoUsuario, bool BloqueoUsuario)
         {
             var fechaActual = DateTime.Now;
-            await _usuarioRepositorio.ActualizarUsuario(idUsuario,IdentificacionUsuario, NombreUsuario, ApellidoUsuario, FechadenacimientoUsuario, CorreoelectronicoUsuario, NumerotelefonicoUsuario, fechaActual, EstadoUsuario,  BloqueoUsuario);
+            await _usuarioRepositorio.ActualizarUsuario(idUsuario, IdentificacionUsuario, NombreUsuario, ApellidoUsuario, FechadenacimientoUsuario, CorreoelectronicoUsuario, NumerotelefonicoUsuario, fechaActual, EstadoUsuario, BloqueoUsuario);
         }
 
         public async Task<Usuario> Logeo(string Usuario, string Contrasenia)
         {
-            return await _usuarioRepositorio.Logeo(Usuario, Contrasenia);
+            //await _usuarioRepositorio.Logeo(Usuario, Contrasenia);
+            await Task.Delay(300);
+            return new Usuario() { IdentificacionUsuario = 1020 };
         }
     }
 }

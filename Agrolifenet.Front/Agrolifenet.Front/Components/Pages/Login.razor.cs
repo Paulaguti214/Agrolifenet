@@ -1,31 +1,44 @@
-﻿using Agrolifenet.Front.Autenticacion;
+﻿using Agrolifenet.Dominio.Servicios;
+using Agrolifenet.Front.Autenticacion;
 using Microsoft.AspNetCore.Components;
+using System.Security.Claims;
 
 namespace Agrolifenet.Front.Components.Pages
 {
     public partial class Login : ComponentBase
     {
         [Inject]
-        private ProveedorAutenticacion usurioServicio { get; set; }
+        private IUsurioServicio _usurioServicio { get; set; }
 
         [Inject]
-        private NavigationManager Navigation { get; set; }
+        private PersonalizarAuthenticationService? CustomAuthenticationService { get; set; }
+
+        [Inject]
+        private NavigationManager? Navigation { get; set; }
 
         private Modelos.Login loginModelo = new();
-        private string errorMessage;
+        private string? errorMessage;
 
         private async void OnValidSubmit()
         {
-            await usurioServicio.LoginAsync(loginModelo.Usuario, loginModelo.Contrasenia);
-            Navigation.NavigateTo("/");
-            //if (usuario is not null)
-            //{
+            var usuario = await _usurioServicio.Logeo(loginModelo.Usuario, loginModelo.Contrasenia);
+            if (usuario != null)
+            {
+                var identity = new ClaimsIdentity(
+                    [
+                        new Claim(ClaimTypes.Name, usuario.IdentificacionUsuario.ToString()),
+                    ],
+                    "Custom Authentication");
 
-            //}
-            //else
-            //{
-            //    errorMessage = "Inicio de sesión fallido. Por favor, verifica tus credenciales.";
-            //}
+                var usuarioNuevo = new ClaimsPrincipal(identity);
+
+                CustomAuthenticationService!.CurrentUser = usuarioNuevo;
+                Navigation!.NavigateTo("/", true);
+            }
+            else
+            {
+                errorMessage = "Ingresa usuario y contraseña correctos";
+            }
         }
     }
 }
