@@ -15,11 +15,39 @@ namespace Agrolifenet.Api.Controllers
             _logger = logger;
             _usuarioServicio = usuarioServicio;
         }
-        [HttpPost(Name = "insertarUsuario")]
-        public async Task InsertarUsuario(int IdentificacionUsuario, string NombreUsuario, string ApellidoUsuario, DateTime FechadenacimientoUsuario, string CorreoelectronicoUsuario, string NumerotelefonicoUsuario, bool EstadoUsuario,  bool BloqueoUsuario)
+        [HttpPost("insertarUsuario")]
+        public async Task InsertarUsuario(string IdentificacionUsuario, string NombreUsuario, string ApellidoUsuario, DateTime FechadenacimientoUsuario, string CorreoelectronicoUsuario, string NumerotelefonicoUsuario, bool EstadoUsuario,  bool BloqueoUsuario)
         {
 
             await _usuarioServicio.Agregar(IdentificacionUsuario, NombreUsuario, ApellidoUsuario, FechadenacimientoUsuario, CorreoelectronicoUsuario, NumerotelefonicoUsuario, EstadoUsuario,  BloqueoUsuario);
         }
+        [HttpGet("ListarUsuario")]
+        public async Task<IEnumerable<Usuario>> ListarUsuario()
+        {
+
+            return await _usuarioServicio.ListarUsuario();
+        }
+
+        [HttpGet("SeleccionarUsuario")]
+        public async Task<Usuario> SeleccionarUsuario(string identificacionUsuario, string? tipodecargo)
+        {
+
+            return await _usuarioServicio.SeleccionarUsuario(identificacionUsuario, tipodecargo);
+        }
+        [HttpDelete("EliminarUsuario")]
+        public async Task EliminarUsuario(int idUsuario)
+        {
+
+            await _usuarioServicio.EliminarUsuario(idUsuario);
+        }
+        [HttpPut("ActualizarUsuario")]
+        public async Task ActualizarTipoanimal(int idUsuario, string IdentificacionUsuario, string NombreUsuario, string ApellidoUsuario, DateTime FechadenacimientoUsuario, string CorreoelectronicoUsuario, string NumerotelefonicoUsuario, bool EstadoUsuario, bool BloqueoUsuario)
+        {
+
+            await _usuarioServicio.ActualizarUsuario(idUsuario, IdentificacionUsuario, NombreUsuario, ApellidoUsuario, FechadenacimientoUsuario, CorreoelectronicoUsuario, NumerotelefonicoUsuario, EstadoUsuario, BloqueoUsuario);
+        }
+
+
     }
 }
+
