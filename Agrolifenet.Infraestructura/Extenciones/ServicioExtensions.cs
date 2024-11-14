@@ -10,6 +10,7 @@ namespace Agrolifenet.Infraestructura.Extenciones
         {
             svc.AddScoped<ITipoAnimalServicio, TipoAnimalServicio>();
             svc.AddScoped<IUsurioServicio, UsuarioServicio>();
+            svc.AddScoped<ITipodecargoServicio, TipodecargoServicio>();
 
 
             return svc;

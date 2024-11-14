@@ -9,7 +9,6 @@ namespace Agrolifenet.Dominio.Servicios
         Task<IEnumerable<TiposdeCargo>> ListarTiposdecargo();
         Task<TiposdeCargo> SeleccionarTiposdecargo(int idTiposdecargo);
         Task EliminarTiposdecargo(int idTiposdecargo);
-        Task ActualizarTiposdecargo(int idTiposdecargo, string tipodecargo, DateTime fechademodificacionTiposdecargo,
-            bool estadoTiposdecargo);
+        Task ActualizarTiposdecargo(int idTiposdecargo, string tipodecargo,bool estadoTiposdecargo);
     }
 }
