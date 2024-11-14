@@ -1,8 +1,14 @@
-﻿<CascadingAuthenticationState>
+﻿
     <Router AppAssembly="typeof(Program).Assembly" AdditionalAssemblies="new[] { typeof(Client._Imports).Assembly }">
         <Found Context="routeData">
-            <RouteView RouteData="routeData" DefaultLayout="typeof(Layout.MainLayout)" />
-            <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(Layout.MainLayout)" />
+            @*    <RouteView RouteData="routeData" DefaultLayout="typeof(Layout.MainLayout)" /> *@
+            <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(Layout.MainLayout)">
+                <NotAuthorized>
+                    @* Redirigir al usuario a la página de inicio de sesión *@
+                    @* Puedes usar la navegación por Uri o un componente de redirección *@
+                    <Agrolifenet.Front.Components.Pages.RedirectToLogin></Agrolifenet.Front.Components.Pages.RedirectToLogin>
+                </NotAuthorized>
+            </AuthorizeRouteView>
         </Found>
     </Router>
-</CascadingAuthenticationState>
+

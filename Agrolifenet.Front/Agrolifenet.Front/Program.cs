@@ -8,7 +8,6 @@ var config = builder.Configuration;
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
-    .AddInteractiveWebAssemblyComponents()
     .AddInteractiveServerComponents();
 
 builder.Services.AgregarServiciosPersistencia(config);
@@ -40,8 +39,6 @@ app.UseStaticFiles();
 app.UseAntiforgery();
 
 app.MapRazorComponents<App>()
-    .AddInteractiveWebAssemblyRenderMode()
-    .AddInteractiveServerRenderMode()
-    .AddAdditionalAssemblies(typeof(Agrolifenet.Front.Client._Imports).Assembly);
+    .AddInteractiveServerRenderMode();
 
 app.Run();
