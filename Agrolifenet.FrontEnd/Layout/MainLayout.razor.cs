@@ -1,10 +1,12 @@
-﻿using Agrolifenet.Front.Autenticacion;
+﻿
+
+
+using Agrolifenet.FrontEnd.Autenticacion;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using System.Security.Claims;
 
-
-namespace Agrolifenet.Front.Components.Layout
+namespace Agrolifenet.FrontEnd.Layout
 {
     public partial class MainLayout : LayoutComponentBase
     {
@@ -23,7 +25,7 @@ namespace Agrolifenet.Front.Components.Layout
 
                 //await JSRuntime.InvokeAsync<IJSObjectReference>("import", "/_framework/blazor.web.js");
                 await JSRuntime.InvokeAsync<IJSObjectReference>("import", "/assets/bootstrap/js/bootstrap.min.js");
-                await JSRuntime.InvokeAsync<IJSObjectReference>("import", "/assets/js/chart.min.js");
+                //await JSRuntime.InvokeAsync<IJSObjectReference>("import", "/assets/js/chart.min.js");
                 await JSRuntime.InvokeAsync<IJSObjectReference>("import", "/assets/js/bs-init.js");
                 await JSRuntime.InvokeAsync<IJSObjectReference>("import", "/assets/js/theme.js");
             }
