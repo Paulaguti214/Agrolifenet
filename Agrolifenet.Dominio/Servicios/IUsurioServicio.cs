@@ -1,11 +1,12 @@
-﻿using Agrolifenet.Dominio.Entidades;
+﻿using Agrolifenet.Dominio.Dto;
+using Agrolifenet.Dominio.Entidades;
 namespace Agrolifenet.Dominio.Servicios
 {
     public interface IUsurioServicio
     {
         Task Agregar(string IdentificacionUsuario, string NombreUsuario, string ApellidoUsuario,
              DateTime FechadenacimientoUsuario, string CorreoelectronicoUsuario, string NumerotelefonicoUsuario,
-             bool EstadoUsuario,  bool BloqueoUsuario);
+             bool EstadoUsuario, bool BloqueoUsuario);
         Task<IEnumerable<Usuario>> ListarUsuario();
         Task<Usuario> SeleccionarUsuario(string identificacionUsuario, string? tipodecargo);
         Task EliminarUsuario(int idUsuario);
@@ -14,6 +15,6 @@ namespace Agrolifenet.Dominio.Servicios
              DateTime FechadenacimientoUsuario, string CorreoelectronicoUsuario, string NumerotelefonicoUsuario,
              bool EstadoUsuario, bool BloqueoUsuario);
 
-        Task<Usuario> Logeo(string Usuario, string Contrasenia);
+        Task<UsuarioTokenDto> LogeoAsync(string Usuario, string Contrasenia);
     }
 }

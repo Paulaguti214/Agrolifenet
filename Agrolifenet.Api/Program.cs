@@ -1,5 +1,7 @@
 using Agrolifenet.Infraestructura.Extenciones;
-using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 var config = builder.Configuration;
@@ -12,6 +14,17 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AgregarServiciosPersistencia(config);
 builder.Services.AgregarServiciosDominio();
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(opciones =>
+        opciones.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+        {
+            ValidateIssuer = false,
+            ValidateAudience = false,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKeys = [new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config.GetSection("Jwt:llave").Value!))],
+            ClockSkew = TimeSpan.Zero
+        });
 
 var app = builder.Build();
 

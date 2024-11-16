@@ -34,7 +34,7 @@ namespace Agrolifenet.FrontEnd.Layout
 
         private void OnCerrarSesion()
         {
-            var anonymous = new ClaimsPrincipal(new ClaimsIdentity());
+            var anonymous = new ClaimsPrincipal();
 
             _proveedorAutenticacion!.CurrentUser = anonymous;
             Navigation!.NavigateTo("/", true);

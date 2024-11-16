@@ -1,6 +1,8 @@
 ﻿
 using Agrolifenet.FrontEnd.Autenticacion;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.JSInterop;
 using System.Security.Claims;
 
 namespace Agrolifenet.FrontEnd.Pages
@@ -8,6 +10,8 @@ namespace Agrolifenet.FrontEnd.Pages
     public partial class Login : ComponentBase
     {
 
+        [Inject]
+        IJSRuntime Js { get; set; }
 
         [Inject]
         private PersonalizarAuthenticationService? CustomAuthenticationService { get; set; }
@@ -15,11 +19,17 @@ namespace Agrolifenet.FrontEnd.Pages
         [Inject]
         private NavigationManager? Navigation { get; set; }
 
+        [CascadingParameter]
+        private Task<AuthenticationState> AuthenticationState { get; set; }
+
         private FrontEnd.Modelos.Login loginModelo = new();
         private string? errorMessage;
 
+
         private async void OnValidSubmit()
         {
+            var ss = await AuthenticationState;
+            var ssss = ss.User.Identity?.IsAuthenticated;
             var usuario = "ss";
             if (usuario != null)
             {
@@ -32,6 +42,7 @@ namespace Agrolifenet.FrontEnd.Pages
                 var usuarioNuevo = new ClaimsPrincipal(identity);
 
                 CustomAuthenticationService!.CurrentUser = usuarioNuevo;
+                //await Js.GuardarEnLocalStorage("usuario", "pepito");
                 Navigation!.NavigateTo("/", true);
             }
             else

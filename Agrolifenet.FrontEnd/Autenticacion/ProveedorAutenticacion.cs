@@ -17,6 +17,19 @@ namespace Agrolifenet.FrontEnd.Autenticacion
             };
         }
 
-        public override Task<AuthenticationState> GetAuthenticationStateAsync() => Task.FromResult(estadoAutenticacion);
+        public override async Task<AuthenticationState> GetAuthenticationStateAsync()
+        {
+            //var anonimo = new ClaimsIdentity();
+            //var usuario2 = new ClaimsIdentity(authenticationType: "prueba");
+            //var usuario = new ClaimsIdentity(new List<Claim>
+            //{
+            //    new("identifiacion","1030650637"),
+            //    new(ClaimTypes.Name,"Juan Rodriguiez"),
+            //    new(ClaimTypes.Role,"admin")
+
+            //}, authenticationType: "prueba");
+            //return await Task.FromResult(new AuthenticationState(new ClaimsPrincipal(usuario)));
+            return await Task.FromResult(estadoAutenticacion);
+        }
     }
 }
