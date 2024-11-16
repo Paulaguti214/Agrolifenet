@@ -1,11 +1,12 @@
 ﻿using Agrolifenet.Dominio.Entidades;
+using Agrolifenet.Dominio.Puerto.BaseRepositorio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Agrolifenet.Dominio.Puerto.BaseRepositorio
+namespace Agrolifenet.Dominio.Puerto
 {
     public interface ITipodecargoRepositorio : IRepositorio<TiposdeCargo>
     {

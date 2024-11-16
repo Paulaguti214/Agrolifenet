@@ -1,5 +1,5 @@
 ﻿using Agrolifenet.Dominio.Entidades;
-using Agrolifenet.Dominio.Puerto.BaseRepositorio;
+using Agrolifenet.Dominio.Puerto;
 using Agrolifenet.Infraestructura.Adaptador.BaseRepositorio;
 using System;
 using System.Collections.Generic;
