@@ -24,6 +24,8 @@ namespace Agrolifenet.Infraestructura.Extenciones
             svc.AddTransient<IUsuarioRepositorio, UsuarioRepositorio>();
             svc.AddTransient<ITipodecargoRepositorio, TipodecargoRepositorio>();
             svc.AddTransient<ITipodereproduccionRepositorio, TipodereproduccionRepositorio>();
+            svc.AddTransient<ITipodeparametroRepositorio, TipodeparametroRepositorio>();
+            svc.AddTransient<ITemadeconsultaRepositorio, TemadeconsultaRepositorio>();
 
 
 
