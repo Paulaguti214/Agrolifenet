@@ -1,0 +1,19 @@
+.btn-success {
+  color: #1cc88a;
+  background-color: #eeeeee;
+  border-color: #1cc88a;
+}
+
+.btn-success:hover {
+  color: #ffffff;
+  background-color: #3ed09c;
+  border-color: #f8f9fc;
+}
+
+.btn-check:focus + .btn-success, .btn-success:focus {
+  color: #ffffff;
+  background-color: #3ed09c;
+  border-color: #33ce96;
+  box-shadow: 0 0 0 .25rem rgba(24,170,117,.5);
+}
+

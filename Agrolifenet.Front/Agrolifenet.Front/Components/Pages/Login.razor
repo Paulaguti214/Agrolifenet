@@ -1,7 +1,5 @@
 ﻿@using Agrolifenet.Front.Components.Layout
-@rendermode InteractiveServer
-
-@layout LoginLayaut
+@layout LoginLayout
 @page "/Login"
 
 
@@ -36,14 +34,14 @@
                                                 </div>
                                             </div>
                                             <button class="btn btn-success d-block btn-user w-100">Login</button>
-                                        </EditForm> 
+                                        </EditForm>
                                         @if (!string.IsNullOrEmpty(errorMessage))
                                         {
                                             <p style="color: red;">@errorMessage</p>
                                         }
                                         <hr>
                                         <hr>
-                                    </div>                                  
+                                    </div>
 
                                     <a class="btn btn-link d-block btn-facebook w-100" role="button"><i class="fab fa-facebook-f"></i>&nbsp;facebook</a><a class="btn btn-link d-block btn-google w-100" role="button"><i class="fab fa-google"></i>&nbsp;google</a>
                                     <div class="text-center"><a class="small" href="forgot-password.html">¿Olvido su contraseña?</a></div>
@@ -57,4 +55,3 @@
         </div>
     </div>
 </div>
-

@@ -1,6 +1,7 @@
 ﻿using Agrolifenet.Dominio.Entidades;
-using Agrolifenet.Dominio.Puerto.BaseRepositorio;
+using Agrolifenet.Dominio.Puerto;
 using Agrolifenet.Dominio.Servicios;
+using Agrolifenet.Infraestructura.Adaptador;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,10 +17,10 @@ namespace Agrolifenet.Infraestructura.Servicios
         {
             _tipodecargoRepositorio = tipodecargoRepositorio;
         }
-        public async Task Agregar(string tipodecargo,  bool estadoTiposdecargo)
+        public async Task Agregar(string tipodecargo, bool estadoTiposdecargo)
         {
             var fechaActual = DateTime.Now;
-            await _tipodecargoRepositorio.AgregarAsync(tipodecargo, fechaActual, fechaActual, estadoTiposdecargo); 
+            await _tipodecargoRepositorio.AgregarAsync(tipodecargo, fechaActual, fechaActual, estadoTiposdecargo);
         }
         public Task<IEnumerable<TiposdeCargo>> ListarTiposdecargo()
         {
@@ -36,12 +37,15 @@ namespace Agrolifenet.Infraestructura.Servicios
         public async Task ActualizarTiposdecargo(int idTiposdecargo, string tipodecargo, bool estadoTiposdecargo)
         {
             var fechaActual = DateTime.Now;
-            await _tipodecargoRepositorio.ActualizarTiposdecargo(idTiposdecargo, tipodecargo, fechaActual, estadoTiposdecargo);
+            await _tipodecargoRepositorio.ActualizarTiposdecargo(idTiposdecargo, tipodecargo,fechaActual, estadoTiposdecargo);
         }
 
-        public Task Agregar(string tipodecargo, DateTime fechadecreacionTiposdecargo, DateTime fechademodificacionTiposdecargo, bool estadoTiposdecargo)
-        {
-            throw new NotImplementedException();
-        }
+  
+
+       
+
+    
+
+      
     }
 }

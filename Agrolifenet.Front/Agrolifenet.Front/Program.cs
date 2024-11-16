@@ -1,16 +1,23 @@
+using Agrolifenet.Front.Autenticacion;
 using Agrolifenet.Front.Components;
 using Agrolifenet.Infraestructura.Extenciones;
+using Microsoft.AspNetCore.Components.Authorization;
 
 var builder = WebApplication.CreateBuilder(args);
 var config = builder.Configuration;
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
-    .AddInteractiveWebAssemblyComponents()
     .AddInteractiveServerComponents();
 
 builder.Services.AgregarServiciosPersistencia(config);
 builder.Services.AgregarServiciosDominio();
+
+builder.Services.AddCascadingAuthenticationState();
+builder.Services.AddAuthorizationCore();
+builder.Services.AddSingleton<PersonalizarAuthenticationService>();
+builder.Services.AddSingleton<ProveedorAutenticacion>();
+builder.Services.AddSingleton<AuthenticationStateProvider>(s => s.GetRequiredService<ProveedorAutenticacion>());
 
 var app = builder.Build();
 
@@ -32,8 +39,6 @@ app.UseStaticFiles();
 app.UseAntiforgery();
 
 app.MapRazorComponents<App>()
-    .AddInteractiveWebAssemblyRenderMode()
-    .AddInteractiveServerRenderMode()
-    .AddAdditionalAssemblies(typeof(Agrolifenet.Front.Client._Imports).Assembly);
+    .AddInteractiveServerRenderMode();
 
 app.Run();

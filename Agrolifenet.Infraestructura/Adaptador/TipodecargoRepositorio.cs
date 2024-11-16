@@ -1,5 +1,5 @@
 ﻿using Agrolifenet.Dominio.Entidades;
-using Agrolifenet.Dominio.Puerto.BaseRepositorio;
+using Agrolifenet.Dominio.Puerto;
 using Agrolifenet.Infraestructura.Adaptador.BaseRepositorio;
 using System.Data;
 
@@ -13,7 +13,6 @@ namespace Agrolifenet.Infraestructura.Adaptador
         private readonly string NombreProcedimientoEliminarTiposdecargo = "EliminarTiposdecargo";
         private readonly string NombreProcedimientoActualizarTiposdecargo = "ActualizarTiposdecargo";
         public TipodecargoRepositorio(IDbConnection baseDeDatos) : base(baseDeDatos) { }
-
         public async Task AgregarAsync(string tipodecargo, DateTime fechadecreacionTiposdecargo, DateTime fechademodificacionTiposdecargo, bool estadoTiposdecargo)
         {
             await AgregarAsync(NombreProcedimientoGuardarTiposdecargo, new
@@ -22,10 +21,10 @@ namespace Agrolifenet.Infraestructura.Adaptador
                 fechadecreacionTiposdecargo,
                 fechademodificacionTiposdecargo,
                 estadoTiposdecargo
-            });
 
+            }); 
         }
-        public async Task<IEnumerable<TiposdeCargo>> ListarTiposdecargo()
+        public async  Task<IEnumerable<TiposdeCargo>> ListarTiposdecargo()
         {
             return await ListAsync(NombreProcedimientoListarTiposdecargo);
         }
@@ -41,9 +40,9 @@ namespace Agrolifenet.Infraestructura.Adaptador
             await EliminarAsync(NombreProcedimientoEliminarTiposdecargo, new
             {
                 idTiposdecargo
-
             });
         }
+
         public async Task ActualizarTiposdecargo(int idTiposdecargo, string tipodecargo, DateTime fechademodificacionTiposdecargo, bool estadoTiposdecargo)
         {
             await ActualiozarAsync(NombreProcedimientoActualizarTiposdecargo, new
@@ -55,6 +54,12 @@ namespace Agrolifenet.Infraestructura.Adaptador
             });
         }
 
+       
 
+        
+
+      
+
+        
     }
 }
