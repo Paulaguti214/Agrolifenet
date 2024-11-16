@@ -1,6 +1,5 @@
 ﻿using Agrolifenet.Dominio.Entidades;
 using Agrolifenet.Dominio.Servicios;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Agrolifenet.Api.Controllers
@@ -27,14 +26,19 @@ namespace Agrolifenet.Api.Controllers
             return await _tipodeproduccionServicio.Listartipodereproduccion();
         }
         [HttpGet("BuscarTipodereproduccion")]
-        public async Task<TipodeReproduccion> SeleccionarTipodereproduccion(int idTiposdecargo)
+        public async Task<TipodeReproduccion> SeleccionarTipodereproduccion(int IdTipodereproduccion)
         {
-            return await _tipodeproduccionServicio.SeleccionarTipodereproduccion(idTiposdecargo);
+            return await _tipodeproduccionServicio.SeleccionarTipodereproduccion(IdTipodereproduccion);
         }
         [HttpDelete("EliminarTipodereproduccion")]
-        public async Task EtiminarTipodereproduccion(int idTiposdecargo)
+        public async Task EtiminarTipodereproduccion(int IdTipodereproduccion)
         {
-            await _tipodeproduccionServicio.EliminarTipodereproduccion(i);
+            await _tipodeproduccionServicio.EliminarTipodereproduccion(IdTipodereproduccion);
+        }
+        [HttpPut("ActualizarTiposdereproduccion")]
+        public async Task ActualizarTiposdereproduccion(int IdTipodereproduccion, string Tiposdereproduccion, bool EstadoTipodereproduccion)
+        {
+            await _tipodeproduccionServicio.ActualizarTipodereproduccion(IdTipodereproduccion,Tiposdereproduccion, EstadoTipodereproduccion);
         }
 
 

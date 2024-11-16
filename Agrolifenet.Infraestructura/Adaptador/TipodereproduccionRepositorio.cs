@@ -55,9 +55,6 @@ namespace Agrolifenet.Infraestructura.Adaptador
             });
         }
 
-        public Task ActualizarTipodereproduccion(int IdTipodereproduccion, string Tiposdereproduccion, bool EstadoTipodereproduccion)
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }
