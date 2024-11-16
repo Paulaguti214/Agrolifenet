@@ -1,0 +1,22 @@
+﻿<Router AppAssembly="@typeof(App).Assembly">
+    <Found Context="routeData">
+        <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" >
+            <Authorizing>
+                <p>Autorizando</p>
+            </Authorizing>
+            <NotAuthorized>
+                <p>No estas Autorizando</p>
+            </NotAuthorized>
+            <NotAuthorized>
+                <Agrolifenet.FrontEnd.Pages.RedirectToLogin></Agrolifenet.FrontEnd.Pages.RedirectToLogin>
+            </NotAuthorized>
+        </AuthorizeRouteView>
+        <FocusOnNavigate RouteData="@routeData" Selector="h1" />
+    </Found>
+    <NotFound>
+        <PageTitle>Not found</PageTitle>
+        <LayoutView Layout="@typeof(MainLayout)">
+            <p role="alert">Sorry, there's nothing at this address.</p>
+        </LayoutView>
+    </NotFound>
+</Router>

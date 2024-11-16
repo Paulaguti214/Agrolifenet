@@ -1,0 +1,6 @@
+.btn-check:checked + .btn-success, .btn-check:active + .btn-success, .btn-success:active, .btn-success.active, .show > .btn-success.dropdown-toggle {
+  color: #ffffff;
+  background-color: #49d3a1;
+  border-color: #33ce96;
+}
+

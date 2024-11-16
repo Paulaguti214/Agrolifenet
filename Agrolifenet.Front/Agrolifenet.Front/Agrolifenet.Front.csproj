@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Agrolifenet.Infraestructura\Agrolifenet.Infraestructura.csproj" />
-    <ProjectReference Include="..\Agrolifenet.Front.Client\Agrolifenet.Front.Client.csproj" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.6" />
   </ItemGroup>
 

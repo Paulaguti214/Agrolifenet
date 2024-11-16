@@ -21,12 +21,12 @@ namespace Agrolifenet.Front.Components.Pages
 
         private async void OnValidSubmit()
         {
-            var usuario = await _usurioServicio.Logeo(loginModelo.Usuario, loginModelo.Contrasenia);
+            var usuario = await _usurioServicio.LogeoAsync(loginModelo.Usuario, loginModelo.Contrasenia);
             if (usuario != null)
             {
                 var identity = new ClaimsIdentity(
                     [
-                        new Claim(ClaimTypes.Name, usuario.IdentificacionUsuario.ToString()),
+                        new Claim(ClaimTypes.Name, usuario.Token.ToString()),
                     ],
                     "Custom Authentication");
 
