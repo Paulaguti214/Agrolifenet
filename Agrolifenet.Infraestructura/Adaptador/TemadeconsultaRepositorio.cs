@@ -5,7 +5,7 @@ using System.Data;
 
 namespace Agrolifenet.Infraestructura.Adaptador
 {
-    internal class TemadeconsultaRepositorio : Repositorio<TemadeConsulta>, ITemadeconsultaRepositorio
+    public class TemadeconsultaRepositorio : Repositorio<TemadeConsulta>, ITemadeconsultaRepositorio
     {
         private readonly string NombreProcedimientoGuardarTemadeconsulta = "InsertarTemadeconsulta";
         private readonly string NombreProcedimientoListarTemadeconsulta = "ListarTemadeconsulta";
