@@ -16,60 +16,60 @@
         public int IdpadreGanado { get; set; }
         public int IdRaza { get; set; }
 
-        public Ganado(
-            int idGanado,
-            DateTime fechadecreacionGanado,
-            DateTime fechademodificacionGanado,
-            bool estadoGanado,
-            DateTime fechadenacimientoGanado,
-            int edadGanado,
-            string sexoGanado,
-            int numerodelchipGanado,
-            string colorGanado,
-            string lugardenacimientoGanado,
-            int idmadreGanado,
-            int idpadreGanado,
-            int idRaza)
-        {
-            IdGanado = idGanado;
-            FechadecreacionGanado = fechadecreacionGanado;
-            FechademodificacionGanado = fechademodificacionGanado;
-            EstadoGanado = estadoGanado;
-            FechadenacimientoGanado = fechadenacimientoGanado;
-            EdadGanado = edadGanado;
-            SexoGanado = sexoGanado;
-            NumerodelchipGanado = numerodelchipGanado;
-            ColorGanado = colorGanado;
-            LugardenacimientoGanado = lugardenacimientoGanado;
-            IdmadreGanado = idmadreGanado;
-            IdpadreGanado = idpadreGanado;
-            IdRaza = idRaza;
-        }
-        public int Guardar()
-        {
-            return 0;
-        }
-        public bool Actualizar()
-        {
-            return false;
-        }
-        public bool Eliminar()
-        {
-            return false;
-        }
-        public Ganado Buscar()
-        {
-            return new Ganado(
-                default, default,
-                default, default,
-                default, default,
-                default!, default,
-                default!, default!,
-                default, default, default);
-        }
-        public List<Ganado> Listar(Ganado ganado)
-        {
-            return new List<Ganado>();
-        }
+        //public Ganado(
+        //    int idGanado,
+        //    DateTime fechadecreacionGanado,
+        //    DateTime fechademodificacionGanado,
+        //    bool estadoGanado,
+        //    DateTime fechadenacimientoGanado,
+        //    int edadGanado,
+        //    string sexoGanado,
+        //    int numerodelchipGanado,
+        //    string colorGanado,
+        //    string lugardenacimientoGanado,
+        //    int idmadreGanado,
+        //    int idpadreGanado,
+        //    int idRaza)
+        //{
+        //    IdGanado = idGanado;
+        //    FechadecreacionGanado = fechadecreacionGanado;
+        //    FechademodificacionGanado = fechademodificacionGanado;
+        //    EstadoGanado = estadoGanado;
+        //    FechadenacimientoGanado = fechadenacimientoGanado;
+        //    EdadGanado = edadGanado;
+        //    SexoGanado = sexoGanado;
+        //    NumerodelchipGanado = numerodelchipGanado;
+        //    ColorGanado = colorGanado;
+        //    LugardenacimientoGanado = lugardenacimientoGanado;
+        //    IdmadreGanado = idmadreGanado;
+        //    IdpadreGanado = idpadreGanado;
+        //    IdRaza = idRaza;
+        //}
+        //public int Guardar()
+        //{
+        //    return 0;
+        //}
+        //public bool Actualizar()
+        //{
+        //    return false;
+        //}
+        //public bool Eliminar()
+        //{
+        //    return false;
+        //}
+        //public Ganado Buscar()
+        //{
+        //    return new Ganado(
+        //        default, default,
+        //        default, default,
+        //        default, default,
+        //        default!, default,
+        //        default!, default!,
+        //        default, default, default);
+        //}
+        //public List<Ganado> Listar(Ganado ganado)
+        //{
+        //    return new List<Ganado>();
+        //}
     }
 }

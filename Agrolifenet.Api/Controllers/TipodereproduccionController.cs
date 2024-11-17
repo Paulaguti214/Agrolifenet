@@ -16,7 +16,7 @@ namespace Agrolifenet.Api.Controllers
             _tipodeproduccionServicio = tipodereproduccionServicio;
         }
         [HttpPost("InsertarTipodereproduccion")]
-        public async Task AgregarAsync(string Tiposdereproduccion, bool EstadoTipodereproduccion)
+        public async Task AgregarTipodeproduccion(string Tiposdereproduccion, bool EstadoTipodereproduccion)
         {
             await _tipodeproduccionServicio.Agregar(Tiposdereproduccion, EstadoTipodereproduccion);
         }
