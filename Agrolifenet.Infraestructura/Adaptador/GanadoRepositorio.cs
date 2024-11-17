@@ -1,12 +1,7 @@
 ﻿using Agrolifenet.Dominio.Entidades;
 using Agrolifenet.Dominio.Puerto;
 using Agrolifenet.Infraestructura.Adaptador.BaseRepositorio;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Agrolifenet.Infraestructura.Adaptador
 {
@@ -16,6 +11,7 @@ namespace Agrolifenet.Infraestructura.Adaptador
         private readonly string NombreProcedimientoSeleccionarGanado = "BuscarGanado";
         private readonly string NombreProcedimientoEliminarGanado = "EliminarGanado";
         private readonly string NombreProcedimientoActualizarGanado = "ActualizarGanado";
+
         public GanadoRepositorio(IDbConnection baseDeDatos) : base(baseDeDatos) { }
 
         public async Task AgregarGanado(DateTime FechadecreacionGanado, DateTime FechademodificacionGanado, bool EstadoGanado, int EdadGanado, string sexoGanado, string NumeridechipGanado, string ColorGanado, string LugardenacimientoGanado, int IdMadreGanado, int IdPadreGanado, int IdRaza)
@@ -23,7 +19,7 @@ namespace Agrolifenet.Infraestructura.Adaptador
             await AgregarAsync(NombreProcedimientoGuardarGanado, new
             {
                 FechadecreacionGanado,
-                FechademodificacionGanado, 
+                FechademodificacionGanado,
                 EstadoGanado,
                 EdadGanado,
                 sexoGanado,
@@ -67,10 +63,10 @@ namespace Agrolifenet.Infraestructura.Adaptador
             });
         }
 
-      
 
-       
 
-        
+
+
+
     }
 }
