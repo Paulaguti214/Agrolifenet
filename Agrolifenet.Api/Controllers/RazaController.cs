@@ -1,4 +1,4 @@
-﻿using Agrolifenet.Dominio.Entidades;
+﻿using Agrolifenet.Dominio.Dto;
 using Agrolifenet.Dominio.Servicios;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,7 +22,7 @@ namespace Agrolifenet.Api.Controllers
         }
 
         [HttpGet("BuscarRaza")]
-        public async Task<Raza> SeleccionarRaza(int IdRaza)
+        public async Task<RazaTipoAnimalDto> SeleccionarRaza(int IdRaza)
         {
             return await _razaServicio.SeleccionarRaza(IdRaza);
         }

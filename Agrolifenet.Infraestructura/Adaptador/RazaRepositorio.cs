@@ -1,4 +1,5 @@
-﻿using Agrolifenet.Dominio.Entidades;
+﻿using Agrolifenet.Dominio.Dto;
+using Agrolifenet.Dominio.Entidades;
 using Agrolifenet.Dominio.Puerto;
 using Agrolifenet.Infraestructura.Adaptador.BaseRepositorio;
 using System.Data;
@@ -48,9 +49,9 @@ namespace Agrolifenet.Infraestructura.Adaptador
             });
         }
 
-        public async Task<Raza> SeleccionarRaza(int IdRaza)
+        public async Task<RazaTipoAnimalDto> SeleccionarRaza(int IdRaza)
         {
-            return await SeleccionarAsync(NombreProcedimientoSeleccionarRaza, new
+            return await SeleccionarAsync<RazaTipoAnimalDto>(NombreProcedimientoSeleccionarRaza, new
             {
                 IdRaza
             });

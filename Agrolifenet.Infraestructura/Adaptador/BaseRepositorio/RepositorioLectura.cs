@@ -18,9 +18,19 @@ namespace Agrolifenet.Infraestructura.Adaptador.BaseRepositorio
             return await _baseDeDatos.QueryAsync<T>(nombreProcedimiento, parametros, commandType: CommandType.StoredProcedure);
         }
 
+        public async Task<IEnumerable<TDto>> ListAsync<TDto>(string nombreProcedimiento, object parametros = default!, CancellationToken cancellationToken = default)
+        {
+            return await _baseDeDatos.QueryAsync<TDto>(nombreProcedimiento, parametros, commandType: CommandType.StoredProcedure);
+        }
+
         public async Task<T> SeleccionarAsync(string nombreProcedimiento, object parametros = default!, CancellationToken cancellationToken = default)
         {
             return (await _baseDeDatos.QueryFirstOrDefaultAsync<T>(nombreProcedimiento, parametros, commandType: CommandType.StoredProcedure))!;
+        }
+
+        public async Task<TDto> SeleccionarAsync<TDto>(string nombreProcedimiento, object parametros = default!, CancellationToken cancellationToken = default)
+        {
+            return (await _baseDeDatos.QueryFirstOrDefaultAsync<TDto>(nombreProcedimiento, parametros, commandType: CommandType.StoredProcedure))!;
         }
     }
 }
