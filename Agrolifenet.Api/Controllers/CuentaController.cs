@@ -14,7 +14,7 @@ namespace Agrolifenet.Api.Controllers
             _usurioServicio = usurioServicio;
         }
 
-        [HttpPost]
+        [HttpPost("Login")]
         public async Task<ActionResult<UsuarioTokenDto>> Login([FromBody] LoginDto login)
         {
             return await _usurioServicio.LogeoAsync(login.Usuario, login.Contrasenia);

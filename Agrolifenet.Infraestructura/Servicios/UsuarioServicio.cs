@@ -52,9 +52,9 @@ namespace Agrolifenet.Infraestructura.Servicios
 
         public async Task<UsuarioTokenDto> LogeoAsync(string Usuario, string Contrasenia)
         {
-            //await _usuarioRepositorio.Logeo(Usuario, Contrasenia);
-            await Task.Delay(300);
-            return GenerarToken("Juan");
+            //var usuario = await _usuarioRepositorio.Logeo(Usuario, Contrasenia);
+            //await Task.Delay(300);
+            return GenerarToken("PEPITO");
         }
 
         private UsuarioTokenDto GenerarToken(string usuario)

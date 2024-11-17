@@ -8,7 +8,7 @@ namespace Agrolifenet.Front.Components.Pages
     public partial class Login : ComponentBase
     {
         [Inject]
-        private IUsurioServicio _usurioServicio { get; set; }
+        private IUsurioServicio UsurioServicio { get; set; } = default!;
 
         [Inject]
         private PersonalizarAuthenticationService? CustomAuthenticationService { get; set; }
@@ -21,7 +21,7 @@ namespace Agrolifenet.Front.Components.Pages
 
         private async void OnValidSubmit()
         {
-            var usuario = await _usurioServicio.LogeoAsync(loginModelo.Usuario, loginModelo.Contrasenia);
+            var usuario = await UsurioServicio.LogeoAsync(loginModelo.Usuario, loginModelo.Contrasenia);
             if (usuario != null)
             {
                 var identity = new ClaimsIdentity(

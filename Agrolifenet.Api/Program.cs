@@ -25,6 +25,15 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             IssuerSigningKeys = [new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config.GetSection("Jwt:llave").Value!))],
             ClockSkew = TimeSpan.Zero
         });
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("BlazorWAPolicy", policy =>
+    {
+        policy.WithOrigins("https://localhost:7136") // Cambia esto al dominio de tu aplicación Blazor
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
 
 var app = builder.Build();
 
@@ -44,5 +53,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+// Usar la política de CORS
+app.UseCors("BlazorWAPolicy");
 
 app.Run();

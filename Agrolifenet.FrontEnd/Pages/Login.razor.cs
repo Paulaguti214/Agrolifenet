@@ -1,53 +1,39 @@
-﻿
-using Agrolifenet.FrontEnd.Autenticacion;
+﻿using Agrolifenet.FrontEnd.Http;
+using Agrolifenet.FrontEnd.Modelos;
+using Agrolifenet.FrontEnd.Puerto;
+using CurrieTechnologies.Razor.SweetAlert2;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Authorization;
-using Microsoft.JSInterop;
-using System.Security.Claims;
+
 
 namespace Agrolifenet.FrontEnd.Pages
 {
     public partial class Login : ComponentBase
     {
+        [Inject]
+        IHttpConsumir HttpConsumir { get; set; } = default!;
 
         [Inject]
-        IJSRuntime Js { get; set; }
+        SweetAlertService Swal { get; set; } = default!;
 
         [Inject]
-        private PersonalizarAuthenticationService? CustomAuthenticationService { get; set; }
+        private NavigationManager Navigation { get; set; } = default!;
 
         [Inject]
-        private NavigationManager? Navigation { get; set; }
+        private ILoginServicio loginServicio { get; set; } = default!;
 
-        [CascadingParameter]
-        private Task<AuthenticationState> AuthenticationState { get; set; }
+        private Modelos.Login loginModelo = new();
 
-        private FrontEnd.Modelos.Login loginModelo = new();
-        private string? errorMessage;
-
-
-        private async void OnValidSubmit()
+        private async Task OnValidSubmit()
         {
-            var ss = await AuthenticationState;
-            var ssss = ss.User.Identity?.IsAuthenticated;
-            var usuario = "ss";
-            if (usuario != null)
+            var resultado = await HttpConsumir.PostAsync<Modelos.Login, UsuarioTokenDto>("/api/Cuenta/Login", loginModelo);
+            if (resultado.Error)
             {
-                var identity = new ClaimsIdentity(
-                    [
-                        new Claim(ClaimTypes.Name, usuario),
-                    ],
-                    "Custom Authentication");
-
-                var usuarioNuevo = new ClaimsPrincipal(identity);
-
-                CustomAuthenticationService!.CurrentUser = usuarioNuevo;
-                //await Js.GuardarEnLocalStorage("usuario", "pepito");
-                Navigation!.NavigateTo("/", true);
+                await Swal.FireAsync("Error", await resultado.ObetenerMensajeErrorAsync(), SweetAlertIcon.Error);
             }
             else
             {
-                errorMessage = "Ingresa usuario y contraseña correctos";
+                await loginServicio.LoginAsync(resultado.Response!.Token);
+                Navigation.NavigateTo("/", true);
             }
         }
     }
