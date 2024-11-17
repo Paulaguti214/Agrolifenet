@@ -1,4 +1,4 @@
-﻿using Agrolifenet.Dominio.Entidades;
+﻿using Agrolifenet.Dominio.Dto;
 using Agrolifenet.Dominio.Servicios;
 using Microsoft.AspNetCore.Mvc;
 
@@ -26,7 +26,7 @@ namespace Agrolifenet.Api.Controllers
         }
 
         [HttpGet("BuscarVenta")]
-        public async Task<Ventas> SeleccionarVenta(int IdVenta)
+        public async Task<VentaDto> SeleccionarVenta(int IdVenta)
         {
             return await _ventaServicio.SeleccionarVenta(IdVenta);
         }
