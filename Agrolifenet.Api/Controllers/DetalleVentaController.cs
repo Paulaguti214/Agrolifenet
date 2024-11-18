@@ -38,6 +38,5 @@ namespace Agrolifenet.Api.Controllers
         {
             await _detalleVentaServicio.ActualizarDetalleVenta(IdDetalledeventa, EstadoDetalledeventa, IdVenta, IdGanado);
         }
-
     }
 }

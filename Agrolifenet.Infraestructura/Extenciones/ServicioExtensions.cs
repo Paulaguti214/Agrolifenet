@@ -20,6 +20,8 @@ namespace Agrolifenet.Infraestructura.Extenciones
             svc.AddScoped<IUsuarioTiposdeCargoServicio, UsuarioTiposdeCargoServicio>();
             svc.AddScoped<IHistorialClinicoServicio, HistorialClinicoServicio>();
             svc.AddScoped<IDetalleVentaServicio, DetalleVentaServicio>();
+            svc.AddScoped<IDetalleTemaServicio, DetalleTemaServicio>();
+
             return svc;
         }
     }

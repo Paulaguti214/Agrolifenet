@@ -32,6 +32,8 @@ namespace Agrolifenet.Infraestructura.Extenciones
             svc.AddTransient<IUsuarioTiposdeCargoRepositorio, UsuarioTiposdeCargoRepositorio>();
             svc.AddTransient<IHistorialClinicoRepositorio, HistorialClinicoRepositorio>();
             svc.AddTransient<IDetalleVentaRepositorio, DetalleVentaRepositorio>();
+            svc.AddTransient<IDetalleTemaRepositorio, DetalleTemaRepositorio>();
+
             return svc;
         }
     }
