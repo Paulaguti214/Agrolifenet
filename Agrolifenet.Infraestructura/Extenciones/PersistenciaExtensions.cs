@@ -30,6 +30,7 @@ namespace Agrolifenet.Infraestructura.Extenciones
             svc.AddTransient<IVentaRepositorio, VentaRepositorio>();
             svc.AddTransient<IRazaRepositorio, RazaRepositorio>();
             svc.AddTransient<IUsuarioTiposdeCargoRepositorio, UsuarioTiposdeCargoRepositorio>();
+            svc.AddTransient<IHistorialClinicoRepositorio, HistorialClinicoRepositorio>();
 
             return svc;
         }

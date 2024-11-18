@@ -30,7 +30,7 @@ namespace Agrolifenet.Infraestructura.Adaptador
 
         public async Task<IEnumerable<TipoAnimal>> ListarTipoAnimal()
         {
-            return await ListAsync(NombreProcedimientoListarTipoAnimal);
+            return await ListarAsync(NombreProcedimientoListarTipoAnimal);
         }
 
         public async Task<TipoAnimal> SeleccionarTipoAnimal(int idTipoanimal)

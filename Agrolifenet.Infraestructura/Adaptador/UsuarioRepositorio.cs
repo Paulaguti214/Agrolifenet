@@ -39,7 +39,7 @@ namespace Agrolifenet.Infraestructura.Adaptador
         }
         public async Task<IEnumerable<Usuario>> ListarUsuario()
         {
-            return await ListAsync(NombreProcedimientoListarUsuario);
+            return await ListarAsync(NombreProcedimientoListarUsuario);
         }
         public async Task<Usuario> SeleccionarUsuario(string identificacionUsuario, string? tipodecargo)
         {

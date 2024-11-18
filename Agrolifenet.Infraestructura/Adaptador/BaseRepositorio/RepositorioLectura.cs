@@ -13,12 +13,12 @@ namespace Agrolifenet.Infraestructura.Adaptador.BaseRepositorio
             _baseDeDatos = baseDeDatos;
         }
 
-        public async Task<IEnumerable<T>> ListAsync(string nombreProcedimiento, object parametros = default!, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<T>> ListarAsync(string nombreProcedimiento, object parametros = default!, CancellationToken cancellationToken = default)
         {
             return await _baseDeDatos.QueryAsync<T>(nombreProcedimiento, parametros, commandType: CommandType.StoredProcedure);
         }
 
-        public async Task<IEnumerable<TDto>> ListAsync<TDto>(string nombreProcedimiento, object parametros = default!, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<TDto>> ListarAsync<TDto>(string nombreProcedimiento, object parametros = default!, CancellationToken cancellationToken = default)
         {
             return await _baseDeDatos.QueryAsync<TDto>(nombreProcedimiento, parametros, commandType: CommandType.StoredProcedure);
         }

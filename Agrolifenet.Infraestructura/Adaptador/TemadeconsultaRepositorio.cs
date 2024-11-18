@@ -27,7 +27,7 @@ namespace Agrolifenet.Infraestructura.Adaptador
         }
         public async Task<IEnumerable<TemadeConsulta>> ListarTemadeconsulta()
         {
-            return await ListAsync(NombreProcedimientoListarTemadeconsulta);
+            return await ListarAsync(NombreProcedimientoListarTemadeconsulta);
         }
         public async Task<TemadeConsulta> SeleccionTemadeconsulta(int IdTemadeconsulta)
         {

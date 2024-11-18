@@ -26,7 +26,7 @@ namespace Agrolifenet.Infraestructura.Adaptador
         }
         public async  Task<IEnumerable<TiposdeCargo>> ListarTiposdecargo()
         {
-            return await ListAsync(NombreProcedimientoListarTiposdecargo);
+            return await ListarAsync(NombreProcedimientoListarTiposdecargo);
         }
         public async Task<TiposdeCargo> SeleccionarTiposdecargo(int idTiposdecargo)
         {

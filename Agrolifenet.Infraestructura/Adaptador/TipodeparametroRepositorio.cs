@@ -25,7 +25,7 @@ namespace Agrolifenet.Infraestructura.Adaptador
         }
         public async Task<IEnumerable<TipodeParametro>> ListarTipodeparametro()
         {
-            return await ListAsync(NombreProcedimientoListarTipodeparametro);
+            return await ListarAsync(NombreProcedimientoListarTipodeparametro);
         }
         public async Task<TipodeParametro> SeleccionarTipodeparametro(int IdTipodeparametro)
         {
