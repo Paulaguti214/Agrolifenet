@@ -46,7 +46,7 @@ namespace Agrolifenet.Infraestructura.Adaptador
         }
         public async Task ActualizarTipodereproduccion(int IdTipodereproduccion, string Tiposdereproduccion, bool EstadoTipodereproduccion, DateTime FechademodificacionTipodereproduccion)
         {
-            await ActualiozarAsync(NombreProcedimientoActualizarTipodereproduccion, new
+            await ActualizarAsync(NombreProcedimientoActualizarTipodereproduccion, new
             {
                 IdTipodereproduccion,
                 Tiposdereproduccion,

@@ -19,7 +19,7 @@ namespace Agrolifenet.Infraestructura.Adaptador
 
         public async Task ActualizarRaza(int IdRaza, string Tipoderaza, DateTime FechademodificacionRaza, bool EstadoRaza, int IdTipoanimal)
         {
-            await ActualiozarAsync(NombreProcedimientoActualizarRaza, new
+            await ActualizarAsync(NombreProcedimientoActualizarRaza, new
             {
                 IdRaza,
                 Tipoderaza,

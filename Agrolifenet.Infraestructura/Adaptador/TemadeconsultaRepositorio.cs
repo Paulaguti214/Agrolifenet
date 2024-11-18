@@ -46,7 +46,7 @@ namespace Agrolifenet.Infraestructura.Adaptador
 
         public async Task ActualizarTemadeconsulta(int IdTemadeconsulta, DateTime FechademodificacionTemadeconsulta, bool EstadoTemadeconsulta, string Temasdeconsulta)
         {
-            await ActualiozarAsync(NombreProcedimientoActualizarTemadeconsulta, new
+            await ActualizarAsync(NombreProcedimientoActualizarTemadeconsulta, new
             {
                 IdTemadeconsulta,
                 FechademodificacionTemadeconsulta,

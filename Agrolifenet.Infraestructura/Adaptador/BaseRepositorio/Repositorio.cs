@@ -13,7 +13,7 @@ namespace Agrolifenet.Infraestructura.Adaptador.BaseRepositorio
             _baseDeDatos = baseDeDatos;
         }
 
-        public async Task ActualiozarAsync(string nombreProcedimiento, object parametros = default!, CancellationToken cancellationToken = default)
+        public async Task ActualizarAsync(string nombreProcedimiento, object parametros = default!, CancellationToken cancellationToken = default)
         {
             await _baseDeDatos.ExecuteAsync(nombreProcedimiento, parametros, commandType: CommandType.StoredProcedure);
         }

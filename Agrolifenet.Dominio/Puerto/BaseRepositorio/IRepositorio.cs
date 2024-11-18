@@ -6,8 +6,7 @@ namespace Agrolifenet.Dominio.Puerto.BaseRepositorio
     {
         Task<T> AgregarAsync(string nombreProcedimiento, object parametros = default!, CancellationToken cancellationToken = default);
 
-
-        Task ActualiozarAsync(string nombreProcedimiento, object parametros = default!, CancellationToken cancellationToken = default);
+        Task ActualizarAsync(string nombreProcedimiento, object parametros = default!, CancellationToken cancellationToken = default);
 
         Task EliminarAsync(string nombreProcedimiento, object parametros = default!, CancellationToken cancellationToken = default);
 

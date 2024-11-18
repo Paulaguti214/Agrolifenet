@@ -20,7 +20,7 @@ namespace Agrolifenet.Infraestructura.Adaptador
 
         public async Task ActualizarHistorialClinico(int idHistorialClinico, DateTime fechaCreacion, DateTime fechaModificacion, bool estado, string vacunas, string tratamientos, string enfermedades, string resultadosExamenes, string infoDesparacitacion, int pesoAlNacer, int pesoActual, int gananciaPesoDiaria, string observaciones, string estadoSalud, decimal costoTratamiento, string seguimiento, int numeroPartos, int idGanado, int idUsuario, int idDatosReproduccion)
         {
-            await ActualiozarAsync(NombreProcedimientoActualizarHistorialClinico, new
+            await ActualizarAsync(NombreProcedimientoActualizarHistorialClinico, new
             {
                 idHistorialClinico,
                 fechaCreacion,

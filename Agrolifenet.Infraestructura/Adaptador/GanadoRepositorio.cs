@@ -47,7 +47,7 @@ namespace Agrolifenet.Infraestructura.Adaptador
         }
         public async Task ActualizarGanado(int IdGanado, DateTime FechademodificacionGanado, bool EstadoGanado, int EdadGanado, string sexoGanado, string NumeridechipGanado, string ColorGanado, string LugardenacimientoGanado, int IdMadreGanado, int IdPadreGanado, int IdRaza)
         {
-            await ActualiozarAsync(NombreProcedimientoActualizarGanado, new
+            await ActualizarAsync(NombreProcedimientoActualizarGanado, new
             {
                 IdGanado,
                 FechademodificacionGanado,

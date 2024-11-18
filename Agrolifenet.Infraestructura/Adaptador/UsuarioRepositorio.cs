@@ -61,7 +61,7 @@ namespace Agrolifenet.Infraestructura.Adaptador
              DateTime FechadenacimientoUsuario, string CorreoelectronicoUsuario, string NumerotelefonicoUsuario, DateTime Fechademodificacion,
              bool EstadoUsuario,  bool BloqueoUsuario)
         {
-            await ActualiozarAsync(NombreProcedimientoActualizarUsuario, new
+            await ActualizarAsync(NombreProcedimientoActualizarUsuario, new
             {
                 idUsuario,
                 IdentificacionUsuario,

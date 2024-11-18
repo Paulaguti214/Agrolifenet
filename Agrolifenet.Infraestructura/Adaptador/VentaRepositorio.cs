@@ -53,7 +53,7 @@ namespace Agrolifenet.Infraestructura.Adaptador
         }
         public async Task ActualizarVenta(int IdVenta, DateTime FechademodificacionVenta, bool EstadoVenta, DateTime FechadelaVenta, string NombredelcompradorVenta, string IdentificaciondelcompradorVentas, string Telefonodelcomprador, double PrecioVenta, string MetododepagoVenta, string DestinoVenta, string CondicionesdeVenta, string EstadodelanimalenVenta, string ObservacionesVenta, int IdUsuario)
         {
-            await ActualiozarAsync(NombreProcedimientoActualizarVenta, new
+            await ActualizarAsync(NombreProcedimientoActualizarVenta, new
             {
                 IdVenta,
                 FechademodificacionVenta,

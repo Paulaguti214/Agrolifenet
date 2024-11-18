@@ -17,7 +17,7 @@ namespace Agrolifenet.Infraestructura.Adaptador
 
         public async Task ActualizarUsuarioTiposdeCargo(int IdUsuarioTiposdecargo, int IdTiposdecargo)
         {
-            await ActualiozarAsync(NombreProcedimientoActualizarUsuarioTiposdeCargo, new
+            await ActualizarAsync(NombreProcedimientoActualizarUsuarioTiposdeCargo, new
             {
                 IdUsuarioTiposdecargo,
                 IdTiposdecargo
