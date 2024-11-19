@@ -3,6 +3,7 @@ using Agrolifenet.FrontEnd.Modelos;
 using Agrolifenet.FrontEnd.Puerto;
 using CurrieTechnologies.Razor.SweetAlert2;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Authorization;
 
 
 namespace Agrolifenet.FrontEnd.Pages
@@ -21,7 +22,24 @@ namespace Agrolifenet.FrontEnd.Pages
         [Inject]
         private ILoginServicio loginServicio { get; set; } = default!;
 
+        [Inject]
+        AuthenticationStateProvider AuthenticationStateProvider { get; set; } = default!;
+
         private Modelos.Login loginModelo = new();
+
+        protected override async Task OnInitializedAsync()
+        {
+            // Obtiene el estado de autenticación
+            var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+            var user = authState.User;
+
+            // Verifica si el usuario no está autenticado
+            if (user == null || user?.Identity == null || user!.Identity!.IsAuthenticated)
+            {
+                // Redirige a la página de inicio de sesión
+                Navigation.NavigateTo("/", true);
+            }
+        }
 
         private async Task OnValidSubmit()
         {

@@ -1,5 +1,6 @@
-﻿@inherits LayoutComponentBase
-<AuthorizeView Roles="admin">
+﻿
+@inherits LayoutComponentBase
+<AuthorizeView Roles="@Cargo.Administrador">
     <Authorized >
             <div id="page-top">
         <div id="wrapper">
@@ -128,7 +129,7 @@
     </div>    
     </Authorized> 
     <NotAuthorized>
-        <p>No estas aurtorizado</p>
+      <RedirectToLogin />
     </NotAuthorized>
 </AuthorizeView>
 @* <AuthorizeView> *@

@@ -21,12 +21,13 @@
                                     <div class="user">
                                         <EditForm Model="@loginModelo" OnValidSubmit="OnValidSubmit" FormName="FrmLogin">
                                             <DataAnnotationsValidator />
-                                            <ValidationSummary />
                                             <div class="mb-3">
                                                 <InputText @bind-Value="@loginModelo.Usuario" class="form-control form-control-user" placeholder="Correo Electronico o Usuario" />
+                                                <ValidationMessage For="@(() => loginModelo.Usuario)" />
                                             </div>
                                             <div class="mb-3">
                                                 <InputText @bind-Value="@loginModelo.Contrasenia" class="form-control form-control-user" placeholder="Contraseña" type="password" />
+                                                <ValidationMessage For="@(() => loginModelo.Contrasenia)" />
                                             </div>
                                             <div class="mb-3">
                                                 <div class="custom-control custom-checkbox small">

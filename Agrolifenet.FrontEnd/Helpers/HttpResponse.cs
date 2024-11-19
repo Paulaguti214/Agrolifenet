@@ -31,7 +31,7 @@
                     return await HttpResponseMessage.Content.ReadAsStringAsync();
 
                 case System.Net.HttpStatusCode.Unauthorized:
-                    return "No Logeado";
+                    return "Usuario o Contraseña Inconrrectos";
 
                 case System.Net.HttpStatusCode.Forbidden:
                     return "No Autorizado";

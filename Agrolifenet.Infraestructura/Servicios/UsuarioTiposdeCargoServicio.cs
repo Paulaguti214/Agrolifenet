@@ -1,4 +1,5 @@
-﻿using Agrolifenet.Dominio.Puerto;
+﻿using Agrolifenet.Dominio.Dto;
+using Agrolifenet.Dominio.Puerto;
 using Agrolifenet.Dominio.Servicios;
 
 namespace Agrolifenet.Infraestructura.Servicios
@@ -12,14 +13,19 @@ namespace Agrolifenet.Infraestructura.Servicios
             _usuarioTiposdeCargoRepositorio = usuarioTiposdeCargoRepositorio;
         }
 
-        public async Task ActualizarUsuarioTiposdeCargo(int IdUsuarioTiposdecargo, int IdTiposdecargo)
+        public async Task ActualizarUsuarioTiposdeCargoAsync(int IdUsuarioTiposdecargo, int IdTiposdecargo)
         {
-            await _usuarioTiposdeCargoRepositorio.ActualizarUsuarioTiposdeCargo(IdUsuarioTiposdecargo, IdTiposdecargo);
+            await _usuarioTiposdeCargoRepositorio.ActualizarUsuarioTiposdeCargoAsync(IdUsuarioTiposdecargo, IdTiposdecargo);
         }
 
-        public async Task AgregarUsuarioTiposdeCargo(int IdUsuario, int IdTiposdecargo)
+        public async Task AgregarUsuarioTiposdeCargoAsync(int IdUsuario, int IdTiposdecargo)
         {
-            await _usuarioTiposdeCargoRepositorio.AgregarUsuarioTiposdeCargo(IdUsuario, IdTiposdecargo);
+            await _usuarioTiposdeCargoRepositorio.AgregarUsuarioTiposdeCargoAsync(IdUsuario, IdTiposdecargo);
+        }
+
+        public async Task<IEnumerable<CargosUsuarioDto>> CargosUsuarioAsync(int IdUsuario)
+        {
+           return await _usuarioTiposdeCargoRepositorio.CargosUsuarioAsync(IdUsuario);
         }
     }
 }

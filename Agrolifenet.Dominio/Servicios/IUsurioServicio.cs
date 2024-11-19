@@ -15,6 +15,6 @@ namespace Agrolifenet.Dominio.Servicios
              DateTime FechadenacimientoUsuario, string CorreoelectronicoUsuario, string NumerotelefonicoUsuario,
              bool EstadoUsuario, bool BloqueoUsuario);
 
-        Task<UsuarioTokenDto> LogeoAsync(string Usuario, string Contrasenia);
+        Task<UsuarioTokenDto?> LogeoAsync(string Usuario, string Contrasenia);
     }
 }

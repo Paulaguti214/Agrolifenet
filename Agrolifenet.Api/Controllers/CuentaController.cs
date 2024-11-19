@@ -17,7 +17,12 @@ namespace Agrolifenet.Api.Controllers
         [HttpPost("Login")]
         public async Task<ActionResult<UsuarioTokenDto>> Login([FromBody] LoginDto login)
         {
-            return await _usurioServicio.LogeoAsync(login.Usuario, login.Contrasenia);
+            var resultado= await _usurioServicio.LogeoAsync(login.Usuario, login.Contrasenia);
+            if (resultado is null)
+            {
+                return Unauthorized(new { mensaje = "Usuario no autorizado" });
+            }
+            return Ok(resultado);
         }
     }
 }

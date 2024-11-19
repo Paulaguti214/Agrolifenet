@@ -1,8 +1,11 @@
-﻿namespace Agrolifenet.Dominio.Servicios
+﻿using Agrolifenet.Dominio.Dto;
+
+namespace Agrolifenet.Dominio.Servicios
 {
     public interface IUsuarioTiposdeCargoServicio
     {
-        Task AgregarUsuarioTiposdeCargo(int IdUsuario, int IdTiposdecargo);
-        Task ActualizarUsuarioTiposdeCargo(int IdUsuarioTiposdecargo, int IdTiposdecargo);
+        Task AgregarUsuarioTiposdeCargoAsync(int IdUsuario, int IdTiposdecargo);
+        Task ActualizarUsuarioTiposdeCargoAsync(int IdUsuarioTiposdecargo, int IdTiposdecargo);
+        Task<IEnumerable<CargosUsuarioDto>> CargosUsuarioAsync(int IdUsuario);
     }
 }
