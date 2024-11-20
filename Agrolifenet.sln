@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Agrolifenet.Infraestructura
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Agrolifenet.Api", "Agrolifenet.Api\Agrolifenet.Api.csproj", "{AACA76A7-4FA8-4C5F-91D8-89151BF01770}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agrolifenet.FrontEnd", "Agrolifenet.FrontEnd\Agrolifenet.FrontEnd.csproj", "{27D6476F-4A13-49AE-B0D3-BA0E20F32DE7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Agrolifenet.FrontEnd", "Agrolifenet.FrontEnd\Agrolifenet.FrontEnd.csproj", "{27D6476F-4A13-49AE-B0D3-BA0E20F32DE7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

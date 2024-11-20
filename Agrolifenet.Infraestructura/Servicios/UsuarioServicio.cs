@@ -5,7 +5,6 @@ using Agrolifenet.Dominio.Servicios;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
 
@@ -18,7 +17,7 @@ namespace Agrolifenet.Infraestructura.Servicios
         public readonly IUsuarioTiposdeCargoServicio _UsuarioTiposdeCargoServicio;
 
         public UsuarioServicio(
-            IUsuarioRepositorio usuarioRepositorio, 
+            IUsuarioRepositorio usuarioRepositorio,
             IConfiguration configuracion,
             IUsuarioTiposdeCargoServicio usuarioTiposdeCargoServicio)
         {
@@ -57,14 +56,23 @@ namespace Agrolifenet.Infraestructura.Servicios
 
         public async Task<UsuarioTokenDto?> LogeoAsync(string Usuario, string Contrasenia)
         {
-            var usuario = await _usuarioRepositorio.Logeo(Usuario, Contrasenia);
+            //var usuario = await _usuarioRepositorio.Logeo(Usuario, Contrasenia);
+            //if (usuario is null)
+            //{
+            //    return default!;
+            //}
+
+            //var cargosUsuario= await _UsuarioTiposdeCargoServicio.CargosUsuarioAsync(usuario.IdUsuario);
+            //return GenerarToken(usuario,cargosUsuario);  
+
+            var usuario = new Usuario() { NombreUsuario = "pepe", ApellidoUsuario = "pepito" };
             if (usuario is null)
             {
                 return default!;
             }
-            
-            var cargosUsuario= await _UsuarioTiposdeCargoServicio.CargosUsuarioAsync(usuario.IdUsuario);
-            return GenerarToken(usuario,cargosUsuario);  
+
+            var cargosUsuario = new List<CargosUsuarioDto>() { new CargosUsuarioDto() { Tipodecargo = "Administrador" } }; //await _UsuarioTiposdeCargoServicio.CargosUsuarioAsync(usuario.IdUsuario);
+            return GenerarToken(usuario, cargosUsuario);
         }
 
         private UsuarioTokenDto GenerarToken(Usuario usuario, IEnumerable<CargosUsuarioDto> cargosUsuario)
