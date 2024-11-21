@@ -1,9 +1,9 @@
 ﻿@code {
     [Parameter] public string Id { get; set; } = default!;
     [Parameter] public bool IsActive { get; set; } = default!;
-    [Parameter] public RenderFragment ChildContent { get; set; } = default!;
+    [Parameter] public RenderFragment ContenidoTab { get; set; } = default!;
 }
 
 <div class="tab-pane @(IsActive ? "active" : "")" role="tabpanel" id="@Id">
-    @ChildContent
+    @ContenidoTab
 </div>

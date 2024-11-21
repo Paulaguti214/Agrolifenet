@@ -1,7 +1,4 @@
-﻿@code{
-    [Parameter] public string NommbreFormulario { get; set; } = default!;
-    [Parameter] public RenderFragment ContenidoFormulario { get; set; } = default!;
-}
+﻿@typeparam TModelo
 
 <div class="card shadow">
     <div class="card-header py-3">
@@ -9,83 +6,42 @@
     </div>
     <div class="card-body">
         <div class="row g-3">
-            <EditForm FormName="@Guid.NewGuid().ToString()">
+            <EditForm Model="@Modelo" OnValidSubmit="@OnSubmit" FormName="@Guid.NewGuid().ToString()">
                 @ContenidoFormulario
             </EditForm>            
         </div>
     </div>
     <div class="card-header py-3">
-        <p class="text-primary m-0 fw-bold">ver tipos de animal</p>
+        <p class="text-primary m-0 fw-bold">@NommbreEncabezadoDetalle</p>
     </div>
     <div class="card-body">
-        <div class="row">
-            <div class="col-md-6 text-nowrap">
-                <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable">
-                    <label class="form-label">
-                        Mostrar&nbsp;
-                        <select class="d-inline-block form-select form-select-sm">
-                            <option value="10" selected="">10</option>
-                            <option value="25">25</option>
-                            <option value="50">50</option>
-                            <option value="100">100</option>
-                        </select>&nbsp;
-                    </label>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="text-md-end dataTables_filter" id="dataTable_filter"><label class="form-label"><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Buscar"></label></div>
-            </div>
-        </div>
-        <div class="table-responsive table mt-2" id="dataTable-1" role="grid" aria-describedby="dataTable_info">
-            <table class="table my-0" id="dataTable">
-                <thead>
-                    <tr>
-                        <th>Tipo Animal</th>
-                        <th>Fecha Creacion</th>
-                        <th>Estado</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Vaca</td>
-                        <td>2024-07-27</td>
-                        <td>Activo</td>
-                        <td class="text-center"><a class="link-success me-2" href="#"><i class="fa fa-edit"></i></a><a class="link-success link-primary" href="#"><i class="fa fa-remove"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td>Cerdo</td>
-                        <td>2023-01-12</td>
-                        <td>Activo</td>
-                        <td class="text-center"><a class="link-success link-primary me-2" href="#"><i class="fa fa-edit"></i></a><a class="link-success link-primary" href="#"><i class="fa fa-remove"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td>Pescado</td>
-                        <td>2022-06-13</td>
-                        <td>Inactico</td>
-                        <td class="text-center"><a class="link-success link-primary me-2" href="#"><i class="fa fa-edit"></i></a><a class="link-success link-primary" href="#"><i class="fa fa-remove"></i></a></td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr></tr>
-                </tfoot>
-            </table>
-        </div>
-        <div class="row">
-            <div class="col-md-6 align-self-center">
-                <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Mostrando1 a 10 de 27</p>
-            </div>
-            <div class="col-md-6">
-                <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
-                    <ul class="pagination">
-                        <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
+        @ContenidoDetalle        
     </div>
 </div>
+
+@code {
+
+    [EditorRequired]
+    [Parameter] public string NommbreFormulario { get; set; } = default!;
+
+    [EditorRequired]
+    [Parameter] public RenderFragment ContenidoFormulario { get; set; } = default!;
+
+    [EditorRequired]
+    [Parameter] public TModelo Modelo { get; set; } = default!;
+    [EditorRequired]
+    [Parameter] public EventCallback<TModelo> Ejecutar { get; set; }
+
+    [Parameter] public string NommbreEncabezadoDetalle { get; set; } = default!;
+    [Parameter] public RenderFragment ContenidoDetalle { get; set; } = default!;
+
+    private async Task OnSubmit()
+    {
+        if (Ejecutar.HasDelegate)
+        {
+            await Ejecutar.InvokeAsync(Modelo);
+        }
+    }
+   
+    
+}
