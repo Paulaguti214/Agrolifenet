@@ -1,3 +1,4 @@
+using Agrolifenet.Dominio.Dto;
 using Agrolifenet.Dominio.Entidades;
 using Agrolifenet.Dominio.Servicios;
 using Microsoft.AspNetCore.Mvc;
@@ -16,12 +17,12 @@ namespace Agrolifenet.Api.Controllers
             _logger = logger;
             _tipoAnimalServicio = tipoAnimalServicio;
         }
-
+        
         [HttpPost("AgregarTipoAnimal")]
-        public async Task AgregarTipoAnimal(string Tiposdeanimal, Boolean estadoTipoanimal)
+        public async Task AgregarTipoAnimal(GuardarTipoanimalDto guardarTipoanimalDto) 
         {
 
-            await _tipoAnimalServicio.Agregar(Tiposdeanimal, estadoTipoanimal);
+            await _tipoAnimalServicio.Agregar(guardarTipoanimalDto.TipoAnimal, guardarTipoanimalDto.EstadoAnimal );
         }
 
         [HttpGet("ListarTipoAnimal")]

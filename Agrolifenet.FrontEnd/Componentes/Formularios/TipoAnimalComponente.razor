@@ -1,28 +1,109 @@
 ﻿@using Agrolifenet.FrontEnd.Modelos
 
-<BaseFormularioComponente 
-    NommbreFormulario="Información tipos de animal" 
-    NommbreEncabezadoDetalle="Ver tipos de animal" 
-    Modelo="@tipoAnimalRegistrarDto"
-    TModelo="TipoAnimalRegistrarDto"
-    Ejecutar="Guardar">
-    <ContenidoFormulario >
-        <div class="col col-auto"><label class="col-form-label">Tipo Animal</label></div>
-        <div class="col col-auto"><input type="text" class="form-control"></div>
-        <div class="col-2 d-flex justify-content-center align-items-center">
-            <div class="form-check form-switch"><input class="form-check-input" type="radio" id="formCheck-1" checked=""><label class="form-check-label d-xl-flex" for="formCheck-1">Estado</label></div>
+<BaseFormularioComponente NommbreFormulario="Información tipos de animal"
+                          NommbreEncabezadoDetalle="Ver tipos de animal"
+                          Modelo="@tipoAnimalRegistrarDto"
+                          TModelo="TipoAnimalRegistrarDto"
+                          Ejecutar="Guardar">
+    <ContenidoFormulario>
+        <div class="row g-3">
+            <div class="col col-auto"><label class="col-form-label">Tipo Animal</label></div>
+            <div class="col col-auto">
+                <InputText @bind-Value="@tipoAnimalRegistrarDto.TipoAnimal" class="form-control" />
+                <ValidationMessage For="@(() => tipoAnimalRegistrarDto.TipoAnimal)" />
+            </div>
+
+
+            <div class="col-2 d-flex justify-content-center align-items-center">
+                <div class="form-check form-switch">
+                    <InputCheckbox id="flexSwitchCheckDefault" @bind-Value="tipoAnimalRegistrarDto.EstadoAnimal" class="form-check-input" />
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Estado</label>
+                </div>
+            </div>
+            <div class="col col-auto"><button class="btn btn-success" type="submit">Agregar&nbsp;<i class="fa fa-plus-circle"></i></button></div>
         </div>
-        <div class="col col-auto"><button class="btn btn-success" type="submit">Agregar&nbsp;<i class="fa fa-plus-circle"></i></button></div>
     </ContenidoFormulario>
+<ContenidoDetalle>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6 text-nowrap">
+                    <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable">
+                        <label class="form-label">
+                            Mostrar&nbsp;
+                            <select class="d-inline-block form-select form-select-sm">
+                                <option value="10" selected="">10</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select>&nbsp;
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="text-md-end dataTables_filter" id="dataTable_filter"><label class="form-label"><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Buscar"></label></div>
+                </div>
+            </div>
+            @if (ListaTipodeanimal == null)
+            {
+                <p>Cargando datos...</p>
+            }
+            else if (ListaTipodeanimal.Any())
+            {
+                <div class="table-responsive table mt-2" id="dataTable-1" role="grid" aria-describedby="dataTable_info">
+                    <table class="table my-0" id="dataTable">
+                        <thead>
+                            <tr>
+                                <th>Id Animal</th>
+                                <th>Tipo Animal</th>
+                                <th>Fecha Creacion</th>
+                                <th>Fecha modificacion</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+            
+            
+            
+                            @foreach (var listatipoanimal in ListaTipodeanimal)
+                         {
+            
+                        <tr>
+                            <td>@listatipoanimal.IdTipoAnimal</td>
+                            <td>@listatipoanimal.TiposdeAnimal</td>
+                            <td>@listatipoanimal.FechadecreacionTipoAnimal</td>
+                            <td>@listatipoanimal.FechademodificacionTipoAnimal</td>
+                            <td>@listatipoanimal.EstadoTipoAnimal</td>
+
+                            <td class="text-center"><a class="link-success me-2" href="#"><i class="fa fa-edit"></i></a><a class="link-success link-primary" href="#"><i class="fa fa-remove"></i></a></td>
+                        </tr>
+                  
+                         }
+                    </tbody>
+                    <tfoot>
+                        <tr></tr>
+                    </tfoot>
+                </table>
+            </div>
+            }
+            <div class="row">
+                <div class="col-md-6 align-self-center">
+                    <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Mostrando1 a 10 de 27</p>
+                </div>
+                <div class="col-md-6">
+                    <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
+                        <ul class="pagination">
+                            <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+</ContenidoDetalle>
 </BaseFormularioComponente>
 
-@code
-{
-    private TipoAnimalRegistrarDto  tipoAnimalRegistrarDto = new();
 
-    public void Guardar(TipoAnimalRegistrarDto model)
-    {
-     
-        Console.WriteLine(tipoAnimalRegistrarDto.TipoAnimal);
-    }    
-}

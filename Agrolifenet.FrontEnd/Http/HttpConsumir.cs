@@ -46,5 +46,18 @@ namespace Agrolifenet.FrontEnd.Http
             var respuestaString = await httpResponse.Content.ReadAsStringAsync();
             return JsonSerializer.Deserialize<T>(respuestaString, jsonSerializerOptions);
         }
+
+        public async Task<HttpResponse<TResponse>> GetAsync<TResponse>(string url)
+        {
+            var respuesta = await _httpClient.GetAsync(url);
+            if (respuesta.IsSuccessStatusCode)
+            {
+                var response = await DeserializarRespuesta<TResponse>(respuesta,
+                    OpcionesPorDefectoJSON);
+                return new HttpResponse<TResponse>(response, error: false, respuesta);
+            }
+            
+            return new HttpResponse<TResponse>(default!, !respuesta.IsSuccessStatusCode, respuesta);
+        }
     }
 }
