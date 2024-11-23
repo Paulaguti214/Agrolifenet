@@ -7,5 +7,10 @@ namespace Agrolifenet.FrontEnd.Http
         Task<HttpResponse<object>> PostAsync<T>(string url, T enviar);
         Task<HttpResponse<TResponse>> PostAsync<T, TResponse>(string url, T enviar);
         Task<HttpResponse<TResponse>> GetAsync<TResponse>(string url);
+        Task<HttpResponse<object>> DeleleteAsync(string url);
+        
+
+
+
     }
 }

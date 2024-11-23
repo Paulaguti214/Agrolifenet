@@ -59,5 +59,13 @@ namespace Agrolifenet.FrontEnd.Http
             
             return new HttpResponse<TResponse>(default!, !respuesta.IsSuccessStatusCode, respuesta);
         }
+
+        public async Task<HttpResponse<object>> DeleleteAsync(string url)
+        {
+            var respuesta = await _httpClient.DeleteAsync(url);
+            return new HttpResponse<object>(default!, !respuesta.IsSuccessStatusCode, respuesta);
+
+
+        }
     }
 }

@@ -17,7 +17,8 @@ namespace Agrolifenet.FrontEnd.Componentes.Formularios
         SweetAlertService Swal { get; set; } = default!;
 
         private TipoAnimalRegistrarDto tipoAnimalRegistrarDto = new();
-        private IEnumerable<ListarTipoAnimalDto> ListaTipodeanimal = default!;
+        public IEnumerable<ListarTipoAnimalDto> ListaTipodeanimal = default!;
+        
 
 
         public async Task Guardar(TipoAnimalRegistrarDto model)
@@ -29,7 +30,11 @@ namespace Agrolifenet.FrontEnd.Componentes.Formularios
             }
             else
             {
+
                 await Swal.FireAsync("Exito", await resultado.ObetenerMensajeErrorAsync(), SweetAlertIcon.Success);
+                // Llama a la API
+                var resultadog = await HttpConsumir.GetAsync<IEnumerable<ListarTipoAnimalDto>>("/TipoAnimal/ListarTipoAnimal");
+                ListaTipodeanimal = resultadog.Response;
             }
             Console.WriteLine(tipoAnimalRegistrarDto.EstadoAnimal);
             Console.WriteLine(tipoAnimalRegistrarDto.TipoAnimal);
@@ -47,5 +52,44 @@ namespace Agrolifenet.FrontEnd.Componentes.Formularios
                 Console.WriteLine($"Error al obtener los datos: {ex.Message}");
             }
         }
+        public async Task EliminarTipoanimal(int IdTipoAnimal)
+        {
+            
+            var resultado = await HttpConsumir.DeleleteAsync($"/TipoAnimal/EliminarTipoAnimal?idTipoanimal={IdTipoAnimal}");
+            if (resultado.Error)
+            {
+                await Swal.FireAsync("Error", await resultado.ObetenerMensajeErrorAsync(), SweetAlertIcon.Error);
+            }
+            else
+            {
+                ListaTipodeanimal= ListaTipodeanimal.Where(p => p.IdTipoAnimal != IdTipoAnimal);
+                await Swal.FireAsync("Exito", await resultado.ObetenerMensajeErrorAsync(), SweetAlertIcon.Success);
+
+            }
+
+        }
+        private string UrlSeleccionada { get; set; } = string.Empty;
+        private void mastrosurl(int IdTipoAnimal)
+        {
+            Console.WriteLine($"/TipoAnimal/EliminarTipoAnimal?idTipoanimal={ IdTipoAnimal}");
+            UrlSeleccionada = $"/TipoAnimal/EliminarTipoAnimal?idTipoanimal={IdTipoAnimal}";
+        }
+
+        //public  ActualizarTipoanimal(int IdTipoAnimal)
+        //{
+        //    //var resultado = await HttpConsumir.GetAsync($"/TipoAnimal/EliminarTipoAnimal?idTipoanimal={IdTipoAnimal}");
+        //    //Console.WriteLine("estoy clickeando");
+        //    //var resultado = await HttpConsumir.PostAsync<Modelos.Login, UsuarioTokenDto>("/api/Cuenta/Login", loginModelo);
+        //    //await loginServicio.LoginAsync(resultado.Response!.Token);
+        //    //Navigation.NavigateTo("/", true);
+
+        //    private void MostrarUrl(string url)
+        //    {
+        //        Console.WriteLine($"URL seleccionada: {url}");
+        //        UrlSeleccionada = url;
+        //    }
+        //}
+
+
     }
 }
