@@ -56,7 +56,7 @@ namespace Agrolifenet.FrontEnd.Http
                     OpcionesPorDefectoJSON);
                 return new HttpResponse<TResponse>(response, error: false, respuesta);
             }
-            
+
             return new HttpResponse<TResponse>(default!, !respuesta.IsSuccessStatusCode, respuesta);
         }
 
@@ -66,6 +66,12 @@ namespace Agrolifenet.FrontEnd.Http
             return new HttpResponse<object>(default!, !respuesta.IsSuccessStatusCode, respuesta);
 
 
+        }
+
+        public async Task<HttpResponse<object>> PutAsync<T>(string url, T enviar)
+        {
+            var respuesta = await _httpClient.PutAsync(url, new StringContent(JsonSerializer.Serialize(enviar), Encoding.UTF8, "application/json"));
+            return new HttpResponse<object>(default!, !respuesta.IsSuccessStatusCode, respuesta);
         }
     }
 }

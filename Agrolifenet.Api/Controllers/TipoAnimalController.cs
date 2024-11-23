@@ -22,7 +22,7 @@ namespace Agrolifenet.Api.Controllers
         public async Task AgregarTipoAnimal(GuardarTipoanimalDto guardarTipoanimalDto) 
         {
 
-            await _tipoAnimalServicio.Agregar(guardarTipoanimalDto.TipoAnimal, guardarTipoanimalDto.EstadoAnimal );
+            await _tipoAnimalServicio.Agregar(guardarTipoanimalDto.TiposdeAnimal, guardarTipoanimalDto.EstadoTipoanimal );
         }
 
         [HttpGet("ListarTipoAnimal")]
@@ -45,10 +45,10 @@ namespace Agrolifenet.Api.Controllers
             await _tipoAnimalServicio.EliminarTipoAnimal(idTipoanimal);
         }
         [HttpPut("ActualizarTipoanimal")]
-        public async Task ActualizarTipoanimal(int idTipoanimal, string tiposdeanimal,   Boolean estadoTipoanimal)
+        public async Task ActualizarTipoanimal(ActualizarTipodeAminalDto actualizarTipodeAminalDto)
         {
 
-            await _tipoAnimalServicio.ActualizarTipoAnimal(idTipoanimal, tiposdeanimal, estadoTipoanimal);
+            await _tipoAnimalServicio.ActualizarTipoAnimal(actualizarTipodeAminalDto.IdTipoanimal, actualizarTipodeAminalDto.TiposdeAnimal, actualizarTipodeAminalDto.EstadoTipoanimal);
         }
 
 

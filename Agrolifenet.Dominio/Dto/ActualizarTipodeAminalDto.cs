@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace Agrolifenet.Dominio.Dto
 {
-    public class GuardarTipoanimalDto
+    public class ActualizarTipodeAminalDto
     {
+        public int IdTipoanimal { get; set; }
         public string TiposdeAnimal { get; set; }
         public bool EstadoTipoanimal { get; set; }
+
     }
 }

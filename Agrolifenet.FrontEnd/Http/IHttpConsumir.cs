@@ -4,11 +4,11 @@ namespace Agrolifenet.FrontEnd.Http
 {
     public interface IHttpConsumir
     {
-        Task<HttpResponse<object>> PostAsync<T>(string url, T enviar);
-        Task<HttpResponse<TResponse>> PostAsync<T, TResponse>(string url, T enviar);
-        Task<HttpResponse<TResponse>> GetAsync<TResponse>(string url);
+        Task<HttpResponse<object>> PostAsync<ElementoEnviar>(string url, ElementoEnviar enviar);
+        Task<HttpResponse<TRespuesta>> PostAsync<ElementoEnviar, TRespuesta>(string url, ElementoEnviar enviar);
+        Task<HttpResponse<TRespuesta>> GetAsync<TRespuesta>(string url);
         Task<HttpResponse<object>> DeleleteAsync(string url);
-        
+        Task<HttpResponse<object>> PutAsync<ElementoEnviar>(string url, ElementoEnviar enviar);
 
 
 

@@ -3,27 +3,27 @@
 <BaseFormularioComponente NommbreFormulario="Información tipos de animal"
                           NommbreEncabezadoDetalle="Ver tipos de animal"
                           Modelo="@tipoAnimalRegistrarDto"
-                          TModelo="TipoAnimalRegistrarDto"
+                          TModelo="TipoAnimalGuardaryActualizarDto"
                           Ejecutar="Guardar">
     <ContenidoFormulario>
         <div class="row g-3">
             <div class="col col-auto"><label class="col-form-label">Tipo Animal</label></div>
             <div class="col col-auto">
-                <InputText @bind-Value="@tipoAnimalRegistrarDto.TipoAnimal" class="form-control" />
-                <ValidationMessage For="@(() => tipoAnimalRegistrarDto.TipoAnimal)" />
+                <InputText @bind-Value="@tipoAnimalRegistrarDto.TiposdeAnimal" class="form-control" />
+                <ValidationMessage For="@(() => tipoAnimalRegistrarDto.TiposdeAnimal)" />
             </div>
 
 
             <div class="col-2 d-flex justify-content-center align-items-center">
                 <div class="form-check form-switch">
-                    <InputCheckbox id="flexSwitchCheckDefault" @bind-Value="tipoAnimalRegistrarDto.EstadoAnimal" class="form-check-input" />
+                    <InputCheckbox id="flexSwitchCheckDefault" @bind-Value="tipoAnimalRegistrarDto.EstadoTipoAnimal" class="form-check-input" />
                     <label class="form-check-label" for="flexSwitchCheckDefault">Estado</label>
                 </div>
             </div>
-            <div class="col col-auto"><button class="btn btn-success" type="submit">Agregar&nbsp;<i class="fa fa-plus-circle"></i></button></div>
+            <div class="col col-auto"><button class="btn btn-success" type="submit">@(tipoAnimalRegistrarDto.IdTipoAnimal == 0 ? "Agregar" : "Actualizar") <i class="fa @(tipoAnimalRegistrarDto.IdTipoAnimal ==0? "fa-plus-circle" : "fa-edit") "></i></button></div>
         </div>
     </ContenidoFormulario>
-<ContenidoDetalle>
+    <ContenidoDetalle>
         <div class="card-body">
             <div class="row">
                 <div class="col-md-6 text-nowrap">
@@ -53,7 +53,7 @@
                     <table class="table my-0" id="dataTable">
                         <thead>
                             <tr>
-                                 <th>Tipo Animal</th>
+                                <th>Tipo Animal</th>
                                 <th>Fecha Creacion</th>
                                 <th>Fecha modificacion</th>
                                 <th>Estado</th>
@@ -61,29 +61,24 @@
                             </tr>
                         </thead>
                         <tbody>
-            
-            
-            
                             @foreach (var listatipoanimal in ListaTipodeanimal)
-                         {
-            
-                        <tr>
-                            
-                            <td>@listatipoanimal.TiposdeAnimal</td>
-                            <td>@listatipoanimal.FechadecreacionTipoAnimal</td>
-                            <td>@listatipoanimal.FechademodificacionTipoAnimal</td>
-                            <td>@listatipoanimal.EstadoTipoAnimal</td>
+                            {
+                                <tr>
 
-                                    <td class="text-center"><a class="link-success me-2" @onclick="() => mastrosurl(listatipoanimal.IdTipoAnimal)"><i class="fa fa-edit"></i></a><a class="link-success link-primary" @onclick="() => EliminarTipoanimal(listatipoanimal.IdTipoAnimal)"><i class="fa fa-remove"></i></a></td>
-                        </tr>
-                  
-                         }
-                    </tbody>
-                    <tfoot>
-                        <tr></tr>
-                    </tfoot>
-                </table>
-            </div>
+                                    <td>@listatipoanimal.TiposdeAnimal</td>
+                                    <td>@listatipoanimal.FechadecreacionTipoAnimal.ToShortDateString()</td>
+                                    <td>@listatipoanimal.FechademodificacionTipoAnimal.ToShortDateString()</td>
+                                    <td>@(listatipoanimal.EstadoTipoAnimal == false ? "Inactivo" : "Activo")</td>
+
+                                    <td class="text-center"><a class="link-success me-2" @onclick="() => ActualizarTipoanimal(listatipoanimal.IdTipoAnimal)"><i class="fa fa-edit"></i></a><a class="link-success link-primary" @onclick="() => EliminarTipoanimal(listatipoanimal.IdTipoAnimal)"><i class="fa fa-remove"></i></a></td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr></tr>
+                        </tfoot>
+                    </table>
+                </div>
             }
             <div class="row">
                 <div class="col-md-6 align-self-center">
@@ -102,7 +97,7 @@
                 </div>
             </div>
         </div>
-</ContenidoDetalle>
+    </ContenidoDetalle>
 </BaseFormularioComponente>
 
 
