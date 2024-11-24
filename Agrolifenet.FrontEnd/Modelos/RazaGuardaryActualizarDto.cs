@@ -10,6 +10,7 @@ namespace Agrolifenet.FrontEnd.Modelos
 
         [Range(1, int.MaxValue, ErrorMessage = "El Tipo de animal es obligatorio")]
         public int IdTipoanimal { get; set; }
+        public string TiposdeAnimal { get; set; } = default!;
 
     }
 }

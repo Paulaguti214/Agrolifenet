@@ -12,6 +12,7 @@ namespace Agrolifenet.Infraestructura.Adaptador
         private readonly string NombreProcedimientoSeleccionarRaza = "BuscarRaza";
         private readonly string NombreProcedimientoEliminarRaza = "EliminarRaza";
         private readonly string NombreProcedimientoActualizarRaza = "ActualizarRaza";
+        private readonly string NombreProcedimientoListarRaza = "LisatarRaza";
 
         public RazaRepositorio(IDbConnection baseDeDatos) : base(baseDeDatos)
         {
@@ -47,6 +48,11 @@ namespace Agrolifenet.Infraestructura.Adaptador
             {
                 IdRaza
             });
+        }
+
+        public async Task<IEnumerable<Raza>> ListarRaza()
+        {
+            return await ListarAsync(NombreProcedimientoListarRaza);
         }
 
         public async Task<RazaTipoAnimalDto> SeleccionarRaza(int IdRaza)
