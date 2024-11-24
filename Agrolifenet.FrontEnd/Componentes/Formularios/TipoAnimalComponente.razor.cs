@@ -1,4 +1,4 @@
-﻿using Agrolifenet.Dominio.Dto;
+﻿
 using Agrolifenet.FrontEnd.Http;
 using Agrolifenet.FrontEnd.Modelos;
 using CurrieTechnologies.Razor.SweetAlert2;
@@ -35,7 +35,7 @@ namespace Agrolifenet.FrontEnd.Componentes.Formularios
                 {
 
                     await Swal.FireAsync("Exito", await resultado.ObetenerMensajeErrorAsync(), SweetAlertIcon.Success);
-                                      
+
                     ListaTipodeanimal = await ObtenerListado();
                 }
 
@@ -51,8 +51,8 @@ namespace Agrolifenet.FrontEnd.Componentes.Formularios
                 {
 
                     await Swal.FireAsync("Exito", await resultado.ObetenerMensajeErrorAsync(), SweetAlertIcon.Success);
-                    
-                  
+
+
                     ListaTipodeanimal = await ObtenerListado();
 
 
@@ -65,7 +65,7 @@ namespace Agrolifenet.FrontEnd.Componentes.Formularios
         {
             try
             {
-               
+
                 ListaTipodeanimal = await ObtenerListado();
             }
             catch (Exception ex)

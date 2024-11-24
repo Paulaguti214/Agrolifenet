@@ -1,0 +1,14 @@
+﻿<select @bind="TipoAnimalSeleccionado" class="form-select">
+    @if (ListaTipodeanimal.Any())
+    {
+        <option value="">Seleccionar</option>
+        @foreach (var tipoAnimal in ListaTipodeanimal)
+        {
+            <option value="@tipoAnimal.IdTipoAnimal">@tipoAnimal.TiposdeAnimal</option>
+        }
+    }
+    else
+    {
+        <option value="">Cargando...</option>
+    }
+</select>

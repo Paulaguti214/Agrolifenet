@@ -1,0 +1,14 @@
+﻿<select @bind="SeleccionarRaza" class="form-select">
+   @*  @if (ListaRazas.Any())
+    {
+        <option value="">Seleccionar</option>
+        @foreach (var raza in ListaRazas)
+        {
+            <option value="@raza.IdRaza">@raza.Raza</option>
+        }
+    }
+    else
+    { *@
+        <option value="">Cargando...</option>
+  @*   } *@
+</select>

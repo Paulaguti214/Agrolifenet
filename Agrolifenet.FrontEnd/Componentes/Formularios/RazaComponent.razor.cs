@@ -2,14 +2,12 @@
 using Agrolifenet.FrontEnd.Modelos;
 using CurrieTechnologies.Razor.SweetAlert2;
 using Microsoft.AspNetCore.Components;
-using System.ComponentModel.Design;
-using System.Security.Cryptography.X509Certificates;
 
 namespace Agrolifenet.FrontEnd.Componentes.Formularios
 {
     public partial class RazaComponent : ComponentBase
     {
-        
+
         [Inject]
         IHttpConsumir HttpConsumir { get; set; } = default!;
 
