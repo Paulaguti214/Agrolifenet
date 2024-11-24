@@ -2,13 +2,12 @@
 using Agrolifenet.FrontEnd.Modelos;
 using CurrieTechnologies.Razor.SweetAlert2;
 using Microsoft.AspNetCore.Components;
-using System.Security.Cryptography.X509Certificates;
 
 namespace Agrolifenet.FrontEnd.Componentes.Formularios
 {
     public partial class RazaComponent : ComponentBase
     {
-        
+
         [Inject]
         IHttpConsumir HttpConsumir { get; set; } = default!;
 
@@ -32,7 +31,7 @@ namespace Agrolifenet.FrontEnd.Componentes.Formularios
 
                 listarRazaDtos = await ObtenerListado();
             }
-         
+
         }
         protected override async Task OnInitializedAsync()
         {
@@ -54,7 +53,7 @@ namespace Agrolifenet.FrontEnd.Componentes.Formularios
         public async Task EliminarRaza(int IdRaza)
         {
             var resultado = await HttpConsumir.DeleleteAsync($"/api/Raza/EliminarRaza?IdRaza={IdRaza}");
-            if(resultado.Error )
+            if (resultado.Error)
             {
                 await Swal.FireAsync("Error", await resultado.ObetenerMensajeErrorAsync(), SweetAlertIcon.Error);
             }
@@ -63,10 +62,6 @@ namespace Agrolifenet.FrontEnd.Componentes.Formularios
                 listarRazaDtos = listarRazaDtos.Where(raza => raza.IdRaza != IdRaza);
                 await Swal.FireAsync("Exito", await resultado.ObetenerMensajeErrorAsync(), SweetAlertIcon.Success);
             }
-        }
-        public async Task<IEnumerable<ListarRazaDto>> ObtenerListado()
-        {
-            var 
         }
     }
 }
