@@ -1,5 +1,5 @@
 ﻿<select @bind="SeleccionarRaza" class="form-select">
-    @if (ListaRazas.Any())
+   @*  @if (ListaRazas.Any())
     {
         <option value="">Seleccionar</option>
         @foreach (var raza in ListaRazas)
@@ -8,7 +8,7 @@
         }
     }
     else
-    {
+    { *@
         <option value="">Cargando...</option>
-    }
+  @*   } *@
 </select>
