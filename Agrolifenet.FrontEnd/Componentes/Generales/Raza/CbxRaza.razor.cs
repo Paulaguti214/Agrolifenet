@@ -1,39 +1,38 @@
 ﻿using Agrolifenet.FrontEnd.Http;
-using Agrolifenet.FrontEnd.Modelos;
 using Microsoft.AspNetCore.Components;
 
-namespace Agrolifenet.FrontEnd.Componentes.Generales.TipoAnimal
+namespace Agrolifenet.FrontEnd.Componentes.Generales.Raza
 {
-    public partial class CbxTipoAnimal : ComponentBase
+    public partial class CbxRaza : ComponentBase
     {
         [Inject]
         IHttpConsumir HttpConsumir { get; set; } = default!;
-        [Parameter] public int IdTipoAnimal { get; set; }
+        [Parameter] public int IdRaza { get; set; }
         [Parameter] public EventCallback<int> IdTipoAnimalChanged { get; set; }
 
-        private IEnumerable<ListarTipoAnimalDto> ListaTipodeanimal = [];
+        private IEnumerable<object> ListaRazas = [];
 
         protected override async Task OnInitializedAsync()
         {
             try
             {
                 await Task.Delay(3000);
-                ListaTipodeanimal = await ObtenerListado();
+                ListaRazas = await ObtenerListado();
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error al obtener los datos: {ex.Message}");
             }
         }
-        public async Task<IEnumerable<ListarTipoAnimalDto>> ObtenerListado()
+        public async Task<IEnumerable<object>> ObtenerListado()
         {
-            var resultadog = await HttpConsumir.GetAsync<IEnumerable<ListarTipoAnimalDto>>("/TipoAnimal/ListarTipoAnimal");
+            var resultadog = await HttpConsumir.GetAsync<IEnumerable<object>>("/TipoAnimal/ListarTipoAnimal");
             return resultadog.Response!;
         }
 
-        private int TipoAnimalSeleccionado
+        private int SeleccionarRaza
         {
-            get => IdTipoAnimal;
+            get => IdRaza;
             set
             {
                 IdTipoAnimalChanged.InvokeAsync(value);
@@ -41,9 +40,9 @@ namespace Agrolifenet.FrontEnd.Componentes.Generales.TipoAnimal
         }
         protected override void OnParametersSet()
         {
-            if (TipoAnimalSeleccionado != IdTipoAnimal)
+            if (SeleccionarRaza != IdRaza)
             {
-                TipoAnimalSeleccionado = IdTipoAnimal;
+                SeleccionarRaza = IdRaza;
             }
         }
     }
