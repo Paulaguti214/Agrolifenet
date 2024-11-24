@@ -1,4 +1,5 @@
 ﻿using Agrolifenet.Dominio.Dto;
+using Agrolifenet.Dominio.Entidades;
 
 namespace Agrolifenet.Dominio.Servicios
 {
@@ -6,6 +7,7 @@ namespace Agrolifenet.Dominio.Servicios
     {
         Task AgregarRaza(string Tipoderaza, bool EstadoRaza, int IdTipoanimal);
         Task<RazaTipoAnimalDto> SeleccionarRaza(int IdRaza);
+        Task<IEnumerable<Raza>> ListarRaza();
         Task EliminarRaza(int IdRaza);
         Task ActualizarRaza(int IdRaza, string Tipoderaza, bool EstadoRaza, int IdTipoanimal);
     }

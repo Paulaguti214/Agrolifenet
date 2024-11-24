@@ -1,4 +1,5 @@
 ﻿using Agrolifenet.Dominio.Dto;
+using Agrolifenet.Dominio.Entidades;
 using Agrolifenet.Dominio.Servicios;
 using Microsoft.AspNetCore.Mvc;
 
@@ -37,6 +38,11 @@ namespace Agrolifenet.Api.Controllers
         public async Task ActualizarRaza(ActualizarRazaDto actualizarRazaDto)
         {
             await _razaServicio.ActualizarRaza(actualizarRazaDto.IdRaza, actualizarRazaDto.Tipoderaza, actualizarRazaDto.EstadoRaza, actualizarRazaDto.IdTipoanimal);
+        }
+        [HttpGet("LisatarRaza")]
+        public async Task<IEnumerable<Raza>> ListarRaza()
+        {
+            return await _razaServicio.ListarRaza();
         }
     }
 }
