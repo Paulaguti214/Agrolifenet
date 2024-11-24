@@ -16,9 +16,9 @@ namespace Agrolifenet.Api.Controllers
         }
 
         [HttpPost("InsertarRaza")]
-        public async Task AgregarRaza(string Tipoderaza, bool EstadoRaza, int IdTipoanimal)
+        public async Task AgregarRaza(GuardarRazaDto guardarRazaDto)
         {
-            await _razaServicio.AgregarRaza(Tipoderaza, EstadoRaza, IdTipoanimal);
+            await _razaServicio.AgregarRaza(guardarRazaDto.Tipoderaza, guardarRazaDto.EstadoRaza, guardarRazaDto.IdTipoanimal);
         }
 
         [HttpGet("BuscarRaza")]
@@ -34,9 +34,9 @@ namespace Agrolifenet.Api.Controllers
         }
 
         [HttpPut("ActualizarRaza")]
-        public async Task ActualizarRaza(int IdRaza, string Tipoderaza, bool EstadoRaza, int IdTipoanimal)
+        public async Task ActualizarRaza(ActualizarRazaDto actualizarRazaDto)
         {
-            await _razaServicio.ActualizarRaza(IdRaza, Tipoderaza, EstadoRaza, IdTipoanimal);
+            await _razaServicio.ActualizarRaza(actualizarRazaDto.IdRaza, actualizarRazaDto.Tipoderaza, actualizarRazaDto.EstadoRaza, actualizarRazaDto.IdTipoanimal);
         }
     }
 }
