@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Agrolifenet.FrontEnd.Validadores;
+using System.ComponentModel.DataAnnotations;
 
 namespace Agrolifenet.FrontEnd.Modelos
 {
@@ -6,7 +7,10 @@ namespace Agrolifenet.FrontEnd.Modelos
     {
         public int IdGanado { get; set; }
         public bool EstadoGanado { get; set; }
-        public DateTime FechadenacimientoGanado { get; set; } = DateTime.Now;
+        [Required(ErrorMessage = "la feha de nacimineto es obligatorio")]
+        [FechaMaxima()]
+        [DataType(DataType.Date, ErrorMessage = "El campo debe ser una fecha válida.")]
+        public DateTime FechadenacimientoGanado { get; set; }
         public int EdadGanado { get; set; }
         public string SexoGanado { get; set; }
         [Required(ErrorMessage = "El numero del chip es obligatorio")]

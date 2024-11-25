@@ -13,7 +13,7 @@ namespace Agrolifenet.FrontEnd.Componentes.Formularios
         [Inject]
         SweetAlertService Swal { get; set; } = default!;
 
-        private GanadoGuardaryActualizarDto ganadoGuardaryActualizarDto = new();
+        private GanadoGuardaryActualizarDto ganadoGuardaryActualizarDto = new() { FechadenacimientoGanado = DateTime.Now.AddYears(-1) };
         public IEnumerable<ListarGanadoDto> listarGanadoDtos = [];
 
         public async Task<IEnumerable<ListarGanadoDto>> ObtenerListado()
@@ -21,29 +21,32 @@ namespace Agrolifenet.FrontEnd.Componentes.Formularios
             var resultadog = await HttpConsumir.GetAsync<IEnumerable<ListarGanadoDto>>("/api/Ganado/ListarGanado");
             return resultadog.Response!;
         }
-        private void CalcularEdad()
+
+        // Este método se ejecuta cada vez que se actualiza la propiedad
+        protected override async void OnParametersSet()
         {
-            if (ganadoGuardaryActualizarDto.FechadenacimientoGanado != null)
-            {
-                var hoy = DateTime.Today;
-                ganadoGuardaryActualizarDto.EdadGanado = hoy.Year - ganadoGuardaryActualizarDto.FechadenacimientoGanado.Year;
-            }
-            else
+            // Llama a OnDateChanged cada vez que se establece el valor
+            await CalcularEdad(ganadoGuardaryActualizarDto.FechadenacimientoGanado);
+        }
+
+        private Task CalcularEdad(DateTime fecha)
+        {
+            var hoy = DateTime.Today;
+            var edad = hoy.Year - fecha.Year;
+            ganadoGuardaryActualizarDto.FechadenacimientoGanado = fecha;
+            if (edad < 0)
             {
                 ganadoGuardaryActualizarDto.EdadGanado = 0;
             }
+            else
+            {
+
+                ganadoGuardaryActualizarDto.EdadGanado = edad;
+            }
+
+            return Task.CompletedTask;
         }
 
-
-        private void OnDateChanged()
-        {
-            CalcularEdad();
-        }
-
-        protected override void OnParametersSet()
-        {
-            OnDateChanged();
-        }
         public async Task GuardarGanado(GanadoGuardaryActualizarDto model)
         {
             if (ganadoGuardaryActualizarDto.IdGanado == 0)

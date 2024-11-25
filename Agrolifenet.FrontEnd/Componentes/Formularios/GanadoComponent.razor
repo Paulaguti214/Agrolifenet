@@ -59,12 +59,14 @@
                 <ValidationMessage For="@(() => ganadoGuardaryActualizarDto.LugardenacimientoGanado)" />
             </div>
             <div class="col-2"><label class="col-form-label">Fecha Nacimiento</label></div>
-            <div class="col-2 d-flex align-items-center">             
-                @* <InputDate class="form-control" @bind-Value="ganadoGuardaryActualizarDto.FechadenacimientoGanado"></InputDate> *@
-                <InputDate class="form-control" @bind-Value="ganadoGuardaryActualizarDto.FechadenacimientoGanado" @onchange="CalcularEdad" />
+            <div>
+                <div class="col-2 d-flex align-items-center">
+                    <InputDate class="form-control" @bind-Value:get="ganadoGuardaryActualizarDto.FechadenacimientoGanado" @bind-Value:set="CalcularEdad" max="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                </div>
+                <div class="col d-flex justify-content-start align-items-center"><label class="col-form-label">Edad : @ganadoGuardaryActualizarDto.EdadGanado</label></div>
                 <ValidationMessage For="@(() => ganadoGuardaryActualizarDto.FechadenacimientoGanado)" />
             </div>
-            <div class="col d-flex justify-content-start align-items-center"><label class="col-form-label">Edad : @ganadoGuardaryActualizarDto.EdadGanado</label></div>
+            
             <div class="col col-auto"><button class="btn btn-success" type="submit">Agregar&nbsp;<i class="fa fa-plus-circle"></i></button></div>
         </div>
     </ContenidoFormulario>
