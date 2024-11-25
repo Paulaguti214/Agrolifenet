@@ -1,4 +1,5 @@
-﻿using Agrolifenet.Dominio.Entidades;
+﻿using Agrolifenet.Dominio.Dto;
+using Agrolifenet.Dominio.Entidades;
 using Agrolifenet.Dominio.Servicios;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,15 +19,21 @@ namespace Agrolifenet.Api.Controllers
         }
 
         [HttpPost("InsertarGanado")]
-        public async Task AgregarGanado(bool EstadoGanado, int EdadGanado, string sexoGanado, string NumeridechipGanado, string ColorGanado, string LugardenacimientoGanado, int IdMadreGanado, int IdPadreGanado, int IdRaza)
+        public async Task AgregarGanado(GuardarGanadoDto guardarGanadoDto)
         {
-            await _ganadoServicio.AgregarGanado(EstadoGanado, EdadGanado, sexoGanado, NumeridechipGanado, ColorGanado, LugardenacimientoGanado, IdMadreGanado, IdPadreGanado, IdRaza);
+            await _ganadoServicio.AgregarGanado(guardarGanadoDto.EstadoGanado, guardarGanadoDto.EdadGanado, guardarGanadoDto.SexoGanado, guardarGanadoDto.NumerodelchipGanado, guardarGanadoDto.ColorGanado, guardarGanadoDto.LugardenacimientoGanado, guardarGanadoDto.IdmadreGanado, guardarGanadoDto.IdpadreGanado, guardarGanadoDto.IdRaza);
         }
 
         [HttpGet("BuscarGanado")]
         public async Task<Ganado> SeleccionarGanado(int IdGanado)
         {
             return await _ganadoServicio.SeleccionarGanado(IdGanado);
+        }
+
+        [HttpGet("ListarGanado")]
+        public async Task<IEnumerable<ListarGanadoDto>> ListarGanado()
+        {
+            return await _ganadoServicio.ListarGanado();
         }
 
         [HttpDelete("EliminarGanado")]

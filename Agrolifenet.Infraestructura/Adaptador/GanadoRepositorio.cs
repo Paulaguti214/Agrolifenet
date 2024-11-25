@@ -1,4 +1,5 @@
-﻿using Agrolifenet.Dominio.Entidades;
+﻿using Agrolifenet.Dominio.Dto;
+using Agrolifenet.Dominio.Entidades;
 using Agrolifenet.Dominio.Puerto;
 using Agrolifenet.Infraestructura.Adaptador.BaseRepositorio;
 using System.Data;
@@ -11,6 +12,8 @@ namespace Agrolifenet.Infraestructura.Adaptador
         private readonly string NombreProcedimientoSeleccionarGanado = "BuscarGanado";
         private readonly string NombreProcedimientoEliminarGanado = "EliminarGanado";
         private readonly string NombreProcedimientoActualizarGanado = "ActualizarGanado";
+        private readonly string NombreProcedimientoListarGanado = "ListarGanado";
+
 
         public GanadoRepositorio(IDbConnection baseDeDatos) : base(baseDeDatos) { }
 
@@ -63,10 +66,9 @@ namespace Agrolifenet.Infraestructura.Adaptador
             });
         }
 
-
-
-
-
-
+        public async Task<IEnumerable<ListarGanadoDto>> ListarGanado()
+        {
+            return await ListarAsync<ListarGanadoDto>(NombreProcedimientoListarGanado);
+        }
     }
 }

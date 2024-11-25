@@ -1,4 +1,5 @@
 ﻿using Agrolifenet.FrontEnd.Http;
+using Agrolifenet.FrontEnd.Modelos;
 using Microsoft.AspNetCore.Components;
 
 namespace Agrolifenet.FrontEnd.Componentes.Generales.Raza
@@ -8,9 +9,9 @@ namespace Agrolifenet.FrontEnd.Componentes.Generales.Raza
         [Inject]
         IHttpConsumir HttpConsumir { get; set; } = default!;
         [Parameter] public int IdRaza { get; set; }
-        [Parameter] public EventCallback<int> IdTipoAnimalChanged { get; set; }
+        [Parameter] public EventCallback<int> IdRazaChanged { get; set; }
 
-        private IEnumerable<object> ListaRazas = [];
+        private IEnumerable<ListarRazaDto> ListaRazas = [];
 
         protected override async Task OnInitializedAsync()
         {
@@ -24,9 +25,9 @@ namespace Agrolifenet.FrontEnd.Componentes.Generales.Raza
                 Console.WriteLine($"Error al obtener los datos: {ex.Message}");
             }
         }
-        public async Task<IEnumerable<object>> ObtenerListado()
+        public async Task<IEnumerable<ListarRazaDto>> ObtenerListado()
         {
-            var resultadog = await HttpConsumir.GetAsync<IEnumerable<object>>("/TipoAnimal/ListarTipoAnimal");
+            var resultadog = await HttpConsumir.GetAsync<IEnumerable<ListarRazaDto>>("/api/Raza/LisatarRaza");
             return resultadog.Response!;
         }
 
@@ -35,7 +36,7 @@ namespace Agrolifenet.FrontEnd.Componentes.Generales.Raza
             get => IdRaza;
             set
             {
-                IdTipoAnimalChanged.InvokeAsync(value);
+                IdRazaChanged.InvokeAsync(value);
             }
         }
         protected override void OnParametersSet()

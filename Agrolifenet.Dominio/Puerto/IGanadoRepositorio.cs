@@ -1,4 +1,5 @@
-﻿using Agrolifenet.Dominio.Entidades;
+﻿using Agrolifenet.Dominio.Dto;
+using Agrolifenet.Dominio.Entidades;
 
 namespace Agrolifenet.Dominio.Puerto
 {
@@ -10,5 +11,6 @@ namespace Agrolifenet.Dominio.Puerto
         Task EliminarGanado(int IdGanado);
         Task ActualizarGanado(int IdGanado, DateTime FechademodificacionGanado, bool EstadoGanado, int EdadGanado, string sexoGanado,
          string NumeridechipGanado, string ColorGanado, string LugardenacimientoGanado, int IdMadreGanado, int IdPadreGanado, int IdRaza);
+        Task<IEnumerable<ListarGanadoDto>> ListarGanado();
     }
 }

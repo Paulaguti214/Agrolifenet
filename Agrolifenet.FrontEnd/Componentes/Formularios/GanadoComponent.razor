@@ -1,0 +1,71 @@
+﻿
+
+<BaseFormularioComponente NommbreFormulario="Información de Raza"
+                          NommbreEncabezadoDetalle="Ver tipos de Raza"
+                          Modelo="ganadoGuardaryActualizarDto"
+                          TModelo="GanadoGuardaryActualizarDto"
+                          Ejecutar="GuardarGanado">
+    <ContenidoFormulario>
+        <div class="row g-3 mb-3">
+            <div class="col-2 col-auto"><label class="col-form-label">Tipo Animal</label></div>
+            <div class="col-3">
+                <CbxTipoAnimal @bind-IdTipoAnimal="ganadoGuardaryActualizarDto.IdTipoAnimal"></CbxTipoAnimal>
+                <ValidationMessage For="@(() => ganadoGuardaryActualizarDto.IdTipoAnimal)" />
+            </div>
+            <div class="col-2 col-auto"><label class="col-form-label">Tipo Raza</label></div>
+            <div class="col-2">
+                <CbxRaza @bind-IdRaza="ganadoGuardaryActualizarDto.IdRaza"></CbxRaza>
+                <ValidationMessage For="@(() => ganadoGuardaryActualizarDto.IdRaza)" />
+            </div>
+            <div class="col d-flex d-xl-flex justify-content-start align-items-center">
+                <InputRadioGroup @bind-Value="@ganadoGuardaryActualizarDto.SexoGanado">
+                    @foreach (var sexo in (Sexo[])Enum.GetValues(typeof(Sexo)))
+                    {
+                        <label>
+                            <InputRadio Value="@sexo.ToString()" class="form-check-input" /> @sexo
+                        </label>
+                        <br />
+                    }
+                </InputRadioGroup>
+            </div>
+        </div>
+        <div class="row g-3 mb-3">
+            <div class="col-2"><label class="col-form-label"># Chip</label></div>
+            <div class="col-3 col-auto">
+                <input type="text" class="form-control" placeholder="123456" @bind-value="ganadoGuardaryActualizarDto.NumerodelchipGanado">
+                <ValidationMessage For="@(() => ganadoGuardaryActualizarDto.NumerodelchipGanado)" />
+            </div>
+            <div class="col-2 col-auto"><label class="col-form-label">Color</label></div>
+            <div class="col-2 col-auto">
+                <input type="color" class="form-control" @bind-value="ganadoGuardaryActualizarDto.ColorGanado">
+                <ValidationMessage For="@(() => ganadoGuardaryActualizarDto.ColorGanado)" />
+            </div>
+            <div class="col-3 d-flex justify-content-start align-items-center">
+                <div class="form-check form-switch">
+                    <InputCheckbox @bind-Value="ganadoGuardaryActualizarDto.EstadoGanado" class="form-check-input" />
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Estado</label>
+                </div>
+            </div>
+        </div>
+        <div class="row g-3 mb-3">
+            <div class="col-3 col-xl-auto col-xxl-auto"><label class="col-form-label">Lugar De Nacimiento</label></div>
+            <div class="col-3">               
+                <select class="form-select" @bind="ganadoGuardaryActualizarDto.LugardenacimientoGanado">
+                    @foreach (var lugarNacimiento in (LugarNacimiento[])Enum.GetValues(typeof(LugarNacimiento)))
+                    {
+                        <option value="@lugarNacimiento.ToString()">@lugarNacimiento</option>
+                    }
+                </select>
+                <ValidationMessage For="@(() => ganadoGuardaryActualizarDto.LugardenacimientoGanado)" />
+            </div>
+            <div class="col-2"><label class="col-form-label">Fecha Nacimiento</label></div>
+            <div class="col-2 d-flex align-items-center">             
+                @* <InputDate class="form-control" @bind-Value="ganadoGuardaryActualizarDto.FechadenacimientoGanado"></InputDate> *@
+                <InputDate class="form-control" @bind-Value="ganadoGuardaryActualizarDto.FechadenacimientoGanado" @onchange="CalcularEdad" />
+                <ValidationMessage For="@(() => ganadoGuardaryActualizarDto.FechadenacimientoGanado)" />
+            </div>
+            <div class="col d-flex justify-content-start align-items-center"><label class="col-form-label">Edad : @ganadoGuardaryActualizarDto.EdadGanado</label></div>
+            <div class="col col-auto"><button class="btn btn-success" type="submit">Agregar&nbsp;<i class="fa fa-plus-circle"></i></button></div>
+        </div>
+    </ContenidoFormulario>
+</BaseFormularioComponente>

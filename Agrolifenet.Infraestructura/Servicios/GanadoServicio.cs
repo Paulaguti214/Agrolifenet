@@ -1,11 +1,7 @@
-﻿using Agrolifenet.Dominio.Entidades;
+﻿using Agrolifenet.Dominio.Dto;
+using Agrolifenet.Dominio.Entidades;
 using Agrolifenet.Dominio.Puerto;
 using Agrolifenet.Dominio.Servicios;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Agrolifenet.Infraestructura.Servicios
 {
@@ -16,7 +12,7 @@ namespace Agrolifenet.Infraestructura.Servicios
         {
             _ganadoRepositorio = ganadoRepositorio;
         }
-        public async Task AgregarGanado( bool EstadoGanado, int EdadGanado, string sexoGanado, string NumeridechipGanado, string ColorGanado, string LugardenacimientoGanado, int IdMadreGanado, int IdPadreGanado, int IdRaza)
+        public async Task AgregarGanado(bool EstadoGanado, int EdadGanado, string sexoGanado, string NumeridechipGanado, string ColorGanado, string LugardenacimientoGanado, int IdMadreGanado, int IdPadreGanado, int IdRaza)
         {
             var fechaActual = DateTime.Now;
             await _ganadoRepositorio.AgregarGanado(fechaActual, fechaActual, EstadoGanado, EdadGanado, sexoGanado, NumeridechipGanado, ColorGanado, LugardenacimientoGanado, IdMadreGanado, IdPadreGanado, IdRaza);
@@ -30,16 +26,15 @@ namespace Agrolifenet.Infraestructura.Servicios
             await _ganadoRepositorio.EliminarGanado(IdGanado);
         }
 
-        public async Task ActualizarGanado(int IdGanado,  bool EstadoGanado, int EdadGanado, string sexoGanado, string NumeridechipGanado, string ColorGanado, string LugardenacimientoGanado, int IdMadreGanado, int IdPadreGanado, int IdRaza)
+        public async Task ActualizarGanado(int IdGanado, bool EstadoGanado, int EdadGanado, string sexoGanado, string NumeridechipGanado, string ColorGanado, string LugardenacimientoGanado, int IdMadreGanado, int IdPadreGanado, int IdRaza)
         {
             var fechaActual = DateTime.Now;
             await _ganadoRepositorio.ActualizarGanado(IdGanado, fechaActual, EstadoGanado, EdadGanado, sexoGanado, NumeridechipGanado, ColorGanado, LugardenacimientoGanado, IdMadreGanado, IdPadreGanado, IdRaza);
         }
 
-      
-
-       
-
-      
+        public async Task<IEnumerable<ListarGanadoDto>> ListarGanado()
+        {
+            return await _ganadoRepositorio.ListarGanado();
+        }
     }
 }

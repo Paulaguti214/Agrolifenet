@@ -48,8 +48,8 @@ namespace Agrolifenet.FrontEnd.Componentes.Formularios
                 razaGuardaryActualizarDto = new();
 
             }
-            
-         
+
+
         }
         protected override async Task OnInitializedAsync()
         {
@@ -77,7 +77,7 @@ namespace Agrolifenet.FrontEnd.Componentes.Formularios
         }
         public async Task<IEnumerable<ListarRazaDto>> ObtenerListado()
         {
-            var resultadog = await HttpConsumir.GetAsync<IEnumerable<ListarRazaDto>>(" /api/Raza/LisatarRaza");
+            var resultadog = await HttpConsumir.GetAsync<IEnumerable<ListarRazaDto>>("/api/Raza/LisatarRaza");
             return resultadog.Response;
         }
 
