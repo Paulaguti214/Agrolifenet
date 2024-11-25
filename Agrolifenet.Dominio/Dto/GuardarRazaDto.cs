@@ -8,8 +8,10 @@ namespace Agrolifenet.Dominio.Dto
 {
     public class GuardarRazaDto
     {
-        public  int IdTipoanimal { get; set; }
+        public int IdRaza { get; set; }
         public string Tipoderaza { get; set; }
         public bool EstadoRaza { get; set; }
+        public int IdTipoanimal { get; set; }
+
     }
 }

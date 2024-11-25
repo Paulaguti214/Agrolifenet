@@ -56,7 +56,7 @@
                     <table class="table my-0" id="dataTable">
                         <thead>
                             <tr>
-                               
+                                <th>Tipo de Animal</th>
                                 <th>Tipo Raza</th>
                                 <th>Fecha Creacion</th>
                                 <th>Fecha modificacion</th>
@@ -68,7 +68,7 @@
                             @foreach (var ListarRaza in listarRazaDtos)
                             {
                                 <tr>
-                                   
+                                    <td>@ListarRaza.TiposdeAnimal</td>
                                     <td>@ListarRaza.Tipoderaza</td>
                                     <td>@ListarRaza.FechadecreacionRaza.ToShortDateString()</td>
                                     <td>@ListarRaza.FechademodificacionRaza.ToShortDateString()</td>

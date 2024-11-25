@@ -40,7 +40,7 @@ namespace Agrolifenet.Api.Controllers
             await _razaServicio.ActualizarRaza(actualizarRazaDto.IdRaza, actualizarRazaDto.Tipoderaza, actualizarRazaDto.EstadoRaza, actualizarRazaDto.IdTipoanimal);
         }
         [HttpGet("LisatarRaza")]
-        public async Task<IEnumerable<Raza>> ListarRaza()
+        public async Task<IEnumerable<ListarRazaDto>> ListarRaza()
         {
             return await _razaServicio.ListarRaza();
         }

@@ -50,9 +50,9 @@ namespace Agrolifenet.Infraestructura.Adaptador
             });
         }
 
-        public async Task<IEnumerable<Raza>> ListarRaza()
+        public async Task<IEnumerable<ListarRazaDto>> ListarRaza()
         {
-            return await ListarAsync(NombreProcedimientoListarRaza);
+            return await ListarAsync<ListarRazaDto>(NombreProcedimientoListarRaza);
         }
 
         public async Task<RazaTipoAnimalDto> SeleccionarRaza(int IdRaza)
