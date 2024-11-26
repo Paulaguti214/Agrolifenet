@@ -17,7 +17,7 @@ namespace Agrolifenet.Infraestructura.Adaptador
 
         public GanadoRepositorio(IDbConnection baseDeDatos) : base(baseDeDatos) { }
 
-        public async Task AgregarGanado(DateTime FechadecreacionGanado, DateTime FechademodificacionGanado, bool EstadoGanado, int EdadGanado, string sexoGanado, string NumeridechipGanado, string ColorGanado, string LugardenacimientoGanado, int IdMadreGanado, int IdPadreGanado, int IdRaza)
+        public async Task AgregarGanado(DateTime FechadecreacionGanado, DateTime FechademodificacionGanado, bool EstadoGanado, int EdadGanado, string sexoGanado, string NumeridechipGanado, string ColorGanado, string LugardenacimientoGanado, int? IdMadreGanado, int? IdPadreGanado, int IdRaza)
         {
             await AgregarAsync(NombreProcedimientoGuardarGanado, new
             {
@@ -34,9 +34,9 @@ namespace Agrolifenet.Infraestructura.Adaptador
                 IdRaza
             });
         }
-        public async Task<Ganado> SeleccionarGanado(int IdGanado)
+        public async Task<GanadoDto> SeleccionarGanado(int IdGanado)
         {
-            return await SeleccionarAsync(NombreProcedimientoSeleccionarGanado, new
+            return await SeleccionarAsync<GanadoDto>(NombreProcedimientoSeleccionarGanado, new
             {
                 IdGanado
             });
@@ -48,7 +48,7 @@ namespace Agrolifenet.Infraestructura.Adaptador
                 IdGanado
             });
         }
-        public async Task ActualizarGanado(int IdGanado, DateTime FechademodificacionGanado, bool EstadoGanado, int EdadGanado, string sexoGanado, string NumeridechipGanado, string ColorGanado, string LugardenacimientoGanado, int IdMadreGanado, int IdPadreGanado, int IdRaza)
+        public async Task ActualizarGanado(int IdGanado, DateTime FechademodificacionGanado, bool EstadoGanado, int EdadGanado, string sexoGanado, string NumeridechipGanado, string ColorGanado, string LugardenacimientoGanado, int? IdMadreGanado, int? IdPadreGanado, int IdRaza)
         {
             await ActualizarAsync(NombreProcedimientoActualizarGanado, new
             {
@@ -66,9 +66,9 @@ namespace Agrolifenet.Infraestructura.Adaptador
             });
         }
 
-        public async Task<IEnumerable<ListarGanadoDto>> ListarGanado()
+        public async Task<IEnumerable<GanadoDto>> ListarGanado()
         {
-            return await ListarAsync<ListarGanadoDto>(NombreProcedimientoListarGanado);
+            return await ListarAsync<GanadoDto>(NombreProcedimientoListarGanado);
         }
     }
 }

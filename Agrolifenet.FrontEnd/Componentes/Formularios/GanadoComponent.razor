@@ -1,7 +1,7 @@
 ﻿
 
-<BaseFormularioComponente NommbreFormulario="Información de Raza"
-                          NommbreEncabezadoDetalle="Ver tipos de Raza"
+<BaseFormularioComponente NommbreFormulario="Información de Ganado"
+                          NommbreEncabezadoDetalle="Ver Ganado Registrado"
                           Modelo="ganadoGuardaryActualizarDto"
                           TModelo="GanadoGuardaryActualizarDto"
                           Ejecutar="GuardarGanado">
@@ -48,8 +48,8 @@
             </div>
         </div>
         <div class="row g-3 mb-3">
-            <div class="col-3 col-xl-auto col-xxl-auto"><label class="col-form-label">Lugar De Nacimiento</label></div>
-            <div class="col-3">               
+            <div class="col-12 col-md-3">
+                <label class="col-form-label">Lugar De Nacimiento</label>
                 <select class="form-select" @bind="ganadoGuardaryActualizarDto.LugardenacimientoGanado">
                     @foreach (var lugarNacimiento in (LugarNacimiento[])Enum.GetValues(typeof(LugarNacimiento)))
                     {
@@ -58,16 +58,92 @@
                 </select>
                 <ValidationMessage For="@(() => ganadoGuardaryActualizarDto.LugardenacimientoGanado)" />
             </div>
-            <div class="col-2"><label class="col-form-label">Fecha Nacimiento</label></div>
-            <div>
-                <div class="col-2 d-flex align-items-center">
+            <div class="col-12 col-md-6">
+                <label class="col-form-label">Fecha Nacimiento</label>
+                <div class="input-group">
                     <InputDate class="form-control" @bind-Value:get="ganadoGuardaryActualizarDto.FechadenacimientoGanado" @bind-Value:set="CalcularEdad" max="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                    <span class="input-group-text">Edad</span>
+                    <span class="input-group-text">@ganadoGuardaryActualizarDto.EdadGanado</span>
+                    <button class="btn btn-success" type="submit">Agregar&nbsp;<i class="fa fa-plus-circle"></i></button>
                 </div>
-                <div class="col d-flex justify-content-start align-items-center"><label class="col-form-label">Edad : @ganadoGuardaryActualizarDto.EdadGanado</label></div>
-                <ValidationMessage For="@(() => ganadoGuardaryActualizarDto.FechadenacimientoGanado)" />
-            </div>
-            
-            <div class="col col-auto"><button class="btn btn-success" type="submit">Agregar&nbsp;<i class="fa fa-plus-circle"></i></button></div>
+                <ValidationMessage class="validation-message" For="@(() => ganadoGuardaryActualizarDto.FechadenacimientoGanado)" />               
+            </div>           
         </div>
     </ContenidoFormulario>
+    <ContenidoDetalle>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6 text-nowrap">
+                    <div id="dataTable_length-2" class="dataTables_length" aria-controls="dataTable">
+                        <label class="form-label">
+                            Mostrar&nbsp;
+                            <select class="d-inline-block form-select form-select-sm">
+                                <option value="10" selected="">10</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select>&nbsp;
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="text-md-end dataTables_filter" id="dataTable_filter-2"><label class="form-label"><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Buscar"></label></div>
+                </div>
+            </div>
+            @if (listarGanadoDtos == null)
+            {
+                <p>Cargando datos...</p>
+            }
+            else if (listarGanadoDtos.Any())
+            {
+                <div class="table-responsive table mt-2" id="dataTable-3" role="grid" aria-describedby="dataTable_info">
+                    <table class="table my-0" id="dataTable">
+                        <thead>
+                            <tr>
+                                <th># Chip</th>
+                                <th>Tipo Animal</th>
+                                <th>Tipo Raza</th>
+                                <th>Edad</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in listarGanadoDtos)
+                            {
+                                <tr>
+                                    <td>@item.NumerodelchipGanado</td>
+                                    <td>@item.Tiposdeanimal</td>
+                                    <td>@item.Tipoderaza<br></td>
+                                    <td>@item.EdadGanado<br></td>
+                                    <td>@(item.EstadoGanado == false ? "Inactivo" : "Activo")</td>
+                                    <td class="text-center"><a class="link-success me-2" @onclick="() => ActualizarGanado(item.IdGanado)"><i class="fa fa-edit"></i></a><a class="link-success link-primary" @onclick="() => EliminarGanado(item.IdGanado)"><i class="fa fa-remove"></i></a></td>                                    
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr></tr>
+                        </tfoot>
+                    </table>
+                </div>
+            }
+           
+            <div class="row">
+                <div class="col-md-6 align-self-center">
+                    <p id="dataTable_info-2" class="dataTables_info" role="status" aria-live="polite">Mostrando1 a 10 de 27</p>
+                </div>
+                <div class="col-md-6 d-flex justify-content-end align-items-center">
+                    <nav class="dataTables_paginate paging_simple_numbers">
+                        <ul class="pagination">
+                            <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </ContenidoDetalle>
 </BaseFormularioComponente>

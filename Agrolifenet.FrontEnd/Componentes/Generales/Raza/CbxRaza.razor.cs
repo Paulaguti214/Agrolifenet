@@ -17,7 +17,6 @@ namespace Agrolifenet.FrontEnd.Componentes.Generales.Raza
         {
             try
             {
-                await Task.Delay(3000);
                 ListaRazas = await ObtenerListado();
             }
             catch (Exception ex)

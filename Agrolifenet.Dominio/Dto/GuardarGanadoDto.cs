@@ -10,8 +10,8 @@
         public string NumerodelchipGanado { get; set; }
         public string ColorGanado { get; set; }
         public string LugardenacimientoGanado { get; set; }
-        public int IdmadreGanado { get; set; }
-        public int IdpadreGanado { get; set; }
+        public int? IdmadreGanado { get; set; } = default!;
+        public int? IdpadreGanado { get; set; } = default!;
         public int IdRaza { get; set; }
     }
 }

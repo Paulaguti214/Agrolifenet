@@ -13,20 +13,29 @@ namespace Agrolifenet.FrontEnd.Componentes.Formularios
         [Inject]
         SweetAlertService Swal { get; set; } = default!;
 
-        private GanadoGuardaryActualizarDto ganadoGuardaryActualizarDto = new() { FechadenacimientoGanado = DateTime.Now.AddYears(-1) };
-        public IEnumerable<ListarGanadoDto> listarGanadoDtos = [];
-
-        public async Task<IEnumerable<ListarGanadoDto>> ObtenerListado()
+        private GanadoGuardaryActualizarDto ganadoGuardaryActualizarDto = new() { FechadenacimientoGanado = DateTime.Now };
+        private IEnumerable<GanadoDto> listarGanadoDtos = [];
+        protected override async Task OnInitializedAsync()
         {
-            var resultadog = await HttpConsumir.GetAsync<IEnumerable<ListarGanadoDto>>("/api/Ganado/ListarGanado");
-            return resultadog.Response!;
+            try
+            {
+                listarGanadoDtos = await ObtenerListado();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al obtener los datos: {ex.Message}");
+            }
         }
 
-        // Este método se ejecuta cada vez que se actualiza la propiedad
         protected override async void OnParametersSet()
         {
-            // Llama a OnDateChanged cada vez que se establece el valor
             await CalcularEdad(ganadoGuardaryActualizarDto.FechadenacimientoGanado);
+        }
+
+        public async Task<IEnumerable<GanadoDto>> ObtenerListado()
+        {
+            var resultadog = await HttpConsumir.GetAsync<IEnumerable<GanadoDto>>("/api/Ganado/ListarGanado");
+            return resultadog.Response!;
         }
 
         private Task CalcularEdad(DateTime fecha)
@@ -51,7 +60,7 @@ namespace Agrolifenet.FrontEnd.Componentes.Formularios
         {
             if (ganadoGuardaryActualizarDto.IdGanado == 0)
             {
-                var resultado = await HttpConsumir.PostAsync("/api/Raza/InsertarRaza", ganadoGuardaryActualizarDto);
+                var resultado = await HttpConsumir.PostAsync("/api/Ganado/InsertarGanado", ganadoGuardaryActualizarDto);
                 if (resultado.Error)
                 {
                     await Swal.FireAsync("Error", await resultado.ObetenerMensajeErrorAsync(), SweetAlertIcon.Error);
@@ -66,17 +75,42 @@ namespace Agrolifenet.FrontEnd.Componentes.Formularios
             }
             else
             {
-                //var resultado = await HttpConsumir.PutAsync("/api/Raza/ActualizarRaza", razaGuardaryActualizarDto);
-                //if (resultado.Error)
-                //{
-                //    await Swal.FireAsync("Error", await resultado.ObetenerMensajeErrorAsync(), SweetAlertIcon.Error);
-                //}
-                //else
-                //{
-                //    await Swal.FireAsync("Exito", await resultado.ObetenerMensajeErrorAsync(), SweetAlertIcon.Success);
-                //}
-                ganadoGuardaryActualizarDto = new();
+                var resultado = await HttpConsumir.PutAsync("/api/Ganado/ActualizarGanado", ganadoGuardaryActualizarDto);
+                if (resultado.Error)
+                {
+                    await Swal.FireAsync("Error", await resultado.ObetenerMensajeErrorAsync(), SweetAlertIcon.Error);
+                }
+                else
+                {
+                    await Swal.FireAsync("Exito", await resultado.ObetenerMensajeErrorAsync(), SweetAlertIcon.Success);
+                }
+
+                listarGanadoDtos = await ObtenerListado();
+
+                ganadoGuardaryActualizarDto = new() { FechadenacimientoGanado = DateTime.Now };
             }
         }
+
+        public async Task ActualizarGanado(int IdGanado)
+        {
+            var resultadog = await HttpConsumir.GetAsync<GanadoGuardaryActualizarDto>($"/api/Ganado/BuscarGanado?IdGanado={IdGanado}");
+            ganadoGuardaryActualizarDto = resultadog.Response!;
+            ganadoGuardaryActualizarDto.FechadenacimientoGanado = DateTime.Now.AddYears(-ganadoGuardaryActualizarDto.EdadGanado);
+        }
+
+        public async Task EliminarGanado(int IdGanado)
+        {
+            var resultado = await HttpConsumir.DeleleteAsync($"/api/Ganado/EliminarGanado?IdGanado={IdGanado}");
+            if (resultado.Error)
+            {
+                await Swal.FireAsync("Error", await resultado.ObetenerMensajeErrorAsync(), SweetAlertIcon.Error);
+            }
+            else
+            {
+                listarGanadoDtos = listarGanadoDtos.Where(raza => raza.IdGanado != IdGanado);
+                await Swal.FireAsync("Exito", await resultado.ObetenerMensajeErrorAsync(), SweetAlertIcon.Success);
+            }
+        }
+
     }
 }

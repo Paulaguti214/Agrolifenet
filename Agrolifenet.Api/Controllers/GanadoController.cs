@@ -1,5 +1,4 @@
 ﻿using Agrolifenet.Dominio.Dto;
-using Agrolifenet.Dominio.Entidades;
 using Agrolifenet.Dominio.Servicios;
 using Microsoft.AspNetCore.Mvc;
 
@@ -25,13 +24,13 @@ namespace Agrolifenet.Api.Controllers
         }
 
         [HttpGet("BuscarGanado")]
-        public async Task<Ganado> SeleccionarGanado(int IdGanado)
+        public async Task<GanadoDto> SeleccionarGanado(int IdGanado)
         {
             return await _ganadoServicio.SeleccionarGanado(IdGanado);
         }
 
         [HttpGet("ListarGanado")]
-        public async Task<IEnumerable<ListarGanadoDto>> ListarGanado()
+        public async Task<IEnumerable<GanadoDto>> ListarGanado()
         {
             return await _ganadoServicio.ListarGanado();
         }
@@ -43,9 +42,9 @@ namespace Agrolifenet.Api.Controllers
         }
 
         [HttpPut("ActualizarGanado")]
-        public async Task ActualizarGanado(int IdGanado, bool EstadoGanado, int EdadGanado, string sexoGanado, string NumeridechipGanado, string ColorGanado, string LugardenacimientoGanado, int IdMadreGanado, int IdPadreGanado, int IdRaza)
+        public async Task ActualizarGanado(GuardarGanadoDto ganadoDto)
         {
-            await _ganadoServicio.ActualizarGanado(IdGanado, EstadoGanado, EdadGanado, sexoGanado, NumeridechipGanado, ColorGanado, LugardenacimientoGanado, IdMadreGanado, IdPadreGanado, IdRaza);
+            await _ganadoServicio.ActualizarGanado(ganadoDto.IdGanado, ganadoDto.EstadoGanado, ganadoDto.EdadGanado, ganadoDto.SexoGanado, ganadoDto.NumerodelchipGanado, ganadoDto.ColorGanado, ganadoDto.LugardenacimientoGanado, ganadoDto.IdmadreGanado, ganadoDto.IdpadreGanado, ganadoDto.IdRaza);
         }
     }
 }
