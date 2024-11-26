@@ -17,7 +17,6 @@ namespace Agrolifenet.FrontEnd.Componentes.Generales.TipoAnimal
         {
             try
             {
-                await Task.Delay(3000);
                 ListaTipodeanimal = await ObtenerListado();
             }
             catch (Exception ex)

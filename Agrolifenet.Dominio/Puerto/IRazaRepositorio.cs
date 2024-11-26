@@ -11,5 +11,6 @@ namespace Agrolifenet.Dominio.Puerto
 
         Task EliminarRaza(int IdRaza);
         Task ActualizarRaza(int IdRaza, string Tipoderaza, DateTime FechademodificacionRaza, bool EstadoRaza, int IdTipoanimal);
+   
     }
 }

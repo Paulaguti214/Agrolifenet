@@ -12,7 +12,8 @@ namespace Agrolifenet.Dominio.Dto
         public string Tipoderaza { get; set; }
         public bool EstadoRaza { get; set; }
         public int  IdTipoanimal { get; set; }
-       
+        public string TiposdeAnimal { get; set; }
+
 
     }
 }

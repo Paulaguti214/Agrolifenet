@@ -30,6 +30,8 @@ namespace Agrolifenet.Infraestructura.Adaptador
             });
         }
 
+       
+
         public async Task AgregarRaza(string Tipoderaza, DateTime FechadecreacionRaza, DateTime FechademodificacionRaza, bool EstadoRaza, int IdTipoanimal)
         {
             await AgregarAsync(NombreProcedimientoGuardarRaza, new

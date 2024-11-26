@@ -44,6 +44,7 @@ namespace Agrolifenet.FrontEnd.Componentes.Formularios
                 else
                 {
                     await Swal.FireAsync("Exito", await resultado.ObetenerMensajeErrorAsync(), SweetAlertIcon.Success);
+                    listarRazaDtos = await ObtenerListado();
                 }
                 razaGuardaryActualizarDto = new();
 
