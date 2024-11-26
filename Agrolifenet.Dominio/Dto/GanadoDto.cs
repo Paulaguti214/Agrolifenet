@@ -15,5 +15,9 @@
         public string LugardenacimientoGanado { get; set; }
         public string NumeridechipGanadoPadre { get; set; }
         public string NumeridechipGanadoMadre { get; set; }
+        public string? NumerodelchipPadre { get; set; }
+        public string? NumerodelchipMadre { get; set; }
+        public int? IdmadreGanado { get; set; }
+        public int? IdpadreGanado { get; set; }
     }
 }

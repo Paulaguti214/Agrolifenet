@@ -1,0 +1,51 @@
+﻿using Agrolifenet.FrontEnd.Http;
+using Agrolifenet.FrontEnd.Modelos;
+using Agrolifenet.FrontEnd.Modelos.Enumeraciones;
+using Microsoft.AspNetCore.Components;
+
+namespace Agrolifenet.FrontEnd.Componentes.Generales.Ganado
+{
+    public partial class CbxGanado : ComponentBase
+    {
+        [Inject]
+        IHttpConsumir HttpConsumir { get; set; } = default!;
+        [Parameter] public Sexo Sexo { get; set; }
+        [Parameter] public int? IdGanado { get; set; }
+        [Parameter] public EventCallback<int?> IdGanadoChanged { get; set; }
+
+        private IEnumerable<GanadoDto> ListaGanado = [];
+
+        protected override async Task OnInitializedAsync()
+        {
+            try
+            {
+                ListaGanado = await ObtenerListado();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al obtener los datos: {ex.Message}");
+            }
+        }
+        public async Task<IEnumerable<GanadoDto>> ObtenerListado()
+        {
+            var resultadog = await HttpConsumir.GetAsync<IEnumerable<GanadoDto>>("/api/Ganado/ListarGanado");
+            return resultadog.Response!.Where(ganado => ganado.SexoGanado == Sexo.ToString());
+        }
+
+        private int SeleccionarGanado
+        {
+            get => IdGanado ?? default!;
+            set
+            {
+                IdGanadoChanged.InvokeAsync(value);
+            }
+        }
+        protected override void OnParametersSet()
+        {
+            if (SeleccionarGanado != IdGanado)
+            {
+                SeleccionarGanado = IdGanado ?? default!;
+            }
+        }
+    }
+}

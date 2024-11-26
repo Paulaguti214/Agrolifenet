@@ -48,6 +48,18 @@
             </div>
         </div>
         <div class="row g-3 mb-3">
+            <div class="col-12 col-md-6">
+                <label class="col-form-label"># Chip Padre</label>
+                <CbxGanado @bind-IdGanado="ganadoGuardaryActualizarDto.IdpadreGanado" Sexo=" Sexo.Macho"></CbxGanado>
+                <ValidationMessage For="@(() => ganadoGuardaryActualizarDto.IdpadreGanado)" />
+            </div>
+            <div class="col-12 col-md-6">
+                <label class="col-form-label"># Chip Madre</label>
+                <CbxGanado @bind-IdGanado="ganadoGuardaryActualizarDto.IdmadreGanado" Sexo=" Sexo.Hembra"></CbxGanado>
+                <ValidationMessage For="@(() => ganadoGuardaryActualizarDto.IdmadreGanado)" />
+            </div>
+        </div>
+        <div class="row g-3 mb-3">
             <div class="col-12 col-md-3">
                 <label class="col-form-label">Lugar De Nacimiento</label>
                 <select class="form-select" @bind="ganadoGuardaryActualizarDto.LugardenacimientoGanado">

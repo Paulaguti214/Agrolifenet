@@ -1,0 +1,14 @@
+﻿<select @bind="SeleccionarGanado" class="form-select">
+    @if (ListaGanado.Any())
+    {
+        <option value="">Seleccionar</option>
+        @foreach (var raza in ListaGanado)
+        {
+            <option value="@raza.IdGanado">@raza.NumerodelchipGanado</option>
+        }
+    }
+    else
+    {
+        <option value="">Cargando...</option>
+    }
+</select>

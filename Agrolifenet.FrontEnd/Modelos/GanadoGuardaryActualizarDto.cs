@@ -22,5 +22,7 @@ namespace Agrolifenet.FrontEnd.Modelos
         public int? IdpadreGanado { get; set; }
         public int IdTipoAnimal { get; set; }
         public int IdRaza { get; set; }
+        public string? NumerodelchipPadre { get; set; }
+        public string? NumerodelchipMadre { get; set; }
     }
 }
