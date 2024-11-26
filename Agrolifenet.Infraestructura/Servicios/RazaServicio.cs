@@ -32,7 +32,7 @@ namespace Agrolifenet.Infraestructura.Servicios
             await _razaRepositorio.EliminarRaza(IdRaza);
         }
 
-        public async Task<IEnumerable<Raza>> ListarRaza()
+        public async Task<IEnumerable<ListarRazaDto>> ListarRaza()
         {
              return await _razaRepositorio.ListarRaza();
         }

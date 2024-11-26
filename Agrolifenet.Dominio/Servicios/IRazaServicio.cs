@@ -7,7 +7,7 @@ namespace Agrolifenet.Dominio.Servicios
     {
         Task AgregarRaza(string Tipoderaza, bool EstadoRaza, int IdTipoanimal);
         Task<RazaTipoAnimalDto> SeleccionarRaza(int IdRaza);
-        Task<IEnumerable<Raza>> ListarRaza();
+        Task<IEnumerable<ListarRazaDto>> ListarRaza();
         Task EliminarRaza(int IdRaza);
         Task ActualizarRaza(int IdRaza, string Tipoderaza, bool EstadoRaza, int IdTipoanimal);
     }

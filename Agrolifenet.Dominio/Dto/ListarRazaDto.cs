@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Agrolifenet.Dominio.Dto
 {
-    public  class ActualizarRazaDto
+    public class ListarRazaDto
     {
-        public int  IdRaza { get; set; }
+        public int IdRaza { get; set; }
         public string Tipoderaza { get; set; }
         public bool EstadoRaza { get; set; }
-        public int  IdTipoanimal { get; set; }
+       
         public string TiposdeAnimal { get; set; }
-
-
+        public DateTime FechadecreacionRaza { get; set; }
+        public DateTime FechademodificacionRaza { get; set; }
     }
 }
