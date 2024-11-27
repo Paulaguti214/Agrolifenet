@@ -68,7 +68,7 @@ namespace Agrolifenet.FrontEnd.Componentes.Formularios
                 else
                 {
 
-                    await Swal.FireAsync("Exito", await resultado.ObetenerMensajeErrorAsync(), SweetAlertIcon.Success);
+                    await Swal.FireAsync("Exito", "Se Guardo Exitosamente", SweetAlertIcon.Success);
 
                     listarGanadoDtos = await ObtenerListado();
                 }
@@ -82,7 +82,7 @@ namespace Agrolifenet.FrontEnd.Componentes.Formularios
                 }
                 else
                 {
-                    await Swal.FireAsync("Exito", await resultado.ObetenerMensajeErrorAsync(), SweetAlertIcon.Success);
+                    await Swal.FireAsync("Exito", "Se Actualizo Con Exito", SweetAlertIcon.Success);
                 }
 
                 listarGanadoDtos = await ObtenerListado();
@@ -96,6 +96,7 @@ namespace Agrolifenet.FrontEnd.Componentes.Formularios
             var resultadog = await HttpConsumir.GetAsync<GanadoGuardaryActualizarDto>($"/api/Ganado/BuscarGanado?IdGanado={IdGanado}");
             ganadoGuardaryActualizarDto = resultadog.Response!;
             ganadoGuardaryActualizarDto.FechadenacimientoGanado = DateTime.Now.AddYears(-ganadoGuardaryActualizarDto.EdadGanado);
+            await Swal.FireAsync("Exito", "Se Buco Con Exito", SweetAlertIcon.Success);
         }
 
         public async Task EliminarGanado(int IdGanado)
@@ -108,7 +109,7 @@ namespace Agrolifenet.FrontEnd.Componentes.Formularios
             else
             {
                 listarGanadoDtos = listarGanadoDtos.Where(raza => raza.IdGanado != IdGanado);
-                await Swal.FireAsync("Exito", await resultado.ObetenerMensajeErrorAsync(), SweetAlertIcon.Success);
+                await Swal.FireAsync("Exito", "Se Elimino Con Exito", SweetAlertIcon.Success);
             }
         }
 

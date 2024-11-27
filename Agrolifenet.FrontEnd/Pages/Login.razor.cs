@@ -50,6 +50,7 @@ namespace Agrolifenet.FrontEnd.Pages
             }
             else
             {
+                await Swal.FireAsync("Ingreso con Exito", "Se Autentico Correctamente", SweetAlertIcon.Success);
                 await loginServicio.LoginAsync(resultado.Response!.Token);
                 Navigation.NavigateTo("/", true);
             }

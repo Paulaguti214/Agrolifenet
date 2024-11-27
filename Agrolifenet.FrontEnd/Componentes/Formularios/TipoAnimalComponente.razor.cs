@@ -34,7 +34,7 @@ namespace Agrolifenet.FrontEnd.Componentes.Formularios
                 else
                 {
 
-                    await Swal.FireAsync("Exito", await resultado.ObetenerMensajeErrorAsync(), SweetAlertIcon.Success);
+                    await Swal.FireAsync("Exito", "Se Guardo Con Exito", SweetAlertIcon.Success);
 
                     ListaTipodeanimal = await ObtenerListado();
                 }
@@ -50,7 +50,7 @@ namespace Agrolifenet.FrontEnd.Componentes.Formularios
                 else
                 {
 
-                    await Swal.FireAsync("Exito", await resultado.ObetenerMensajeErrorAsync(), SweetAlertIcon.Success);
+                    await Swal.FireAsync("Exito", "Se Actualizo Con Exito", SweetAlertIcon.Success);
 
 
                     ListaTipodeanimal = await ObtenerListado();
@@ -84,7 +84,7 @@ namespace Agrolifenet.FrontEnd.Componentes.Formularios
             else
             {
                 ListaTipodeanimal = ListaTipodeanimal.Where(p => p.IdTipoAnimal != IdTipoAnimal);
-                await Swal.FireAsync("Exito", await resultado.ObetenerMensajeErrorAsync(), SweetAlertIcon.Success);
+                await Swal.FireAsync("Exito", "Se Elimino Con Exito", SweetAlertIcon.Success);
 
             }
 
@@ -101,6 +101,7 @@ namespace Agrolifenet.FrontEnd.Componentes.Formularios
             var resultadog = await HttpConsumir.GetAsync<TipoAnimalGuardaryActualizarDto>($"/TipoAnimal/SeleccionarTipoAnimal?idTipoanimal={IdTipoAnimal}");
             tipoAnimalRegistrarDto = resultadog.Response;
 
+            await Swal.FireAsync("Exito", "Se Busco Con Exito", SweetAlertIcon.Success);
 
             //Navigation.NavigateTo($"/animal/{IdTipoAnimal}", true);
         }

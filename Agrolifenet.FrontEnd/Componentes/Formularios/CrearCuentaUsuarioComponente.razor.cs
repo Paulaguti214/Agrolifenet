@@ -14,5 +14,6 @@ namespace Agrolifenet.FrontEnd.Componentes.Formularios
         SweetAlertService Swal { get; set; } = default!;
         [Inject]
         private NavigationManager Navigation { get; set; } = default!;
+
     }
 }

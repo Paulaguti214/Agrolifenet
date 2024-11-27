@@ -75,7 +75,7 @@
                 <div class="input-group">
                     <InputDate class="form-control" @bind-Value:get="ganadoGuardaryActualizarDto.FechadenacimientoGanado" @bind-Value:set="CalcularEdad" max="@DateTime.Now.ToString("yyyy-MM-dd")" />
                     <span class="input-group-text">Edad</span>
-                    <span class="input-group-text">@ganadoGuardaryActualizarDto.EdadGanado</span>
+                    <span class="input-group-text">@ganadoGuardaryActualizarDto.EdadGanado</span> <span class="input-group-text">Año(s)</span>
                     <button class="btn btn-success" type="submit">Agregar&nbsp;<i class="fa fa-plus-circle"></i></button>
                 </div>
                 <ValidationMessage class="validation-message" For="@(() => ganadoGuardaryActualizarDto.FechadenacimientoGanado)" />               

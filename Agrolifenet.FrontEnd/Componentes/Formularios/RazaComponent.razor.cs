@@ -29,7 +29,7 @@ namespace Agrolifenet.FrontEnd.Componentes.Formularios
                 else
                 {
 
-                    await Swal.FireAsync("Exito", await resultado.ObetenerMensajeErrorAsync(), SweetAlertIcon.Success);
+                    await Swal.FireAsync("Exito", "Se Guardo Con Exito", SweetAlertIcon.Success);
 
                     listarRazaDtos = await ObtenerListado();
                 }
@@ -43,7 +43,7 @@ namespace Agrolifenet.FrontEnd.Componentes.Formularios
                 }
                 else
                 {
-                    await Swal.FireAsync("Exito", await resultado.ObetenerMensajeErrorAsync(), SweetAlertIcon.Success);
+                    await Swal.FireAsync("Exito", "Se Actualizo Con Exito", SweetAlertIcon.Success);
                     listarRazaDtos = await ObtenerListado();
                 }
                 razaGuardaryActualizarDto = new();
@@ -73,13 +73,14 @@ namespace Agrolifenet.FrontEnd.Componentes.Formularios
             else
             {
                 listarRazaDtos = listarRazaDtos.Where(raza => raza.IdRaza != IdRaza);
-                await Swal.FireAsync("Exito", await resultado.ObetenerMensajeErrorAsync(), SweetAlertIcon.Success);
+                await Swal.FireAsync("Exito", "Eliminado Con Exito", SweetAlertIcon.Success);
             }
         }
         public async Task<IEnumerable<ListarRazaDto>> ObtenerListado()
         {
             var resultadog = await HttpConsumir.GetAsync<IEnumerable<ListarRazaDto>>("/api/Raza/LisatarRaza");
             return resultadog.Response;
+           
         }
 
 
@@ -87,6 +88,8 @@ namespace Agrolifenet.FrontEnd.Componentes.Formularios
         {
             var resultadog = await HttpConsumir.GetAsync<RazaGuardaryActualizarDto>($"/api/Raza/BuscarRaza?IdRaza={IdRaza}");
             razaGuardaryActualizarDto = resultadog.Response;
+
+            await Swal.FireAsync("Exito", "Se Busco Con Exito", SweetAlertIcon.Success);
         }
     }
 }
