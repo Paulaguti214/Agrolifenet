@@ -16,26 +16,9 @@ namespace Agrolifenet.Api.Controllers
         }
 
         [HttpPost("AgregarHistorialClinico")]
-        public async Task AgregarHistorialClinico(
-            bool estado,
-            string vacunas,
-            string tratamientos,
-            string enfermedades,
-            string resultadosExamenes,
-            string infoDesparacitacion,
-            int pesoAlNacer,
-            int pesoActual,
-            int gananciaPesoDiaria,
-            string observaciones,
-            string estadoSalud,
-            decimal costoTratamiento,
-            string seguimiento,
-            int numeroPartos,
-            int idGanado,
-            int idUsuario,
-            int idDatosReproduccion)
+        public async Task AgregarHistorialClinico(GuardarHistorialClinico guardarHistorialClinico)
         {
-            await _historialClinicoServicio.AgregarHistorialClinico(estado, vacunas, tratamientos, enfermedades, resultadosExamenes, infoDesparacitacion, pesoAlNacer, pesoActual, gananciaPesoDiaria, observaciones, estadoSalud, costoTratamiento, seguimiento, numeroPartos, idGanado, idUsuario, idDatosReproduccion);
+            await _historialClinicoServicio.AgregarHistorialClinico(guardarHistorialClinico.EstadoHistorialClinico, guardarHistorialClinico.VacunaHistorialClinico, guardarHistorialClinico.TratamientoHistorialClinico, guardarHistorialClinico.EnfermedadesHistorialClinico, guardarHistorialClinico.ResultadodeExamenesHistorialClinico, guardarHistorialClinico.InformaciondesparacitacionHistorialClinico, guardarHistorialClinico.PesoalnacerHistorialClinico, guardarHistorialClinico.PesoactualHistorialClinico, guardarHistorialClinico.GananciadepesodiariaHistorialClinico, guardarHistorialClinico.ObservacionesHistorialClinico, guardarHistorialClinico.EstadodesaludHistorialClinico, guardarHistorialClinico.CostodeltratamientoHistorialClinico, guardarHistorialClinico.SeguimientoHistorialClinico, guardarHistorialClinico.NumerodepartosHistorialClinico, guardarHistorialClinico.IdGanado, guardarHistorialClinico.IdUsuario, guardarHistorialClinico.IdDatosdeReproduccion);
         }
 
 
