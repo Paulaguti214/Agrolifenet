@@ -70,16 +70,47 @@
                 </select>
                 <ValidationMessage For="@(() => ganadoGuardaryActualizarDto.LugardenacimientoGanado)" />
             </div>
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-9">
                 <label class="col-form-label">Fecha Nacimiento</label>
                 <div class="input-group">
                     <InputDate class="form-control" @bind-Value:get="ganadoGuardaryActualizarDto.FechadenacimientoGanado" @bind-Value:set="CalcularEdad" max="@DateTime.Now.ToString("yyyy-MM-dd")" />
                     <span class="input-group-text">Edad</span>
                     <span class="input-group-text">@ganadoGuardaryActualizarDto.EdadGanado</span> <span class="input-group-text">Año(s)</span>
+                    <span class="input-group-text">Peso De Nacido</span>
+                    <InputNumber @bind-Value="ganadoGuardaryActualizarDto.PesoNacido" class="form-control" />
+                </div>
+                <ValidationMessage class="validation-message" For="@(() => ganadoGuardaryActualizarDto.FechadenacimientoGanado)" />
+                <ValidationMessage class="validation-message" For="@(() => ganadoGuardaryActualizarDto.PesoNacido)" />
+            </div>           
+        </div>
+        <div class="row g-3 mb-3">
+            <div class="col-12">
+                <label class="form-label">
+                    <strong>Engendrado</strong>
+                </label>
+                <div class="input-group">
+                    <select @bind="@ganadoGuardaryActualizarDto.IdReproduccion" class="form-select">
+                        @foreach (var TipoReproductor in Enum.GetValues(typeof(TipoReproduccion)).Cast<TipoReproduccion>())
+                        {
+                            <option value="@((int)TipoReproductor)">
+                                @TipoReproductor
+                            </option>
+                        }
+                    </select>
+                    <span class="input-group-text">Estado De Nacido</span>
+                    <select @bind="@ganadoGuardaryActualizarDto.EstdoNacido" class="form-select">
+                        @foreach (var estadoNacido in Enum.GetValues(typeof(EstadoNacido)).Cast<EstadoNacido>())
+                        {
+                            <option value="@((int)estadoNacido)">
+                                @estadoNacido
+                            </option>
+                        }
+                    </select>
                     <button class="btn btn-success" type="submit">Agregar&nbsp;<i class="fa fa-plus-circle"></i></button>
                 </div>
-                <ValidationMessage class="validation-message" For="@(() => ganadoGuardaryActualizarDto.FechadenacimientoGanado)" />               
-            </div>           
+                <ValidationMessage class="validation-message" For="@(() => ganadoGuardaryActualizarDto.IdReproduccion)" />
+                <ValidationMessage class="validation-message" For="@(() => ganadoGuardaryActualizarDto.EstdoNacido)" />
+            </div>
         </div>
     </ContenidoFormulario>
     <ContenidoDetalle>

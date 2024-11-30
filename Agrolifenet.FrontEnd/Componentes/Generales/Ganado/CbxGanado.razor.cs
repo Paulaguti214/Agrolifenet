@@ -9,7 +9,7 @@ namespace Agrolifenet.FrontEnd.Componentes.Generales.Ganado
     {
         [Inject]
         IHttpConsumir HttpConsumir { get; set; } = default!;
-        [Parameter] public Sexo Sexo { get; set; }
+        [Parameter] public Sexo? Sexo { get; set; } = Modelos.Enumeraciones.Sexo.Ninguno!;
         [Parameter] public int? IdGanado { get; set; }
         [Parameter] public EventCallback<int?> IdGanadoChanged { get; set; }
 
@@ -29,7 +29,13 @@ namespace Agrolifenet.FrontEnd.Componentes.Generales.Ganado
         public async Task<IEnumerable<GanadoDto>> ObtenerListado()
         {
             var resultadog = await HttpConsumir.GetAsync<IEnumerable<GanadoDto>>("/api/Ganado/ListarGanado");
-            return resultadog.Response!.Where(ganado => ganado.SexoGanado == Sexo.ToString());
+            var ganado = resultadog.Response!.AsQueryable();
+            ganado = ganado.Where(itemganado => itemganado.EstadoGanado);
+            if (Sexo != Modelos.Enumeraciones.Sexo.Ninguno)
+            {
+                ganado = ganado.Where(itemganado => itemganado.SexoGanado == Sexo.ToString());
+            }
+            return [.. ganado];
         }
 
         private int SeleccionarGanado

@@ -7,73 +7,151 @@
     <ContenidoFormulario>
         <div class="row">
             <div class="col">
-                <div class="mb-3"><label class="form-label" for="username"><strong>Usuario</strong></label><input class="form-control" type="text" id="username" placeholder="juanito.perez" name="username" readonly=""></div>
+                <div class="mb-3">
+                    <label class="form-label" for="username"><strong>Usuario</strong></label>
+                    <InputText @bind-Value="@historialClinicoGuardar_Actualizar.NombreUsuario" class="form-control"
+                               readonly="" />
+                </div>
             </div>
             <div class="col">
-                <div class="mb-3"><label class="form-label" for="email"><strong># de chip</strong><br></label><input class="form-control" type="email" id="email" placeholder="123456" name="email"></div>
+                <div class="mb-3">
+                    <label class="form-label" for="email"><strong># de chip</strong><br></label>
+                    <CbxGanado @bind-IdGanado="historialClinicoGuardar_Actualizar.IdGanado"></CbxGanado>
+                    <ValidationMessage For="@(() => historialClinicoGuardar_Actualizar.IdGanado)" />
+                </div>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <div class="mb-3"><label class="form-label" for="first_name"><strong>Peso al nacer</strong><br></label><input class="form-control" type="text" id="first_name" placeholder="50k" name="first_name"></div>
+                <div class="mb-3">
+                    <label class="form-label"><strong>Peso al nacer</strong></label>
+                    <InputNumber @bind-Value="@historialClinicoGuardar_Actualizar.PesoalnacerHistorialClinico" class="form-control" />
+                    <ValidationMessage For="@(() => historialClinicoGuardar_Actualizar.PesoalnacerHistorialClinico)" />
+                </div>
             </div>
             <div class="col">
-                <div class="mb-3"><label class="form-label" for="first_name"><strong>Peso actual</strong><br></label></div><input class="form-control" type="text" id="first_name-2" placeholder="100k" name="first_name">
+                <div class="mb-3">
+                    <label class="form-label"><strong>Peso actual</strong></label>
+                    <div class="input-group">
+                        <InputNumber class="form-control" @bind-Value:get="historialClinicoGuardar_Actualizar.PesoactualHistorialClinico" @bind-Value:set="CalcularPeso" />
+                        <span class="input-group-text">Ganancia Peso</span>
+                        <span class="input-group-text">@historialClinicoGuardar_Actualizar.GananciadepesodiariaHistorialClinico</span> <span class="input-group-text">Libras(s)</span>
+                    </div>
+                    <ValidationMessage class="validation-message" For="@(() => historialClinicoGuardar_Actualizar.PesoactualHistorialClinico)" />
+                </div>
             </div>
         </div>
         <div class="mb-3">
             <div class="row">
                 <div class="col">
-                    <div class="mb-3"><label class="form-label" for="first_name"><strong>Ganancia de peso diaria</strong><br></label><input class="form-control" type="text" id="first_name" placeholder="500gr" name="first_name" readonly=""></div>
-                </div>
-                <div class="col">
-                    <div class="mb-3"><label class="form-label" for="first_name"><strong>Numero de partos&nbsp;</strong><br></label><input class="form-control" type="text" id="last_name" name="last_name"></div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div class="mb-3"><label class="form-label" for="last_name"><strong>Vacunas</strong><br></label><textarea class="form-control form-control"></textarea></div>
-                </div>
-                <div class="col">
-                    <div class="mb-3"></div><label class="form-label" for="first_name"><strong>Enfermedades&nbsp;</strong><br></label><textarea class="form-control form-control"></textarea>
+                    <div class="mb-3">
+                        <label class="form-label">
+                            <strong>
+                                Numero de
+                                partos&nbsp;
+                            </strong><br>
+                        </label>
+                        <InputNumber class="form-control" @bind-Value="@historialClinicoGuardar_Actualizar.NumerodepartosHistorialClinico" />
+                        <ValidationMessage For="@(() => historialClinicoGuardar_Actualizar.NumerodepartosHistorialClinico)" />
+                    </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <label class="form-label" for="last_name"><strong>resultado de pruebas</strong><br></label>
-                    <div class="mb-3"><textarea class="form-control form-control"></textarea></div>
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Vacunas</strong></label>
+                        <InputTextArea class="form-control" @bind-Value="@historialClinicoGuardar_Actualizar.VacunaHistorialClinico" />
+                        <ValidationMessage For="@(() => historialClinicoGuardar_Actualizar.VacunaHistorialClinico)" />
+                    </div>
                 </div>
                 <div class="col">
-                    <div class="mb-3"></div><label class="form-label" for="first_name"><strong>Desparasitantes</strong><br></label><textarea class="form-control form-control"></textarea>
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Enfermedades</strong></label>
+                        <InputTextArea class="form-control" @bind-Value="@historialClinicoGuardar_Actualizar.EnfermedadesHistorialClinico" />
+                        <ValidationMessage For="@(() => historialClinicoGuardar_Actualizar.EnfermedadesHistorialClinico)" />
+                    </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <label class="form-label" for="last_name"><strong>Tratamientos</strong><br></label>
-                    <div class="mb-3"><textarea class="form-control form-control"></textarea></div>
+                    <div class="mb-3">
+                        <label class="form-label"><strong>resultado de pruebas</strong></label>
+                        <InputTextArea class="form-control" @bind-Value="@historialClinicoGuardar_Actualizar.ResultadodeExamenesHistorialClinico" />
+                        <ValidationMessage For="@(() => historialClinicoGuardar_Actualizar.ResultadodeExamenesHistorialClinico)" />
+                    </div>
                 </div>
                 <div class="col">
-                    <div class="mb-3"></div><label class="form-label" for="first_name"><strong>Estado de salud actual&nbsp;</strong><br></label><textarea class="form-control form-control"></textarea>
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Desparasitantes</strong></label>
+                        <InputTextArea class="form-control" @bind-Value="@historialClinicoGuardar_Actualizar.InformaciondesparacitacionHistorialClinico" />
+                        <ValidationMessage For="@(() => historialClinicoGuardar_Actualizar.InformaciondesparacitacionHistorialClinico)" />
+                    </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <div class="mb-3"><label class="form-label" for="last_name"><strong>Seguimiento&nbsp;</strong><br></label><textarea class="form-control form-control"></textarea></div>
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Tratamientos</strong></label>
+                        <InputTextArea class="form-control" @bind-Value="@historialClinicoGuardar_Actualizar.TratamientoHistorialClinico" />
+                        <ValidationMessage For="@(() => historialClinicoGuardar_Actualizar.TratamientoHistorialClinico)" />
+                    </div>
                 </div>
                 <div class="col">
-                    <div class="mb-3"></div><label class="form-label" for="first_name"><strong>Observaciones&nbsp;</strong><br></label><textarea class="form-control form-control"></textarea>
+                    <div class="mb-3">
+                        <label class="form-label">
+                            <strong>Estado de salud</strong>
+                        </label>
+                        <InputTextArea class="form-control" @bind-Value="@historialClinicoGuardar_Actualizar.EstadodesaludHistorialClinico" />
+                        <ValidationMessage For="@(() => historialClinicoGuardar_Actualizar.EstadodesaludHistorialClinico)" />
+                    </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <div class="mb-3"><label class="form-label" for="last_name"><strong>Costo de tratamiento</strong><br></label><input class="form-control" type="text" id="last_name" name="last_name"></div>
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Seguimiento</strong></label>
+                        <InputTextArea class="form-control" @bind-Value="@historialClinicoGuardar_Actualizar.SeguimientoHistorialClinico" />
+                        <ValidationMessage For="@(() => historialClinicoGuardar_Actualizar.SeguimientoHistorialClinico)" />
+                    </div>
                 </div>
-                <div class="col-2 d-flex justify-content-center align-items-center">
-                    <div class="form-check form-switch"><input class="form-check-input" type="radio" id="flexSwitchCheckDefault" checked=""><label class="form-check-label d-xl-flex" for="flexSwitchCheckDefault">Estado</label></div>
-                    @*  <InputCheckbox id="flexSwitchCheckDefault" @bind-Value="tipoAnimalRegistrarDto.EstadoTipoAnimal" class="form-check-input" />
-                    <label class="form-check-label" for="flexSwitchCheckDefault">Estado</label> *@
+                <div class="col">
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Observaciones</strong></label>
+                        <InputTextArea class="form-control" @bind-Value="@historialClinicoGuardar_Actualizar.ObservacionesHistorialClinico" />
+                        <ValidationMessage For="@(() => historialClinicoGuardar_Actualizar.ObservacionesHistorialClinico)" />
+                    </div>
                 </div>
-            </div><button class="btn btn-success btn-sm" type="submit">Guardar Cambios</button>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3">
+                        <label class="form-label">
+                            <strong>Costo de tratamiento</strong>
+                        </label>
+                        <InputNumber class="form-control" @bind-Value="@historialClinicoGuardar_Actualizar.CostodeltratamientoHistorialClinico" />
+                        <ValidationMessage For="@(() => historialClinicoGuardar_Actualizar.CostodeltratamientoHistorialClinico)" />
+                    </div>
+                </div>                
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3">
+                        <label class="form-label">
+                            <strong>Engendrado</strong>
+                        </label>
+                        <select @bind="@historialClinicoGuardar_Actualizar.IdDatosdeReproduccion" class="form-select">
+                            @foreach (var TipoReproductor in Enum.GetValues(typeof(TipoReproduccion)).Cast<TipoReproduccion>())
+                            {
+                                <option value="@((int)TipoReproductor)">
+                                    @TipoReproductor
+                                </option>
+                            }
+                        </select>                       
+                        <ValidationMessage For="@(() => historialClinicoGuardar_Actualizar.CostodeltratamientoHistorialClinico)" />
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-success btn-sm" type="submit">Guardar Cambios</button>
         </div>
     </ContenidoFormulario>
 </BaseFormularioComponente>

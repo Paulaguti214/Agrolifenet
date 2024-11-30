@@ -80,6 +80,7 @@ namespace Agrolifenet.Infraestructura.Servicios
             var claims = new List<Claim>();
             claims.AddRange(cargosUsuario.Select(cargo => new Claim(ClaimTypes.Role, cargo.Tipodecargo)));
             claims.Add(new(ClaimTypes.Name, $"{usuario.NombreUsuario} {usuario.ApellidoUsuario}"));
+            claims.Add(new("IdUsuario", $"{usuario.IdUsuario}"));
 
             var llave = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuracion.GetSection("Jwt:llave").Value!));
             var creds = new SigningCredentials(llave, SecurityAlgorithms.HmacSha256);

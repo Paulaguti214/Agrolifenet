@@ -1,9 +1,8 @@
 ﻿namespace Agrolifenet.FrontEnd.Modelos.Enumeraciones
 {
-    public enum Sexo
+    public enum EstadoNacido
     {
-        Ninguno,
-        Macho,
-        Hembra
+        Muerto = 0,
+        Vivo = 1
     }
 }
