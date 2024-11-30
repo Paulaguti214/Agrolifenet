@@ -1,5 +1,9 @@
-﻿<div class="card">
+﻿@* @typeparam TComponent
+ *@
+<div class="card">
     <div class="card-body">
-        <TabsComponente></TabsComponente>
+        <CascadingValue Value="@menuTabs">
+            <TabsComponente></TabsComponente>
+        </CascadingValue>
     </div>
 </div>

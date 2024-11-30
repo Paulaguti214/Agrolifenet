@@ -1,93 +1,79 @@
 ﻿@using Agrolifenet.FrontEnd.Modelos
- <Modelo="@historialClinicoGuardar_Actualizar">
-                          <TModelo="HistorialClinicoGuardar_Actualizar"></TModelo>
-    < Ejecutar="GuardarHistorialClinico">
-</Modelo>
- 
-<div class="col">
-    <div class="card shadow mb-3">
-        <div class="card-header py-3">
-            <p class="text-primary m-0 fw-bold">Historial Clínico</p>
+<BaseFormularioComponente NommbreFormulario="Crear Historial Clínico"
+                          NommbreEncabezadoDetalle="Ver Ganado Registrado"
+                          Modelo="historialClinicoGuardar_Actualizar"
+                          TModelo="HistorialClinicoGuardar_Actualizar"
+                          Ejecutar="GuardarHistorialClinico">
+    <ContenidoFormulario>
+        <div class="row">
+            <div class="col">
+                <div class="mb-3"><label class="form-label" for="username"><strong>Usuario</strong></label><input class="form-control" type="text" id="username" placeholder="juanito.perez" name="username" readonly=""></div>
+            </div>
+            <div class="col">
+                <div class="mb-3"><label class="form-label" for="email"><strong># de chip</strong><br></label><input class="form-control" type="email" id="email" placeholder="123456" name="email"></div>
+            </div>
         </div>
-        <div class="card-body">
-            <form>
-                <div class="row">
-                    <div class="col">
-                        <div class="mb-3"><label class="form-label" for="username"><strong>Usuario</strong></label><input class="form-control" type="text" id="username" placeholder="juanito.perez" name="username" readonly=""></div>
-                    </div>
-                    <div class="col">
-                        <div class="mb-3"><label class="form-label" for="email"><strong># de chip</strong><br></label><input class="form-control" type="email" id="email" placeholder="123456" name="email"></div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Peso al nacer</strong><br></label><input class="form-control" type="text" id="first_name" placeholder="50k" name="first_name"></div>
-                    </div>
-                    <div class="col">
-                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Peso actual</strong><br></label></div><input class="form-control" type="text" id="first_name-2" placeholder="100k" name="first_name">
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <div class="row">
-                        <div class="col">
-                            <div class="mb-3"><label class="form-label" for="first_name"><strong>Ganancia de peso diaria</strong><br></label><input class="form-control" type="text" id="first_name" placeholder="500gr" name="first_name" readonly=""></div>
-                        </div>
-                        <div class="col">
-                            <div class="mb-3"><label class="form-label" for="first_name"><strong>Numero de partos&nbsp;</strong><br></label><input class="form-control" type="text" id="last_name" name="last_name"></div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="mb-3"><label class="form-label" for="last_name"><strong>Vacunas</strong><br></label><textarea class="form-control form-control"></textarea></div>
-                        </div>
-                        <div class="col">
-                            <div class="mb-3"></div><label class="form-label" for="first_name"><strong>Enfermedades&nbsp;</strong><br></label><textarea class="form-control form-control"></textarea>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <label class="form-label" for="last_name"><strong>resultado de pruebas</strong><br></label>
-                            <div class="mb-3"><textarea class="form-control form-control"></textarea></div>
-                        </div>
-                        <div class="col">
-                            <div class="mb-3"></div><label class="form-label" for="first_name"><strong>Desparasitantes</strong><br></label><textarea class="form-control form-control"></textarea>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <label class="form-label" for="last_name"><strong>Tratamientos</strong><br></label>
-                            <div class="mb-3"><textarea class="form-control form-control"></textarea></div>
-                        </div>
-                        <div class="col">
-                            <div class="mb-3"></div><label class="form-label" for="first_name"><strong>Estado de salud actual&nbsp;</strong><br></label><textarea class="form-control form-control"></textarea>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="mb-3"><label class="form-label" for="last_name"><strong>Seguimiento&nbsp;</strong><br></label><textarea class="form-control form-control"></textarea></div>
-                        </div>
-                        <div class="col">
-                            <div class="mb-3"></div><label class="form-label" for="first_name"><strong>Observaciones&nbsp;</strong><br></label><textarea class="form-control form-control"></textarea>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="mb-3"><label class="form-label" for="last_name"><strong>Costo de tratamiento</strong><br></label><input class="form-control" type="text" id="last_name" name="last_name"></div>
-                        </div>
-                        <div class="col-2 d-flex justify-content-center align-items-center">
-                            <div class="form-check form-switch"><input class="form-check-input" type="radio" id="flexSwitchCheckDefault" checked=""><label class="form-check-label d-xl-flex" for="flexSwitchCheckDefault">Estado</label></div>
-                           @*  <InputCheckbox id="flexSwitchCheckDefault" @bind-Value="tipoAnimalRegistrarDto.EstadoTipoAnimal" class="form-check-input" />
-                            <label class="form-check-label" for="flexSwitchCheckDefault">Estado</label> *@
-                        </div>
-                    </div><button class="btn btn-success btn-sm" type="submit" >Guardar Cambios</button>
-                </div>
-            </form>
+        <div class="row">
+            <div class="col">
+                <div class="mb-3"><label class="form-label" for="first_name"><strong>Peso al nacer</strong><br></label><input class="form-control" type="text" id="first_name" placeholder="50k" name="first_name"></div>
+            </div>
+            <div class="col">
+                <div class="mb-3"><label class="form-label" for="first_name"><strong>Peso actual</strong><br></label></div><input class="form-control" type="text" id="first_name-2" placeholder="100k" name="first_name">
+            </div>
         </div>
-    </div>
-</div>
- 
-</>
-
-@code {
-
-}
+        <div class="mb-3">
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3"><label class="form-label" for="first_name"><strong>Ganancia de peso diaria</strong><br></label><input class="form-control" type="text" id="first_name" placeholder="500gr" name="first_name" readonly=""></div>
+                </div>
+                <div class="col">
+                    <div class="mb-3"><label class="form-label" for="first_name"><strong>Numero de partos&nbsp;</strong><br></label><input class="form-control" type="text" id="last_name" name="last_name"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3"><label class="form-label" for="last_name"><strong>Vacunas</strong><br></label><textarea class="form-control form-control"></textarea></div>
+                </div>
+                <div class="col">
+                    <div class="mb-3"></div><label class="form-label" for="first_name"><strong>Enfermedades&nbsp;</strong><br></label><textarea class="form-control form-control"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label class="form-label" for="last_name"><strong>resultado de pruebas</strong><br></label>
+                    <div class="mb-3"><textarea class="form-control form-control"></textarea></div>
+                </div>
+                <div class="col">
+                    <div class="mb-3"></div><label class="form-label" for="first_name"><strong>Desparasitantes</strong><br></label><textarea class="form-control form-control"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label class="form-label" for="last_name"><strong>Tratamientos</strong><br></label>
+                    <div class="mb-3"><textarea class="form-control form-control"></textarea></div>
+                </div>
+                <div class="col">
+                    <div class="mb-3"></div><label class="form-label" for="first_name"><strong>Estado de salud actual&nbsp;</strong><br></label><textarea class="form-control form-control"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3"><label class="form-label" for="last_name"><strong>Seguimiento&nbsp;</strong><br></label><textarea class="form-control form-control"></textarea></div>
+                </div>
+                <div class="col">
+                    <div class="mb-3"></div><label class="form-label" for="first_name"><strong>Observaciones&nbsp;</strong><br></label><textarea class="form-control form-control"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3"><label class="form-label" for="last_name"><strong>Costo de tratamiento</strong><br></label><input class="form-control" type="text" id="last_name" name="last_name"></div>
+                </div>
+                <div class="col-2 d-flex justify-content-center align-items-center">
+                    <div class="form-check form-switch"><input class="form-check-input" type="radio" id="flexSwitchCheckDefault" checked=""><label class="form-check-label d-xl-flex" for="flexSwitchCheckDefault">Estado</label></div>
+                    @*  <InputCheckbox id="flexSwitchCheckDefault" @bind-Value="tipoAnimalRegistrarDto.EstadoTipoAnimal" class="form-check-input" />
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Estado</label> *@
+                </div>
+            </div><button class="btn btn-success btn-sm" type="submit">Guardar Cambios</button>
+        </div>
+    </ContenidoFormulario>
+</BaseFormularioComponente>
