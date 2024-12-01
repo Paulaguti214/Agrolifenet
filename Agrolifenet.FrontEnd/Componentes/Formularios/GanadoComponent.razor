@@ -19,12 +19,11 @@
             </div>
             <div class="col d-flex d-xl-flex justify-content-start align-items-center">
                 <InputRadioGroup @bind-Value="@ganadoGuardaryActualizarDto.SexoGanado">
-                    @foreach (var sexo in (Sexo[])Enum.GetValues(typeof(Sexo)))
+                    @foreach (var sexo in ((Sexo[])Enum.GetValues(typeof(Sexo))).Where(Sexo => Sexo != Sexo.Ninguno))
                     {
                         <label>
                             <InputRadio Value="@sexo.ToString()" class="form-check-input" /> @sexo
                         </label>
-                        <br />
                     }
                 </InputRadioGroup>
             </div>
@@ -81,7 +80,7 @@
                 </div>
                 <ValidationMessage class="validation-message" For="@(() => ganadoGuardaryActualizarDto.FechadenacimientoGanado)" />
                 <ValidationMessage class="validation-message" For="@(() => ganadoGuardaryActualizarDto.PesoNacido)" />
-            </div>           
+            </div>
         </div>
         <div class="row g-3 mb-3">
             <div class="col-12">
@@ -98,10 +97,10 @@
                         }
                     </select>
                     <span class="input-group-text">Estado De Nacido</span>
-                    <select @bind="@ganadoGuardaryActualizarDto.EstdoNacido" class="form-select">
-                        @foreach (var estadoNacido in Enum.GetValues(typeof(EstadoNacido)).Cast<EstadoNacido>())
+                    <select @bind="@ganadoGuardaryActualizarDto.EstadoNacido" class="form-select">
+                        @foreach (var estadoNacido in (EstadoNacido[])Enum.GetValues(typeof(EstadoNacido)))
                         {
-                            <option value="@((int)estadoNacido)">
+                            <option value="@estadoNacido">
                                 @estadoNacido
                             </option>
                         }
@@ -109,7 +108,16 @@
                     <button class="btn btn-success" type="submit">Agregar&nbsp;<i class="fa fa-plus-circle"></i></button>
                 </div>
                 <ValidationMessage class="validation-message" For="@(() => ganadoGuardaryActualizarDto.IdReproduccion)" />
-                <ValidationMessage class="validation-message" For="@(() => ganadoGuardaryActualizarDto.EstdoNacido)" />
+                <ValidationMessage class="validation-message" For="@(() => ganadoGuardaryActualizarDto.EstadoNacido)" />
+            </div>
+            <div class="row g-3 mb-3">
+                <div class="col-12">
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Descripcion De Nacimiento</strong></label>
+                        <InputTextArea class="form-control" @bind-Value="@ganadoGuardaryActualizarDto.DescripcionNacimiento" />
+                        <ValidationMessage For="@(() => ganadoGuardaryActualizarDto.DescripcionNacimiento)" />
+                    </div>
+                </div>
             </div>
         </div>
     </ContenidoFormulario>
@@ -160,7 +168,7 @@
                                     <td>@item.Tipoderaza<br></td>
                                     <td>@item.EdadGanado<br></td>
                                     <td>@(item.EstadoGanado == false ? "Inactivo" : "Activo")</td>
-                                    <td class="text-center"><a class="link-success me-2" @onclick="() => ActualizarGanado(item.IdGanado)"><i class="fa fa-edit"></i></a><a class="link-success link-primary" @onclick="() => EliminarGanado(item.IdGanado)"><i class="fa fa-remove"></i></a></td>                                    
+                                    <td class="text-center"><a class="link-success me-2" @onclick="() => ActualizarGanado(item.IdGanado)"><i class="fa fa-edit"></i></a><a class="link-success link-primary" @onclick="() => EliminarGanado(item.IdGanado)"><i class="fa fa-remove"></i></a></td>
                                 </tr>
                             }
                         </tbody>
@@ -170,7 +178,7 @@
                     </table>
                 </div>
             }
-           
+
             <div class="row">
                 <div class="col-md-6 align-self-center">
                     <p id="dataTable_info-2" class="dataTables_info" role="status" aria-live="polite">Mostrando1 a 10 de 27</p>

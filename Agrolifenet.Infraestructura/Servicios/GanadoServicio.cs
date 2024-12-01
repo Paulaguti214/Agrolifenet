@@ -11,10 +11,10 @@ namespace Agrolifenet.Infraestructura.Servicios
         {
             _ganadoRepositorio = ganadoRepositorio;
         }
-        public async Task AgregarGanado(bool EstadoGanado, int EdadGanado, string sexoGanado, string NumeridechipGanado, string ColorGanado, string LugardenacimientoGanado, int? IdMadreGanado, int? IdPadreGanado, int IdRaza)
+        public async Task AgregarGanado(bool EstadoGanado, int EdadGanado, string sexoGanado, string NumeridechipGanado, string ColorGanado, string LugardenacimientoGanado, int? IdMadreGanado, int? IdPadreGanado, int IdRaza, int IdReproduccion, string EstadoNacido, string DescripcionNacimiento, int PesoNacido)
         {
             var fechaActual = DateTime.Now;
-            await _ganadoRepositorio.AgregarGanado(fechaActual, fechaActual, EstadoGanado, EdadGanado, sexoGanado, NumeridechipGanado, ColorGanado, LugardenacimientoGanado, IdMadreGanado, IdPadreGanado, IdRaza);
+            await _ganadoRepositorio.AgregarGanado(fechaActual, fechaActual, EstadoGanado, EdadGanado, sexoGanado, NumeridechipGanado, ColorGanado, LugardenacimientoGanado, IdMadreGanado, IdPadreGanado, IdRaza, IdReproduccion, EstadoNacido, DescripcionNacimiento, PesoNacido);
         }
         public async Task<GanadoDto> SeleccionarGanado(int IdGanado)
         {
@@ -25,10 +25,10 @@ namespace Agrolifenet.Infraestructura.Servicios
             await _ganadoRepositorio.EliminarGanado(IdGanado);
         }
 
-        public async Task ActualizarGanado(int IdGanado, bool EstadoGanado, int EdadGanado, string sexoGanado, string NumeridechipGanado, string ColorGanado, string LugardenacimientoGanado, int? IdMadreGanado, int? IdPadreGanado, int IdRaza)
+        public async Task ActualizarGanado(int IdGanado, bool EstadoGanado, int EdadGanado, string sexoGanado, string NumeridechipGanado, string ColorGanado, string LugardenacimientoGanado, int? IdMadreGanado, int? IdPadreGanado, int IdRaza, int IdReproduccion, string EstadoNacido, string DescripcionNacimiento, int PesoNacido)
         {
             var fechaActual = DateTime.Now;
-            await _ganadoRepositorio.ActualizarGanado(IdGanado, fechaActual, EstadoGanado, EdadGanado, sexoGanado, NumeridechipGanado, ColorGanado, LugardenacimientoGanado, IdMadreGanado, IdPadreGanado, IdRaza);
+            await _ganadoRepositorio.ActualizarGanado(IdGanado, fechaActual, EstadoGanado, EdadGanado, sexoGanado, NumeridechipGanado, ColorGanado, LugardenacimientoGanado, IdMadreGanado, IdPadreGanado, IdRaza, IdReproduccion, EstadoNacido, DescripcionNacimiento, PesoNacido);
         }
 
         public async Task<IEnumerable<GanadoDto>> ListarGanado()

@@ -17,7 +17,7 @@ namespace Agrolifenet.Infraestructura.Adaptador
 
         public GanadoRepositorio(IDbConnection baseDeDatos) : base(baseDeDatos) { }
 
-        public async Task AgregarGanado(DateTime FechadecreacionGanado, DateTime FechademodificacionGanado, bool EstadoGanado, int EdadGanado, string sexoGanado, string NumeridechipGanado, string ColorGanado, string LugardenacimientoGanado, int? IdMadreGanado, int? IdPadreGanado, int IdRaza)
+        public async Task AgregarGanado(DateTime FechadecreacionGanado, DateTime FechademodificacionGanado, bool EstadoGanado, int EdadGanado, string sexoGanado, string NumeridechipGanado, string ColorGanado, string LugardenacimientoGanado, int? IdMadreGanado, int? IdPadreGanado, int IdRaza, int IdReproduccion, string EstadoNacido, string DescripcionNacimiento, int PesoNacido)
         {
             await AgregarAsync(NombreProcedimientoGuardarGanado, new
             {
@@ -31,7 +31,11 @@ namespace Agrolifenet.Infraestructura.Adaptador
                 LugardenacimientoGanado,
                 IdMadreGanado,
                 IdPadreGanado,
-                IdRaza
+                IdRaza,
+                IdReproduccion,
+                EstadoNacido,
+                DescripcionNacimiento,
+                PesoNacido
             });
         }
         public async Task<GanadoDto> SeleccionarGanado(int IdGanado)
@@ -48,7 +52,7 @@ namespace Agrolifenet.Infraestructura.Adaptador
                 IdGanado
             });
         }
-        public async Task ActualizarGanado(int IdGanado, DateTime FechademodificacionGanado, bool EstadoGanado, int EdadGanado, string sexoGanado, string NumeridechipGanado, string ColorGanado, string LugardenacimientoGanado, int? IdMadreGanado, int? IdPadreGanado, int IdRaza)
+        public async Task ActualizarGanado(int IdGanado, DateTime FechademodificacionGanado, bool EstadoGanado, int EdadGanado, string sexoGanado, string NumeridechipGanado, string ColorGanado, string LugardenacimientoGanado, int? IdMadreGanado, int? IdPadreGanado, int IdRaza, int IdReproduccion, string EstadoNacido, string DescripcionNacimiento, int PesoNacido)
         {
             await ActualizarAsync(NombreProcedimientoActualizarGanado, new
             {
@@ -62,7 +66,11 @@ namespace Agrolifenet.Infraestructura.Adaptador
                 LugardenacimientoGanado,
                 IdMadreGanado,
                 IdPadreGanado,
-                IdRaza
+                IdRaza,
+                IdReproduccion,
+                EstadoNacido,
+                DescripcionNacimiento,
+                PesoNacido
             });
         }
 

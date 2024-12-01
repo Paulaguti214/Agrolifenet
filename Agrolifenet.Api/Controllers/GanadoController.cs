@@ -20,7 +20,7 @@ namespace Agrolifenet.Api.Controllers
         [HttpPost("InsertarGanado")]
         public async Task AgregarGanado(GuardarGanadoDto guardarGanadoDto)
         {
-            await _ganadoServicio.AgregarGanado(guardarGanadoDto.EstadoGanado, guardarGanadoDto.EdadGanado, guardarGanadoDto.SexoGanado, guardarGanadoDto.NumerodelchipGanado, guardarGanadoDto.ColorGanado, guardarGanadoDto.LugardenacimientoGanado, guardarGanadoDto.IdmadreGanado, guardarGanadoDto.IdpadreGanado, guardarGanadoDto.IdRaza);
+            await _ganadoServicio.AgregarGanado(guardarGanadoDto.EstadoGanado, guardarGanadoDto.EdadGanado, guardarGanadoDto.SexoGanado, guardarGanadoDto.NumerodelchipGanado, guardarGanadoDto.ColorGanado, guardarGanadoDto.LugardenacimientoGanado, guardarGanadoDto.IdmadreGanado, guardarGanadoDto.IdpadreGanado, guardarGanadoDto.IdRaza, guardarGanadoDto.IdReproduccion, guardarGanadoDto.EstadoNacido, guardarGanadoDto.DescripcionNacimiento, guardarGanadoDto.PesoNacido);
         }
 
         [HttpGet("BuscarGanado")]
@@ -44,7 +44,7 @@ namespace Agrolifenet.Api.Controllers
         [HttpPut("ActualizarGanado")]
         public async Task ActualizarGanado(GuardarGanadoDto ganadoDto)
         {
-            await _ganadoServicio.ActualizarGanado(ganadoDto.IdGanado, ganadoDto.EstadoGanado, ganadoDto.EdadGanado, ganadoDto.SexoGanado, ganadoDto.NumerodelchipGanado, ganadoDto.ColorGanado, ganadoDto.LugardenacimientoGanado, ganadoDto.IdmadreGanado, ganadoDto.IdpadreGanado, ganadoDto.IdRaza);
+            await _ganadoServicio.ActualizarGanado(ganadoDto.IdGanado, ganadoDto.EstadoGanado, ganadoDto.EdadGanado, ganadoDto.SexoGanado, ganadoDto.NumerodelchipGanado, ganadoDto.ColorGanado, ganadoDto.LugardenacimientoGanado, ganadoDto.IdmadreGanado, ganadoDto.IdpadreGanado, ganadoDto.IdRaza, ganadoDto.IdReproduccion, ganadoDto.EstadoNacido, ganadoDto.DescripcionNacimiento, ganadoDto.PesoNacido);
         }
     }
 }

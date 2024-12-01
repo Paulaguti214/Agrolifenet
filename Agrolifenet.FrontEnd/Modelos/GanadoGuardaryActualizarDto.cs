@@ -24,10 +24,10 @@ namespace Agrolifenet.FrontEnd.Modelos
         public int IdRaza { get; set; }
         public string? NumerodelchipPadre { get; set; }
         public string? NumerodelchipMadre { get; set; }
-        public int IdReproduccion { get; set; }
-        public bool EstdoNacido { get; set; }
+        public int? IdReproduccion { get; set; }
+        public string EstadoNacido { get; set; } = default!;
         public string DescripcionNacimiento { get; set; } = default!;
-        public int PesoNacido { get; set; }
+        public int? PesoNacido { get; set; }
 
     }
 }
