@@ -38,9 +38,9 @@ namespace Agrolifenet.FrontEnd.Componentes.Generales.Ganado
             return [.. ganado];
         }
 
-        private int SeleccionarGanado
+        private int? SeleccionarGanado
         {
-            get => IdGanado ?? default!;
+            get => IdGanado;
             set
             {
                 IdGanadoChanged.InvokeAsync(value);
@@ -50,7 +50,7 @@ namespace Agrolifenet.FrontEnd.Componentes.Generales.Ganado
         {
             if (SeleccionarGanado != IdGanado)
             {
-                SeleccionarGanado = IdGanado ?? default!;
+                SeleccionarGanado = IdGanado;
             }
         }
     }

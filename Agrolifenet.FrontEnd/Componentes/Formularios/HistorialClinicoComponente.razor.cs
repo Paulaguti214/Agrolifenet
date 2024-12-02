@@ -8,14 +8,14 @@ namespace Agrolifenet.FrontEnd.Componentes.Formularios
 {
     public partial class HistorialClinicoComponente : ComponentBase
     {
-        [Inject]
-        IHttpConsumir HttpConsumir { get; set; } = default!;
+        [Inject] IHttpConsumir HttpConsumir { get; set; } = default!;
 
-        [Inject]
-        SweetAlertService Swal { get; set; } = default!;
+        [Inject] SweetAlertService Swal { get; set; } = default!;
+
         [Inject] AuthenticationStateProvider AuthenticationStateProvider { get; set; } = default!;
 
-        public HistorialClinicoGuardar_Actualizar historialClinicoGuardar_Actualizar = new();
+        private HistorialClinicoGuardar_Actualizar historialClinicoGuardar_Actualizar = new();
+        private GanadoGuardaryActualizarDto ganadoDto = default!;
 
         protected override async Task OnInitializedAsync()
         {
@@ -45,6 +45,28 @@ namespace Agrolifenet.FrontEnd.Componentes.Formularios
             historialClinicoGuardar_Actualizar.GananciadepesodiariaHistorialClinico = (pesoActual ?? 0) - historialClinicoGuardar_Actualizar.PesoalnacerHistorialClinico;
 
             return Task.CompletedTask;
+        }
+
+        private async void GanadoSeleccionado(int? idGanado)
+        {
+            historialClinicoGuardar_Actualizar.IdGanado = idGanado;
+            //Console.WriteLine($"id actual {historialClinicoGuardar_Actualizar.IdGanado}");
+            ganadoDto = historialClinicoGuardar_Actualizar.IdGanado is null ||
+                historialClinicoGuardar_Actualizar.IdGanado == 0 ? default! : await BuscarGanado((int)idGanado!);
+
+            if (ganadoDto is not null)
+            {
+                historialClinicoGuardar_Actualizar.PesoalnacerHistorialClinico = ganadoDto.PesoNacido is null ? 0 : (int)ganadoDto.PesoNacido!;
+            }
+
+            Console.WriteLine(ganadoDto);
+            Console.WriteLine(idGanado);
+        }
+
+        private async Task<GanadoGuardaryActualizarDto> BuscarGanado(int idGanado)
+        {
+            var resultado = await HttpConsumir.GetAsync<GanadoGuardaryActualizarDto>($"/api/Ganado/BuscarGanado?IdGanado={idGanado}");
+            return resultado.Response!;
         }
     }
 }

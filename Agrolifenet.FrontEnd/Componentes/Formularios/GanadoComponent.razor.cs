@@ -67,9 +67,7 @@ namespace Agrolifenet.FrontEnd.Componentes.Formularios
                 }
                 else
                 {
-
                     await Swal.FireAsync("Exito", "Se Guardo Exitosamente", SweetAlertIcon.Success);
-
                     listarGanadoDtos = await ObtenerListado();
                 }
             }
@@ -83,11 +81,12 @@ namespace Agrolifenet.FrontEnd.Componentes.Formularios
                 else
                 {
                     await Swal.FireAsync("Exito", "Se Actualizo Con Exito", SweetAlertIcon.Success);
+
+                    listarGanadoDtos = await ObtenerListado();
+                    ganadoGuardaryActualizarDto = new() { FechadenacimientoGanado = DateTime.Now };
                 }
 
-                listarGanadoDtos = await ObtenerListado();
 
-                ganadoGuardaryActualizarDto = new() { FechadenacimientoGanado = DateTime.Now };
             }
         }
 

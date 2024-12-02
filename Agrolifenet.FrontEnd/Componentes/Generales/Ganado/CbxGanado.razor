@@ -1,7 +1,7 @@
 ﻿<select @bind="SeleccionarGanado" class="form-select">
     @if (ListaGanado.Any())
     {
-        <option value="">Seleccionar</option>
+        <option value="0">Seleccionar</option>
         @foreach (var raza in ListaGanado)
         {
             <option value="@raza.IdGanado">@raza.NumerodelchipGanado</option>
