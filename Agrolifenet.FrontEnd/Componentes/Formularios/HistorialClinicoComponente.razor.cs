@@ -47,20 +47,14 @@ namespace Agrolifenet.FrontEnd.Componentes.Formularios
             return Task.CompletedTask;
         }
 
-        private async void GanadoSeleccionado(int? idGanado)
+        private async Task GanadoSeleccionado(int? idGanado)
         {
             historialClinicoGuardar_Actualizar.IdGanado = idGanado;
-            //Console.WriteLine($"id actual {historialClinicoGuardar_Actualizar.IdGanado}");
-            ganadoDto = historialClinicoGuardar_Actualizar.IdGanado is null ||
-                historialClinicoGuardar_Actualizar.IdGanado == 0 ? default! : await BuscarGanado((int)idGanado!);
+            ganadoDto = (historialClinicoGuardar_Actualizar.IdGanado is null ||
+                historialClinicoGuardar_Actualizar.IdGanado == 0) ? default! : await BuscarGanado((int)idGanado!);
 
-            if (ganadoDto is not null)
-            {
-                historialClinicoGuardar_Actualizar.PesoalnacerHistorialClinico = ganadoDto.PesoNacido is null ? 0 : (int)ganadoDto.PesoNacido!;
-            }
-
-            Console.WriteLine(ganadoDto);
-            Console.WriteLine(idGanado);
+            historialClinicoGuardar_Actualizar.PesoalnacerHistorialClinico = ganadoDto?.PesoNacido is null ? 0 : (int)ganadoDto.PesoNacido!;
+            await CalcularPeso(0);
         }
 
         private async Task<GanadoGuardaryActualizarDto> BuscarGanado(int idGanado)
