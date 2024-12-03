@@ -15,7 +15,7 @@ namespace Agrolifenet.FrontEnd.Componentes.Formularios
         SweetAlertService Swal { get; set; } = default!;
 
         private RazaGuardaryActualizarDto razaGuardaryActualizarDto = new();
-        public IEnumerable<ListarRazaDto> listarRazaDtos = default!;
+        private IEnumerable<ListarRazaDto> listarRazaDtos = [];
 
         public async Task GuardarRaza(RazaGuardaryActualizarDto model)
         {
@@ -28,7 +28,6 @@ namespace Agrolifenet.FrontEnd.Componentes.Formularios
                 }
                 else
                 {
-
                     await Swal.FireAsync("Exito", "Se Guardo Con Exito", SweetAlertIcon.Success);
 
                     listarRazaDtos = await ObtenerListado();
@@ -49,9 +48,8 @@ namespace Agrolifenet.FrontEnd.Componentes.Formularios
                 razaGuardaryActualizarDto = new();
 
             }
-
-
         }
+
         protected override async Task OnInitializedAsync()
         {
             try
@@ -63,6 +61,7 @@ namespace Agrolifenet.FrontEnd.Componentes.Formularios
                 Console.WriteLine($"Error al obtener los datos: {ex.Message}");
             }
         }
+
         public async Task EliminarRaza(int IdRaza)
         {
             var resultado = await HttpConsumir.DeleleteAsync($"/api/Raza/EliminarRaza?IdRaza={IdRaza}");
@@ -76,20 +75,25 @@ namespace Agrolifenet.FrontEnd.Componentes.Formularios
                 await Swal.FireAsync("Exito", "Eliminado Con Exito", SweetAlertIcon.Success);
             }
         }
+
         public async Task<IEnumerable<ListarRazaDto>> ObtenerListado()
         {
             var resultadog = await HttpConsumir.GetAsync<IEnumerable<ListarRazaDto>>("/api/Raza/LisatarRaza");
-            return resultadog.Response;
-           
+            return resultadog.Response!;
         }
 
 
         public async Task ActualizarRaza(int IdRaza)
         {
             var resultadog = await HttpConsumir.GetAsync<RazaGuardaryActualizarDto>($"/api/Raza/BuscarRaza?IdRaza={IdRaza}");
-            razaGuardaryActualizarDto = resultadog.Response;
+            razaGuardaryActualizarDto = resultadog.Response!;
 
             await Swal.FireAsync("Exito", "Se Busco Con Exito", SweetAlertIcon.Success);
+        }
+
+        private async Task TipoAnimalSeleccionado(int idTipoAnimal)
+        {
+            razaGuardaryActualizarDto.IdTipoAnimal = idTipoAnimal;
         }
     }
 }

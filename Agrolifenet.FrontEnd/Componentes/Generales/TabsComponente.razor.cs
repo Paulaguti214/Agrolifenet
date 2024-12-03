@@ -10,8 +10,10 @@ namespace Agrolifenet.FrontEnd.Componentes.Generales
         {
             return builder =>
             {
-                builder.OpenComponent(0, compoenente); // Abre el componente dinámicamente
-                builder.CloseComponent(); // Cierra el componente
+                Random random = new Random();
+                int numeroalaetorio = random.Next();
+                builder.OpenComponent(numeroalaetorio, compoenente);
+                builder.CloseComponent();
             };
         }
     }

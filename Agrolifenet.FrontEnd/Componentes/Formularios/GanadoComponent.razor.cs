@@ -112,5 +112,11 @@ namespace Agrolifenet.FrontEnd.Componentes.Formularios
             }
         }
 
+        private async Task TipoAnimalSeleccionado(int idTipoAnimal)
+        {
+            ganadoGuardaryActualizarDto.IdTipoAnimal = idTipoAnimal;
+
+            await Task.CompletedTask;
+        }
     }
 }

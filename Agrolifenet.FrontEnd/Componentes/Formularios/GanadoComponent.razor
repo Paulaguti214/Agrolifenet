@@ -9,12 +9,13 @@
         <div class="row g-3 mb-3">
             <div class="col-2 col-auto"><label class="col-form-label">Tipo Animal</label></div>
             <div class="col-3">
-                <CbxTipoAnimal @bind-IdTipoAnimal="ganadoGuardaryActualizarDto.IdTipoAnimal"></CbxTipoAnimal>
+                @* <CbxGanado IdGanado="historialClinicoGuardar_Actualizar.IdGanado" IdGanadoChanged="GanadoSeleccionado"></CbxGanado> *@
+                <CbxTipoAnimal IdTipoAnimal="ganadoGuardaryActualizarDto.IdTipoAnimal" IdTipoAnimalChanged="TipoAnimalSeleccionado"></CbxTipoAnimal>
                 <ValidationMessage For="@(() => ganadoGuardaryActualizarDto.IdTipoAnimal)" />
             </div>
             <div class="col-2 col-auto"><label class="col-form-label">Tipo Raza</label></div>
             <div class="col-2">
-                <CbxRaza @bind-IdRaza="ganadoGuardaryActualizarDto.IdRaza"></CbxRaza>
+                <CbxRaza IdTipoAnimal="ganadoGuardaryActualizarDto.IdTipoAnimal" @bind-IdRaza="ganadoGuardaryActualizarDto.IdRaza"></CbxRaza>
                 <ValidationMessage For="@(() => ganadoGuardaryActualizarDto.IdRaza)" />
             </div>
             <div class="col d-flex d-xl-flex justify-content-start align-items-center">
