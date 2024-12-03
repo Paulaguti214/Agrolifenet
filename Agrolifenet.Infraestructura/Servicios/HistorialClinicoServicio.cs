@@ -13,10 +13,30 @@ namespace Agrolifenet.Infraestructura.Servicios
             _historialClinicoRepositorio = historialClinicoRepositorio;
         }
 
-        public async Task ActualizarHistorialClinico(int idHistorialClinico, bool estado, string vacunas, string tratamientos, string enfermedades, string resultadosExamenes, string infoDesparacitacion, int pesoAlNacer, int pesoActual, int gananciaPesoDiaria, string observaciones, string estadoSalud, decimal costoTratamiento, string seguimiento, int numeroPartos, int idGanado, int idUsuario, int idDatosReproduccion)
+        public async Task ActualizarHistorialClinico(GuardarHistorialClinico actuializarHistorialClinico)
         {
             var fechaActual = DateTime.Now;
-            await _historialClinicoRepositorio.ActualizarHistorialClinico(idHistorialClinico, fechaActual, fechaActual, estado, vacunas, tratamientos, enfermedades, resultadosExamenes, infoDesparacitacion, pesoAlNacer, pesoActual, gananciaPesoDiaria, observaciones, estadoSalud, costoTratamiento, seguimiento, numeroPartos, idGanado, idUsuario, idDatosReproduccion);
+            await _historialClinicoRepositorio.ActualizarHistorialClinico(
+                actuializarHistorialClinico.IdHistorialClinico,
+                fechaActual,
+                fechaActual,
+                actuializarHistorialClinico.EstadoHistorialClinico,
+                actuializarHistorialClinico.VacunaHistorialClinico,
+                actuializarHistorialClinico.TratamientoHistorialClinico,
+                actuializarHistorialClinico.EnfermedadesHistorialClinico,
+                actuializarHistorialClinico.ResultadodeExamenesHistorialClinico,
+                actuializarHistorialClinico.InformaciondesparacitacionHistorialClinico,
+                actuializarHistorialClinico.PesoalnacerHistorialClinico,
+                actuializarHistorialClinico.PesoactualHistorialClinico,
+                actuializarHistorialClinico.GananciadepesodiariaHistorialClinico,
+                actuializarHistorialClinico.ObservacionesHistorialClinico,
+                actuializarHistorialClinico.EstadodesaludHistorialClinico,
+                actuializarHistorialClinico.CostodeltratamientoHistorialClinico,
+                actuializarHistorialClinico.SeguimientoHistorialClinico,
+                actuializarHistorialClinico.NumerodepartosHistorialClinico,
+                actuializarHistorialClinico.IdGanado,
+                actuializarHistorialClinico.IdUsuario,
+                actuializarHistorialClinico.IdDatosdeReproduccion);
         }
 
         public async Task AgregarHistorialClinico(bool estado, string vacunas, string tratamientos, string enfermedades, string resultadosExamenes, string infoDesparacitacion, int pesoAlNacer, int pesoActual, int gananciaPesoDiaria, string observaciones, string estadoSalud, decimal costoTratamiento, string seguimiento, int numeroPartos, int idGanado, int idUsuario, int idDatosReproduccion)

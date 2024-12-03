@@ -23,27 +23,9 @@ namespace Agrolifenet.Api.Controllers
 
 
         [HttpPut("ActualizarHistorialClinico")]
-        public async Task ActualizarHistorialClinico(
-               int idHistorialClinico,
-            bool estado,
-            string vacunas,
-            string tratamientos,
-            string enfermedades,
-            string resultadosExamenes,
-            string infoDesparacitacion,
-            int pesoAlNacer,
-            int pesoActual,
-            int gananciaPesoDiaria,
-            string observaciones,
-            string estadoSalud,
-            decimal costoTratamiento,
-            string seguimiento,
-            int numeroPartos,
-            int idGanado,
-            int idUsuario,
-            int idDatosReproduccion)
+        public async Task ActualizarHistorialClinico(GuardarHistorialClinico guardarHistorialClinico)
         {
-            await _historialClinicoServicio.ActualizarHistorialClinico(idHistorialClinico, estado, vacunas, tratamientos, enfermedades, resultadosExamenes, infoDesparacitacion, pesoAlNacer, pesoActual, gananciaPesoDiaria, observaciones, estadoSalud, costoTratamiento, seguimiento, numeroPartos, idGanado, idUsuario, idDatosReproduccion);
+            await _historialClinicoServicio.ActualizarHistorialClinico(guardarHistorialClinico);
         }
 
         [HttpGet("ListarHistorialClinico")]

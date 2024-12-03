@@ -1,4 +1,4 @@
-﻿namespace Agrolifenet.Dominio.Dto
+﻿namespace Agrolifenet.FrontEnd.Modelos
 {
     public class HistorialClinicoDto
     {

@@ -41,7 +41,6 @@ namespace Agrolifenet.Infraestructura.Adaptador
                 numeroPartos,
                 idGanado,
                 idUsuario,
-                idDatosReproduccion
             });
         }
 
@@ -66,8 +65,7 @@ namespace Agrolifenet.Infraestructura.Adaptador
                 seguimiento,
                 numeroPartos,
                 idGanado,
-                idUsuario,
-                idDatosReproduccion
+                idUsuario
             });
         }
 
