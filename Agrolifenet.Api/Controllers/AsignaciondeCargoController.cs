@@ -29,7 +29,8 @@ namespace Agrolifenet.Api.Controllers
         {
             await _usuarioTiposdeCargoServicio.ActualizarUsuarioTiposdeCargoAsync(actualizarUsuarioTiposdecargoDto.IdUsuarioTipodeCargo, actualizarUsuarioTiposdecargoDto.IdUsuario, actualizarUsuarioTiposdecargoDto.IdTiposdeCargo);
         }
-        [HttpGet("BuscarUsuarioTiposdecargo")]
-        public async Task
+
+        //[HttpGet("BuscarUsuarioTiposdecargo")]
+        //public async Task
     }
 }
