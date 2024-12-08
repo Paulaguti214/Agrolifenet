@@ -1,52 +1,24 @@
 ﻿@typeparam TModelo
-
 <div class="card shadow">
     <div class="card-header py-3">
-        <p class="text-primary m-0 fw-bold">@NommbreFormulario</p>
+        <p class="text-primary m-0 fw-bold">@NombreFormulario</p>
     </div>
     <div class="card-body">
         <div class="row g-3">
-            <EditForm Model="@Modelo" OnValidSubmit="@OnSubmit" FormName="@Guid.NewGuid().ToString()">
+            <EditForm Model="Modelo" OnValidSubmit="@OnSubmit" FormName="@Guid.NewGuid().ToString()">
                 <DataAnnotationsValidator />
                 @ContenidoFormulario
             </EditForm>  
             
         </div>
     </div>
-    @if (ContenidoDetalle is not null)
+    @if (RenderFragmentTieneContenido)
     {
         <div class="card-header py-3">
-            <p class="text-primary m-0 fw-bold">@NommbreEncabezadoDetalle</p>
+            <p class="text-primary m-0 fw-bold">@NombreEncabezadoDetalle</p>
         </div>
         <div class="card-body">
             @ContenidoDetalle
         </div>
     }   
 </div>
-
-@code {
-
-    [EditorRequired]
-    [Parameter] public string NommbreFormulario { get; set; } = default!;
-
-    [EditorRequired]
-    [Parameter] public RenderFragment ContenidoFormulario { get; set; } = default!;
-
-    [EditorRequired]
-    [Parameter] public TModelo Modelo { get; set; } = default!;
-    [EditorRequired]
-    [Parameter] public EventCallback<TModelo> Ejecutar { get; set; }
-
-    [Parameter] public string NommbreEncabezadoDetalle { get; set; } = default!;
-    [Parameter] public RenderFragment ContenidoDetalle { get; set; } = default!;
-
-    private async Task OnSubmit()
-    {
-        if (Ejecutar.HasDelegate)
-        {
-            await Ejecutar.InvokeAsync(Modelo);
-        }
-    }
-   
-    
-}

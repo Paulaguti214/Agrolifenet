@@ -16,9 +16,9 @@ namespace Agrolifenet.Infraestructura.Servicios
             var fechaActual = DateTime.Now;
             await _ganadoRepositorio.AgregarGanado(fechaActual, fechaActual, EstadoGanado, EdadGanado, sexoGanado, NumeridechipGanado, ColorGanado, LugardenacimientoGanado, IdMadreGanado, IdPadreGanado, IdRaza, IdReproduccion, EstadoNacido, DescripcionNacimiento, PesoNacido);
         }
-        public async Task<GanadoDto> SeleccionarGanado(int IdGanado)
+        public async Task<GanadoDto> SeleccionarGanado(int? IdGanado, string? numeroChip)
         {
-            return await _ganadoRepositorio.SeleccionarGanado(IdGanado);
+            return await _ganadoRepositorio.SeleccionarGanado(IdGanado, numeroChip);
         }
         public async Task EliminarGanado(int IdGanado)
         {

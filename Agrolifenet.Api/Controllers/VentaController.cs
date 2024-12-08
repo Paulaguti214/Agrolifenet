@@ -1,4 +1,5 @@
 ﻿using Agrolifenet.Dominio.Dto;
+using Agrolifenet.Dominio.Entidades;
 using Agrolifenet.Dominio.Servicios;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,19 +17,21 @@ namespace Agrolifenet.Api.Controllers
         }
 
         [HttpPost("InsertarVenta")]
-        public async Task AgregarVenta(bool EstadoVenta, DateTime FechadelaVenta, string NombredelcompradorVenta,
-            string IdentificaciondelcompradorVentas, string Telefonodelcomprador, double PrecioVenta, string MetododepagoVenta, string DestinoVenta, string CondicionesdeVenta,
-            string EstadodelanimalenVenta, string ObservacionesVenta, int IdUsuario)
+        public async Task AgregarVenta(VentaGuardarDto venta)
         {
-            await _ventaServicio.AgregarVenta(EstadoVenta, FechadelaVenta, NombredelcompradorVenta,
-             IdentificaciondelcompradorVentas, Telefonodelcomprador, PrecioVenta, MetododepagoVenta, DestinoVenta, CondicionesdeVenta,
-             EstadodelanimalenVenta, ObservacionesVenta, IdUsuario);
+            await _ventaServicio.AgregarVenta(venta);
         }
 
         [HttpGet("BuscarVenta")]
-        public async Task<VentaDto> SeleccionarVenta(int IdVenta)
+        public async Task<Ventas> SeleccionarVenta(Guid ConsecutivoFactura)
         {
-            return await _ventaServicio.SeleccionarVenta(IdVenta);
+            return await _ventaServicio.SeleccionarVenta(ConsecutivoFactura);
+        }
+
+        [HttpGet("ListarVentas")]
+        public async Task<IEnumerable<Ventas>> ListarVentas()
+        {
+            return await _ventaServicio.ListarVentas();
         }
 
         [HttpDelete("EliminarVenta")]

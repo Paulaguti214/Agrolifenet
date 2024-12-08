@@ -1,0 +1,79 @@
+﻿<div class="card-header py-3">
+    <p class="text-primary m-0 fw-bold">Facturas</p>
+</div>
+<div class="card-body">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6 text-nowrap">
+                <div id="dataTable_length-2" class="dataTables_length" aria-controls="dataTable">
+                    <label class="form-label">
+                        Mostrar&nbsp;
+                        <select class="d-inline-block form-select form-select-sm">
+                            <option value="10" selected="">10</option>
+                            <option value="25">25</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                        </select>&nbsp;
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="text-md-end dataTables_filter" id="dataTable_filter-2"><label class="form-label"><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Buscar"></label></div>
+            </div>
+        </div>
+        @if (ventas == null)
+        {
+            <p>Cargando datos...</p>
+        }
+        else if (ventas.Any())
+        {
+            <div class="table-responsive table mt-2" id="dataTable-3" role="grid" aria-describedby="dataTable_info">
+                <table class="table my-0" id="dataTable">
+                    <thead>
+                        <tr>
+                            <th># Veta</th>
+                            <th>Identifiacion</th>
+                            <th>Cliente</th>
+                            <th>Valor Venta</th>                         
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ventas)
+                        {
+                            <tr>
+                                <td>@item.IdVenta</td>
+                                <td>@item.IdentificacionDelCompradorVentas</td>
+                                <td>@item.NombreDelCompradorVenta<br></td>
+                                <td>@String.Format("{0:#,##0.00;(#,##0.00);0}", @item.PrecioVenta)<br></td>
+                                <td class="text-center">
+                                    <a class="link-success me-2" @onclick="() => DescargarFactura(item.ConsecutivoFactura)"><i class="fa fa-print"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr></tr>
+                    </tfoot>
+                </table>
+            </div>
+        }
+
+        <div class="row">
+            <div class="col-md-6 align-self-center">
+                <p id="dataTable_info-2" class="dataTables_info" role="status" aria-live="polite">Mostrando1 a 10 de 27</p>
+            </div>
+            <div class="col-md-6 d-flex justify-content-end align-items-center">
+                <nav class="dataTables_paginate paging_simple_numbers">
+                    <ul class="pagination">
+                        <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>

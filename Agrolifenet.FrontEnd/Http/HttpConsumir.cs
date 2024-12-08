@@ -43,8 +43,8 @@ namespace Agrolifenet.FrontEnd.Http
         private async Task<T> DeserializarRespuesta<T>(HttpResponseMessage httpResponse,
            JsonSerializerOptions jsonSerializerOptions)
         {
-            var respuestaString = await httpResponse.Content.ReadAsStringAsync();
-            return JsonSerializer.Deserialize<T>(respuestaString, jsonSerializerOptions);
+            var respuestaString = await httpResponse.Content.ReadAsByteArrayAsync();
+            return JsonSerializer.Deserialize<T>(respuestaString, jsonSerializerOptions)!;
         }
 
         public async Task<HttpResponse<TResponse>> GetAsync<TResponse>(string url)
@@ -72,6 +72,17 @@ namespace Agrolifenet.FrontEnd.Http
         {
             var respuesta = await _httpClient.PutAsync(url, new StringContent(JsonSerializer.Serialize(enviar), Encoding.UTF8, "application/json"));
             return new HttpResponse<object>(default!, !respuesta.IsSuccessStatusCode, respuesta);
+        }
+
+        public async Task<HttpResponse<byte[]>> GetFileAsync<TRespuesta>(string url)
+        {
+            var respuesta = await _httpClient.GetAsync(url);
+            if (respuesta.IsSuccessStatusCode)
+            {
+                return new HttpResponse<byte[]>(await respuesta.Content.ReadAsByteArrayAsync(), !respuesta.IsSuccessStatusCode, respuesta);
+            }
+
+            return default!;
         }
     }
 }

@@ -1,5 +1,8 @@
 ﻿using Agrolifenet.Dominio.Servicios;
+using Agrolifenet.Infraestructura.Adaptador;
 using Agrolifenet.Infraestructura.Servicios;
+using DinkToPdf;
+using DinkToPdf.Contracts;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Agrolifenet.Infraestructura.Extenciones
@@ -23,7 +26,9 @@ namespace Agrolifenet.Infraestructura.Extenciones
             svc.AddScoped<IDetalleTemaServicio, DetalleTemaServicio>();
             svc.AddScoped<IDatosdeReproduccionServicio, DatosdeReproduccionServicio>();
             svc.AddScoped<IConfiguracionParametrosServicio, ConfiguracionParametrosServicio>();
+            svc.AddScoped<IFacturaServicio, FacturaServicio>();
 
+            svc.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
             return svc;
         }
     }

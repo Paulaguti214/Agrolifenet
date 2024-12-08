@@ -69,12 +69,12 @@ namespace Agrolifenet.FrontEnd.Componentes.Formularios
         public async Task<IEnumerable<TipodeCargoListarDto>> ObtenerListado()
         {
             var resultado = await HttpConsumir.GetAsync<IEnumerable<TipodeCargoListarDto>>("/api/Tipodecargo/ListarTiposdecargo");
-            return resultado.Response;
+            return resultado.Response!;
         }
         public async Task ActualizarTipodecargo(int idTiposdecargo)
         {
             var resultado = await HttpConsumir.GetAsync<TipodeCargoGuardarActualizarDto>($"/api/Tipodecargo/BuscarTiposdecargo?idTiposdecargo={idTiposdecargo}");
-            tiposdeCargoGuardarActualizarDto = resultado.Response;
+            tiposdeCargoGuardarActualizarDto = resultado.Response!;
             await Swal.FireAsync("Exito", "Se Busco Con Exito", SweetAlertIcon.Success);
         }
         public async Task EliminarTipodeCargo(int idTiposdecargo)

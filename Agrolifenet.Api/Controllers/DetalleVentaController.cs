@@ -16,9 +16,15 @@ namespace Agrolifenet.Api.Controllers
         }
 
         [HttpPost("InsertarDetalleVenta")]
-        public async Task AgregarDetalleVenta(bool EstadoDetalledeventa, int IdVenta, int IdGanado)
+        public async Task AgregarDetalleVenta(DetalleVentaDto detalleVenta)
         {
-            await _detalleVentaServicio.AgregarDetalleVenta(EstadoDetalledeventa, IdVenta, IdGanado);
+            await _detalleVentaServicio.AgregarDetalleVenta(detalleVenta);
+        }
+
+        [HttpPost("InsertarVariosDetalleVenta")]
+        public async Task AgregarDetalleVenta(IEnumerable<DetalleVentaDto> detalleVentas)
+        {
+            await _detalleVentaServicio.AgregarVariosDetalleVenta(detalleVentas);
         }
 
         [HttpGet("ListarDetalleVenta")]

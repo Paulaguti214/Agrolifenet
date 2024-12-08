@@ -24,9 +24,9 @@ namespace Agrolifenet.Api.Controllers
         }
 
         [HttpGet("BuscarGanado")]
-        public async Task<GanadoDto> SeleccionarGanado(int IdGanado)
+        public async Task<GanadoDto> SeleccionarGanado(int? IdGanado, string? numeroChip)
         {
-            return await _ganadoServicio.SeleccionarGanado(IdGanado);
+            return await _ganadoServicio.SeleccionarGanado(IdGanado, numeroChip);
         }
 
         [HttpGet("ListarGanado")]

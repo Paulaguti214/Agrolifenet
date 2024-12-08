@@ -38,11 +38,12 @@ namespace Agrolifenet.Infraestructura.Adaptador
                 PesoNacido
             });
         }
-        public async Task<GanadoDto> SeleccionarGanado(int IdGanado)
+        public async Task<GanadoDto> SeleccionarGanado(int? IdGanado, string? numeroChip)
         {
             return await SeleccionarAsync<GanadoDto>(NombreProcedimientoSeleccionarGanado, new
             {
-                IdGanado
+                IdGanado,
+                numeroChip
             });
         }
         public async Task EliminarGanado(int IdGanado)

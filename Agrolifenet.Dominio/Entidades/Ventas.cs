@@ -2,20 +2,22 @@
 {
     public class Ventas
     {
-        public int IdVentas { get; set; }
-        public DateTime FechadecreacionVentas { get; set; }
-        public DateTime FechademodificacionVentas { get; set; }
-        public bool EstadoVentas { get; set; }
-        public DateTime FechadeVenta { get; set; }
-        public string NombredelcompradorVentas { get; set; }
-        public int IdentificaciondelcompradorVentas { get; set; }
-        public int TelefonodelcompradorVentas { get; set; }
-        public int PreciodeVenta { get; set; }
-        public string MetododepagoVentas { get; set; }
-        public string DestinoVentas { get; set; }
-        public string CondicionesdeVentas { get; set; }
-        public string EstadodelanimalVentas { get; set; }
-        public string ObservacionVentas { get; set; }
+        public int IdVenta { get; set; }
+        public DateTime FechadecreacionVenta { get; set; }
+        public DateTime FechademodificacionVenta { get; set; }
+        public bool EstadoVenta { get; set; }
+        public DateTime FechaDeLaVenta { get; set; }
+        public string NombredelcompradorVenta { get; set; } = string.Empty;
+        public string IdentificaciondelcompradorVentas { get; set; } = string.Empty;
+        public string Telefonodelcomprador { get; set; } = string.Empty;
+        public decimal PrecioVenta { get; set; }
+        public string MetododepagoVenta { get; set; } = string.Empty;
+        public string DestinoVenta { get; set; } = string.Empty;
+        public string CondicionesdeVenta { get; set; } = string.Empty;
+        public string EstadodelanimalenVenta { get; set; } = string.Empty;
+        public string ObservacionesVenta { get; set; } = string.Empty;
         public int IdUsuario { get; set; }
+        public string Correo { get; set; } = string.Empty;
+        public Guid ConsecutivoFactura { get; set; }
     }
 }

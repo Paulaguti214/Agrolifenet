@@ -6,7 +6,8 @@
         public DateTime FechadecreacionDetalledeVenta { get; set; }
         public DateTime FechademodificacionDetalledeVenta { get; set; }
         public bool EstadoDetalledeVenta { get; set; }
-        public int IdVentas { get; set; }
+        public int IdVenta { get; set; }
         public int IdGanado { get; set; }
+        public decimal Valor { get; set; }
     }
 }

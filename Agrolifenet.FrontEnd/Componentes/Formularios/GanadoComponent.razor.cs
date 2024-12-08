@@ -85,8 +85,6 @@ namespace Agrolifenet.FrontEnd.Componentes.Formularios
                     listarGanadoDtos = await ObtenerListado();
                     ganadoGuardaryActualizarDto = new() { FechadenacimientoGanado = DateTime.Now };
                 }
-
-
             }
         }
 

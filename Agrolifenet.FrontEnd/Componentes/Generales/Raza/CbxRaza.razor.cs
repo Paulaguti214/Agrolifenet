@@ -18,7 +18,7 @@ namespace Agrolifenet.FrontEnd.Componentes.Generales.Raza
         {
             try
             {
-                //await ObtenerListado();
+                await ObtenerListado();
             }
             catch (Exception ex)
             {

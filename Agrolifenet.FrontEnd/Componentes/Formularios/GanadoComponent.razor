@@ -1,7 +1,7 @@
 ﻿
 
-<BaseFormularioComponente NommbreFormulario="Información de Ganado"
-                          NommbreEncabezadoDetalle="Ver Ganado Registrado"
+<BaseFormularioComponente NombreFormulario="Información de Ganado"
+                          NombreEncabezadoDetalle="Ver Ganado Registrado"
                           Modelo="ganadoGuardaryActualizarDto"
                           TModelo="GanadoGuardaryActualizarDto"
                           Ejecutar="GuardarGanado">
@@ -169,7 +169,8 @@
                                     <td>@item.Tipoderaza<br></td>
                                     <td>@item.EdadGanado<br></td>
                                     <td>@(item.EstadoGanado == false ? "Inactivo" : "Activo")</td>
-                                    <td class="text-center"><a class="link-success me-2" @onclick="() => ActualizarGanado(item.IdGanado)"><i class="fa fa-edit"></i></a><a class="link-success link-primary" @onclick="() => EliminarGanado(item.IdGanado)"><i class="fa fa-remove"></i></a></td>
+                                    <td class="text-center"><a class="link-success me-2" @onclick="() => ActualizarGanado(item.IdGanado)"><i class="fa fa-edit"></i></a>
+                                        <a class="link-success link-primary" @onclick="() => EliminarGanado(item.IdGanado)"><i class="fa fa-remove"></i></a></td>
                                 </tr>
                             }
                         </tbody>

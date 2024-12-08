@@ -2,9 +2,10 @@
 {
     public class DetalleVentaDto
     {
-        public string IdDetalledeventa { get; set; }
-        public int NumeroChip { get; set; }
-        public string TipoAnimal { get; set; }
-        public string TipoRaza { get; set; }
+        public int IdDetalledeVenta { get; set; }
+        public bool EstadoDetalledeVenta { get; set; }
+        public int IdVenta { get; set; }
+        public int IdGanado { get; set; }
+        public decimal Valor { get; set; }
     }
 }

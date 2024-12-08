@@ -3,7 +3,7 @@
     public class TipodeCargoListarDto
     {
         public int idTiposdecargo { get; set; }
-        public string tipodeCargo { get; set; }
+        public string tipodeCargo { get; set; } = string.Empty;
         public DateTime FechadecreacionTiposdeCargo { get; set; }
         public DateTime FechademodificacionTiposdeCargo { get; set; }
 

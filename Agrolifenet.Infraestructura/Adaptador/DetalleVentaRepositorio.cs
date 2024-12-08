@@ -29,15 +29,16 @@ namespace Agrolifenet.Infraestructura.Adaptador
             });
         }
 
-        public async Task AgregarDetalleVenta(DateTime FechadecreacionDetalledeventa, DateTime FechademodificacionDetalledeventa, bool EstadoDetalledeventa, int IdVenta, int IdGanado)
+        public async Task AgregarDetalleVenta(DetalledeVenta detalledeVenta)
         {
             await AgregarAsync(NombreProcedimientoGuardarDetalledeVenta, new
             {
-                FechadecreacionDetalledeventa,
-                FechademodificacionDetalledeventa,
-                EstadoDetalledeventa,
-                IdVenta,
-                IdGanado
+                detalledeVenta.FechadecreacionDetalledeVenta,
+                detalledeVenta.FechademodificacionDetalledeVenta,
+                detalledeVenta.EstadoDetalledeVenta,
+                detalledeVenta.IdVenta,
+                detalledeVenta.IdGanado,
+                detalledeVenta.Valor
             });
         }
 
