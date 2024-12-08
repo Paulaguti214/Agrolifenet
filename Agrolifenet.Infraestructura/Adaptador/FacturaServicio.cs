@@ -113,7 +113,7 @@ namespace Agrolifenet.Infraestructura.Adaptador
                     </tr>  
                     <tr>
                         <td><strong>Observaciones:</strong></td>
-                        <td>{factrua.Venta.ObservacionesVenta}</td>
+                        <td>{factrua.Venta.CondicionesdeVenta}</td>
                     </tr>  
                 </table>
             </div>
@@ -145,8 +145,8 @@ namespace Agrolifenet.Infraestructura.Adaptador
                 PagesCount = true,
                 HtmlContent = templateContent,
                 WebSettings = { DefaultEncoding = "utf-8" },
-                HeaderSettings = { FontName = "Arial", FontSize = 9, Right = "Page [page] of [toPage]", Line = true, Spacing = 2.812 },
-                FooterSettings = { FontName = "Arial", FontSize = 9, Line = true, Center = "Report Footer" }
+                HeaderSettings = { FontName = "Arial", FontSize = 9, Right = "Pagina [page] De [toPage]", Line = true, Spacing = 2.812 },
+                FooterSettings = { FontName = "Arial", FontSize = 9, Line = true, Center = "Reporte Agro Life Net" }
             };
 
             var pdf = new HtmlToPdfDocument()
