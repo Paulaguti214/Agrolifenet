@@ -11,6 +11,7 @@ namespace Agrolifenet.FrontEnd.Componentes.Generales.Raza
         [Parameter] public int? IdTipoAnimal { get; set; }
         [Parameter] public int IdRaza { get; set; }
         [Parameter] public EventCallback<int> IdRazaChanged { get; set; }
+        public int? _IdTipoAnimal { get; set; }
 
         private IEnumerable<ListarRazaDto> ListaRazas = [];
 
@@ -18,7 +19,7 @@ namespace Agrolifenet.FrontEnd.Componentes.Generales.Raza
         {
             try
             {
-                await ObtenerListado();
+                //await ObtenerListado();
             }
             catch (Exception ex)
             {
@@ -31,10 +32,17 @@ namespace Agrolifenet.FrontEnd.Componentes.Generales.Raza
             if (SeleccionarRaza != IdRaza)
             {
                 SeleccionarRaza = IdRaza;
+                await ObtenerListado();
+            }
+            if (_IdTipoAnimal != IdTipoAnimal)
+            {
+                _IdTipoAnimal = IdTipoAnimal;
+                await ObtenerListado();
             }
 
-            await ObtenerListado();
-            Console.WriteLine(IdTipoAnimal);
+
+            Console.WriteLine($"Tipo Animal Seleccionado {IdTipoAnimal}");
+            Console.WriteLine($"Raza Seleccionado {SeleccionarRaza}");
         }
 
         public async Task ObtenerListado()
@@ -85,6 +93,7 @@ namespace Agrolifenet.FrontEnd.Componentes.Generales.Raza
             get => IdRaza;
             set
             {
+                Console.WriteLine($"IdRaza = {value}");
                 IdRazaChanged.InvokeAsync(value);
             }
         }

@@ -8,9 +8,9 @@
     <div class="tab-content">
         @foreach (var tab in MenuTabs)
         {
-            <TabContenidoComponente Id=@($"tab-{tab.IdTab}") IsActive="true">
+            <TabContenidoComponente Id=@($"tab-{tab.IdTab}") IsActive="@tab.Activo">
                 <ContenidoTab>
-                    @ConstruirComponente(@tab.Componente)                    
+                    @(ConstruirComponente(@tab.Componente))
                 </ContenidoTab>
             </TabContenidoComponente>
         }

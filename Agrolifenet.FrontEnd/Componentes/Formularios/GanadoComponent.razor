@@ -106,7 +106,7 @@
                             </option>
                         }
                     </select>
-                    <button class="btn btn-success" type="submit">Agregar&nbsp;<i class="fa fa-plus-circle"></i></button>
+                    <button class="btn btn-success" type="submit">@(ganadoGuardaryActualizarDto.IdGanado == 0 ? " Agregar " : " Actualizar ")<i class="fa @(ganadoGuardaryActualizarDto.IdGanado == 0 ? "fa-plus-circle" : "fa-edit")"></i></button>
                 </div>
                 <ValidationMessage class="validation-message" For="@(() => ganadoGuardaryActualizarDto.IdReproduccion)" />
                 <ValidationMessage class="validation-message" For="@(() => ganadoGuardaryActualizarDto.EstadoNacido)" />
@@ -169,8 +169,7 @@
                                     <td>@item.Tipoderaza<br></td>
                                     <td>@item.EdadGanado<br></td>
                                     <td>@(item.EstadoGanado == false ? "Inactivo" : "Activo")</td>
-                                    <td class="text-center"><a class="link-success me-2" @onclick="() => ActualizarGanado(item.IdGanado)"><i class="fa fa-edit"></i></a>
-                                        <a class="link-success link-primary" @onclick="() => EliminarGanado(item.IdGanado)"><i class="fa fa-remove"></i></a></td>
+                                    <td class="text-center"><a class="link-success me-2" @onclick="() => ActualizarGanado(item.IdGanado)"><i class="fa fa-edit"></i></a><a class="link-success link-primary" @onclick="() => EliminarGanado(item.IdGanado)"><i class="fa fa-remove"></i></a></td>
                                 </tr>
                             }
                         </tbody>
