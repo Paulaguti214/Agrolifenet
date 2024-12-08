@@ -10,18 +10,23 @@ namespace Agrolifenet.Infraestructura.Adaptador
     {
         private readonly string NombreProcedimientoGuardarUsuarioTiposdeCargo = "InsertarUsuarioTiposdecargo";
         private readonly string NombreProcedimientoActualizarUsuarioTiposdeCargo = "ActualizarUsuarioTiposdecargo";
+        private readonly string NombreProcedimientoBuscarUsuarioTiposdeCargo = "BuscarUsuarioTiposdecargo";
+        private readonly string NombreProcedimientoListarUsuarioTiposdeCargo = "ListarUsuarioTiposdecargo";
+        private readonly string NombreProcedimientoEliminarUsuarioTiposdeCargo = "EliminarUsuarioTipodecargo";
+
         private readonly string NombreProcedimientoCargosUsuario = "CargosUsuario";
 
         public UsuarioTiposdeCargoRepositorio(IDbConnection baseDeDatos) : base(baseDeDatos)
         {
         }
 
-        public async Task ActualizarUsuarioTiposdeCargoAsync(int IdUsuarioTiposdecargo, int IdTiposdecargo)
+        public async Task ActualizarUsuarioTiposdeCargoAsync(int IdUsuarioTiposdecargo, int IdTiposdecargo, int IdUsuario)
         {
             await ActualizarAsync(NombreProcedimientoActualizarUsuarioTiposdeCargo, new
             {
                 IdUsuarioTiposdecargo,
-                IdTiposdecargo
+                IdTiposdecargo,
+                IdUsuario
             });
         }
 
@@ -36,7 +41,22 @@ namespace Agrolifenet.Infraestructura.Adaptador
 
         public async Task<IEnumerable<CargosUsuarioDto>> CargosUsuarioAsync(int IdUsuario)
         {
-           return await ListarAsync<CargosUsuarioDto>(NombreProcedimientoCargosUsuario, new { IdUsuario });
+            return await ListarAsync<CargosUsuarioDto>(NombreProcedimientoCargosUsuario, new { IdUsuario });
+        }
+
+
+
+        public async Task EliminarUsuariosTiposdecargoAsync(int IdUsuarioTiposdecargo)
+        {
+            await EliminarAsync(NombreProcedimientoEliminarUsuarioTiposdeCargo, new
+            {
+                IdUsuarioTiposdecargo
+            });
+        }
+
+        public async Task<IEnumerable<UsuarioTiposdeCargo>> ListarUsuariosTiposdecargoAsync()
+        {
+            return await ListarAsync(NombreProcedimientoListarUsuarioTiposdeCargo);
         }
     }
 }
