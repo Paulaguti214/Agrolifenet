@@ -1,4 +1,5 @@
 ﻿using Agrolifenet.Dominio.Dto;
+using Agrolifenet.Dominio.Entidades;
 using Agrolifenet.Dominio.Servicios;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,7 +19,7 @@ namespace Agrolifenet.Api.Controllers
         [HttpPost("AgregarHistorialClinico")]
         public async Task AgregarHistorialClinico(GuardarHistorialClinico guardarHistorialClinico)
         {
-            await _historialClinicoServicio.AgregarHistorialClinico(guardarHistorialClinico.EstadoHistorialClinico, guardarHistorialClinico.VacunaHistorialClinico, guardarHistorialClinico.TratamientoHistorialClinico, guardarHistorialClinico.EnfermedadesHistorialClinico, guardarHistorialClinico.ResultadodeExamenesHistorialClinico, guardarHistorialClinico.InformaciondesparacitacionHistorialClinico, guardarHistorialClinico.PesoalnacerHistorialClinico, guardarHistorialClinico.PesoactualHistorialClinico, guardarHistorialClinico.GananciadepesodiariaHistorialClinico, guardarHistorialClinico.ObservacionesHistorialClinico, guardarHistorialClinico.EstadodesaludHistorialClinico, guardarHistorialClinico.CostodeltratamientoHistorialClinico, guardarHistorialClinico.SeguimientoHistorialClinico, guardarHistorialClinico.NumerodepartosHistorialClinico, guardarHistorialClinico.IdGanado, guardarHistorialClinico.IdUsuario, guardarHistorialClinico.IdDatosdeReproduccion);
+            await _historialClinicoServicio.AgregarHistorialClinico(guardarHistorialClinico);
         }
 
 
@@ -44,6 +45,12 @@ namespace Agrolifenet.Api.Controllers
         public async Task EliminarHistorialClinico(int IdHistorialclinico)
         {
             await _historialClinicoServicio.EliminarHistorialClinico(IdHistorialclinico);
+        }
+
+        [HttpGet("ListarHistorialClinicoGeneral")]
+        public async Task<IEnumerable<HistorialClinico>> ListarHistorialClinicoGeneral()
+        {
+            return await _historialClinicoServicio.ListarHistorialClinicoGeneral();
         }
     }
 }

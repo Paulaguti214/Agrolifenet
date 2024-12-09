@@ -1,28 +1,11 @@
 ﻿using Agrolifenet.Dominio.Dto;
+using Agrolifenet.Dominio.Entidades;
 
 namespace Agrolifenet.Dominio.Servicios
 {
     public interface IHistorialClinicoServicio
     {
-        Task AgregarHistorialClinico(
-        bool estado,
-        string vacunas,
-        string tratamientos,
-        string enfermedades,
-        string resultadosExamenes,
-        string infoDesparacitacion,
-        int pesoAlNacer,
-        int pesoActual,
-        int gananciaPesoDiaria,
-        string observaciones,
-        string estadoSalud,
-        decimal costoTratamiento,
-        string seguimiento,
-        int numeroPartos,
-        int idGanado,
-        int idUsuario,
-        int idDatosReproduccion);
-
+        Task AgregarHistorialClinico(GuardarHistorialClinico guardarHistorialClinico);
 
         Task ActualizarHistorialClinico(GuardarHistorialClinico actualizarHistorialClinico);
 
@@ -31,5 +14,7 @@ namespace Agrolifenet.Dominio.Servicios
         Task<HistorialClinicoDto> SeleccionarHistorialClinico(int IdHistorialclinico);
 
         Task EliminarHistorialClinico(int IdHistorialclinico);
+        Task<IEnumerable<HistorialClinico>> ListarHistorialClinicoGeneral();
+
     }
 }

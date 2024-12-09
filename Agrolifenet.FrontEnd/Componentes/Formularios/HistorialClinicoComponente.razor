@@ -139,8 +139,18 @@
                                     <ValidationMessage For="@(() => historialClinicoGuardar_Actualizar.CostodeltratamientoHistorialClinico)" />
                                 </div>
                             </div>
+                            <div class="col">
+                                <div class="mb-3">
+                                    <label class="form-label">
+                                        <strong>Enfermo</strong>
+                                    </label>
+                                     <div class="form-check form-switch">
+                                        <InputCheckbox id="flexSwitchCheckDefault" @bind-Value="historialClinicoGuardar_Actualizar.Enfermo" class="form-check-input" />                                       
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <button class="btn btn-success btn-sm" type="submit">@(historialClinicoGuardar_Actualizar.IdHistorialClinico == 0? "Guardar":"Actualizar") Cambios</button>
+                        <button class="btn btn-success btn-sm" type="submit">@(historialClinicoGuardar_Actualizar.IdHistorialClinico == 0 ? "Guardar" : "Actualizar") Cambios</button>
                     </div>
                 </div>
             </div>
@@ -149,76 +159,76 @@
     <ContenidoDetalle>
         @if (historialClinicos is not null)
         {
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-6 text-nowrap">
-                        <div id="dataTable_length-2" class="dataTables_length" aria-controls="dataTable">
-                            <label class="form-label">
-                                Mostrar&nbsp;
-                                <select class="d-inline-block form-select form-select-sm">
-                                    <option value="10" selected="">10</option>
-                                    <option value="25">25</option>
-                                    <option value="50">50</option>
-                                    <option value="100">100</option>
-                                </select>&nbsp;
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="text-md-end dataTables_filter" id="dataTable_filter-2"><label class="form-label"><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Buscar"></label></div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6 text-nowrap">
+                    <div id="dataTable_length-2" class="dataTables_length" aria-controls="dataTable">
+                        <label class="form-label">
+                            Mostrar&nbsp;
+                            <select class="d-inline-block form-select form-select-sm">
+                                <option value="10" selected="">10</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select>&nbsp;
+                        </label>
                     </div>
                 </div>
-                @if (historialClinicos == null)
-                {
-                    <p>Cargando datos...</p>
-                }
-                else if (historialClinicos.Any())
-                {
-                    <div class="table-responsive table mt-2" id="dataTable-3" role="grid" aria-describedby="dataTable_info">
-                        <table class="table my-0" id="dataTable">
-                            <thead>
-                                <tr>
-                                    <th># Historial</th>
-                                    <th>Fecha Generacion</th>
-                                    <th>Veterinario</th>                                   
-                                    <th>Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in historialClinicos)
-                                {
-                                    <tr>
-                                        <td>@item.IdHistorialClinico</td>
-                                        <td>@item.FechaDeCreacionHistorialClinico<br></td>
-                                        <td>@($"{item.NombreUsuario} {item.ApellidoUsuario}")<br></td>
-                                        <td class="text-center"><a class="link-success me-2" @onclick="() => ActualizarHistorialClinico(item.IdHistorialClinico)"><i class="fa fa-edit"></i></a><a class="link-success link-primary" @onclick="() => EliminarHistorial(item.IdHistorialClinico)"><i class="fa fa-remove"></i></a></td>
-                                    </tr>
-                                }
-                            </tbody>
-                            <tfoot>
-                                <tr></tr>
-                            </tfoot>
-                        </table>
-                    </div>
-                }
-
-                <div class="row">
-                    <div class="col-md-6 align-self-center">
-                        <p id="dataTable_info-2" class="dataTables_info" role="status" aria-live="polite">Mostrando1 a 10 de 27</p>
-                    </div>
-                    <div class="col-md-6 d-flex justify-content-end align-items-center">
-                        <nav class="dataTables_paginate paging_simple_numbers">
-                            <ul class="pagination">
-                                <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-                            </ul>
-                        </nav>
-                    </div>
+                <div class="col-md-6">
+                    <div class="text-md-end dataTables_filter" id="dataTable_filter-2"><label class="form-label"><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Buscar"></label></div>
                 </div>
             </div>
+            @if (historialClinicos == null)
+            {
+            <p>Cargando datos...</p>
+            }
+            else if (historialClinicos.Any())
+            {
+            <div class="table-responsive table mt-2" id="dataTable-3" role="grid" aria-describedby="dataTable_info">
+                <table class="table my-0" id="dataTable">
+                    <thead>
+                        <tr>
+                            <th># Historial</th>
+                            <th>Fecha Generacion</th>
+                            <th>Veterinario</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in historialClinicos)
+                        {
+                        <tr>
+                            <td>@item.IdHistorialClinico</td>
+                            <td>@item.FechaDeCreacionHistorialClinico<br></td>
+                            <td>@($"{item.NombreUsuario} {item.ApellidoUsuario}")<br></td>
+                            <td class="text-center"><a class="link-success me-2" @onclick="() => ActualizarHistorialClinico(item.IdHistorialClinico)"><i class="fa fa-edit"></i></a><a class="link-success link-primary" @onclick="() => EliminarHistorial(item.IdHistorialClinico)"><i class="fa fa-remove"></i></a></td>
+                        </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr></tr>
+                    </tfoot>
+                </table>
+            </div>
+            }
+
+            <div class="row">
+                <div class="col-md-6 align-self-center">
+                    <p id="dataTable_info-2" class="dataTables_info" role="status" aria-live="polite">Mostrando1 a 10 de 27</p>
+                </div>
+                <div class="col-md-6 d-flex justify-content-end align-items-center">
+                    <nav class="dataTables_paginate paging_simple_numbers">
+                        <ul class="pagination">
+                            <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
         }
 
     </ContenidoDetalle>

@@ -24,5 +24,6 @@
         public int IdUsuario { get; set; }
         public string NombreUsuario { get; set; } = default!;
         public string ApellidoUsuario { get; set; } = default!;
+        public bool Enfermo { get; set; }
     }
 }

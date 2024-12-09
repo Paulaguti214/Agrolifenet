@@ -13,59 +13,62 @@ namespace Agrolifenet.Infraestructura.Adaptador
         private readonly string NombreProcedimientoEliminarHistorialClinico = "EliminarHistorialclinico";
         private readonly string NombreProcedimientoActualizarHistorialClinico = "ActualizarHistorialclinico";
         private readonly string NombreProcedimientoListarHistorialClinico = "ListarHistorialclinico";
+        private readonly string NombreProcedimientoListarHistorialClinicoGeneral = "ListarHistorialclinicoGeneral";
 
         public HistorialClinicoRepositorio(IDbConnection baseDeDatos) : base(baseDeDatos)
         {
         }
 
-        public async Task ActualizarHistorialClinico(int idHistorialClinico, DateTime fechaCreacion, DateTime fechaModificacion, bool estado, string vacunas, string tratamientos, string enfermedades, string resultadosExamenes, string infoDesparacitacion, int pesoAlNacer, int pesoActual, int gananciaPesoDiaria, string observaciones, string estadoSalud, decimal costoTratamiento, string seguimiento, int numeroPartos, int idGanado, int idUsuario, int idDatosReproduccion)
+        public async Task ActualizarHistorialClinico(HistorialClinico historialClinico)
         {
             await ActualizarAsync(NombreProcedimientoActualizarHistorialClinico, new
             {
-                idHistorialClinico,
-                fechaCreacion,
-                fechaModificacion,
-                estado,
-                vacunas,
-                tratamientos,
-                enfermedades,
-                resultadosExamenes,
-                infoDesparacitacion,
-                pesoAlNacer,
-                pesoActual,
-                gananciaPesoDiaria,
-                observaciones,
-                estadoSalud,
-                costoTratamiento,
-                seguimiento,
-                numeroPartos,
-                idGanado,
-                idUsuario,
+                historialClinico.IdHistorialClinico,
+                historialClinico.FechadecreacionHistorialClinico,
+                historialClinico.FechademodificacionHistorialClinico,
+                historialClinico.EstadoHistorialClinico,
+                historialClinico.VacunaHistorialClinico,
+                historialClinico.TratamientoHistorialClinico,
+                historialClinico.EnfermedadesHistorialClinico,
+                historialClinico.ResultadodeExamenesHistorialClinico,
+                historialClinico.InformaciondesparacitacionHistorialClinico,
+                historialClinico.PesoalnacerHistorialClinico,
+                historialClinico.PesoactualHistorialClinico,
+                historialClinico.GananciadepesodiariaHistorialClinico,
+                historialClinico.ObservacionesHistorialClinico,
+                historialClinico.EstadodesaludHistorialClinico,
+                historialClinico.CostodeltratamientoHistorialClinico,
+                historialClinico.SeguimientoHistorialClinico,
+                historialClinico.NumerodepartosHistorialClinico,
+                historialClinico.IdGanado,
+                historialClinico.IdUsuario,
+                historialClinico.Enfermo
             });
         }
 
-        public async Task AgregarHistorialClinico(DateTime fechaCreacion, DateTime fechaModificacion, bool estado, string vacunas, string tratamientos, string enfermedades, string resultadosExamenes, string infoDesparacitacion, int pesoAlNacer, int pesoActual, int gananciaPesoDiaria, string observaciones, string estadoSalud, decimal costoTratamiento, string seguimiento, int numeroPartos, int idGanado, int idUsuario, int idDatosReproduccion)
+        public async Task AgregarHistorialClinico(HistorialClinico historialClinico)
         {
             await AgregarAsync(NombreProcedimientoGuardarHistorialClinico, new
             {
-                fechaCreacion,
-                fechaModificacion,
-                estado,
-                vacunas,
-                tratamientos,
-                enfermedades,
-                resultadosExamenes,
-                infoDesparacitacion,
-                pesoAlNacer,
-                pesoActual,
-                gananciaPesoDiaria,
-                observaciones,
-                estadoSalud,
-                costoTratamiento,
-                seguimiento,
-                numeroPartos,
-                idGanado,
-                idUsuario
+                historialClinico.FechadecreacionHistorialClinico,
+                historialClinico.FechademodificacionHistorialClinico,
+                historialClinico.EstadoHistorialClinico,
+                historialClinico.VacunaHistorialClinico,
+                historialClinico.TratamientoHistorialClinico,
+                historialClinico.EnfermedadesHistorialClinico,
+                historialClinico.ResultadodeExamenesHistorialClinico,
+                historialClinico.InformaciondesparacitacionHistorialClinico,
+                historialClinico.PesoalnacerHistorialClinico,
+                historialClinico.PesoactualHistorialClinico,
+                historialClinico.GananciadepesodiariaHistorialClinico,
+                historialClinico.ObservacionesHistorialClinico,
+                historialClinico.EstadodesaludHistorialClinico,
+                historialClinico.CostodeltratamientoHistorialClinico,
+                historialClinico.SeguimientoHistorialClinico,
+                historialClinico.NumerodepartosHistorialClinico,
+                historialClinico.IdGanado,
+                historialClinico.IdUsuario,
+                historialClinico.Enfermo
             });
         }
 
@@ -91,6 +94,11 @@ namespace Agrolifenet.Infraestructura.Adaptador
             {
                 IdGanado
             });
+        }
+
+        public async Task<IEnumerable<HistorialClinico>> ListarHistorialClinicoGeneral()
+        {
+            return await ListarAsync(NombreProcedimientoListarHistorialClinicoGeneral);
         }
     }
 }

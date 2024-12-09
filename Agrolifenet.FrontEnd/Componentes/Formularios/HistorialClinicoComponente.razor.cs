@@ -130,6 +130,7 @@ namespace Agrolifenet.FrontEnd.Componentes.Formularios
                 historialClinicoGuardar_Actualizar.IdGanado = resultado.Response!.IdGanado;
                 historialClinicoGuardar_Actualizar.IdUsuario = resultado.Response!.IdUsuario;
                 historialClinicoGuardar_Actualizar.NombreUsuario = resultado.Response!.NombreUsuario;
+                historialClinicoGuardar_Actualizar.Enfermo = resultado.Response!.Enfermo;
                 await EstablecerInformacionUsuario();
             }
 

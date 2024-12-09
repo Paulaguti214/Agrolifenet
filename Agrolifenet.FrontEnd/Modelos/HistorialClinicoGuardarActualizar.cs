@@ -37,5 +37,6 @@ namespace Agrolifenet.FrontEnd.Modelos
         public int? IdGanado { get; set; }
         public int IdUsuario { get; set; }
         public string NombreUsuario { get; set; } = default!;
+        public bool Enfermo { get; set; }
     }
 }

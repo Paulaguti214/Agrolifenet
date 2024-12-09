@@ -1,4 +1,5 @@
 ﻿using Agrolifenet.Dominio.Dto;
+using Agrolifenet.Dominio.Entidades;
 using Agrolifenet.Dominio.Puerto;
 using Agrolifenet.Dominio.Servicios;
 
@@ -16,33 +17,59 @@ namespace Agrolifenet.Infraestructura.Servicios
         public async Task ActualizarHistorialClinico(GuardarHistorialClinico actuializarHistorialClinico)
         {
             var fechaActual = DateTime.Now;
-            await _historialClinicoRepositorio.ActualizarHistorialClinico(
-                actuializarHistorialClinico.IdHistorialClinico,
-                fechaActual,
-                fechaActual,
-                actuializarHistorialClinico.EstadoHistorialClinico,
-                actuializarHistorialClinico.VacunaHistorialClinico,
-                actuializarHistorialClinico.TratamientoHistorialClinico,
-                actuializarHistorialClinico.EnfermedadesHistorialClinico,
-                actuializarHistorialClinico.ResultadodeExamenesHistorialClinico,
-                actuializarHistorialClinico.InformaciondesparacitacionHistorialClinico,
-                actuializarHistorialClinico.PesoalnacerHistorialClinico,
-                actuializarHistorialClinico.PesoactualHistorialClinico,
-                actuializarHistorialClinico.GananciadepesodiariaHistorialClinico,
-                actuializarHistorialClinico.ObservacionesHistorialClinico,
-                actuializarHistorialClinico.EstadodesaludHistorialClinico,
-                actuializarHistorialClinico.CostodeltratamientoHistorialClinico,
-                actuializarHistorialClinico.SeguimientoHistorialClinico,
-                actuializarHistorialClinico.NumerodepartosHistorialClinico,
-                actuializarHistorialClinico.IdGanado,
-                actuializarHistorialClinico.IdUsuario,
-                actuializarHistorialClinico.IdDatosdeReproduccion);
+            var historialClinico = new HistorialClinico
+            {
+                IdHistorialClinico = actuializarHistorialClinico.IdHistorialClinico,
+                FechadecreacionHistorialClinico = fechaActual,
+                FechademodificacionHistorialClinico = fechaActual,
+                EstadoHistorialClinico = actuializarHistorialClinico.EstadoHistorialClinico,
+                VacunaHistorialClinico = actuializarHistorialClinico.VacunaHistorialClinico,
+                TratamientoHistorialClinico = actuializarHistorialClinico.TratamientoHistorialClinico,
+                EnfermedadesHistorialClinico = actuializarHistorialClinico.EnfermedadesHistorialClinico,
+                ResultadodeExamenesHistorialClinico = actuializarHistorialClinico.ResultadodeExamenesHistorialClinico,
+                InformaciondesparacitacionHistorialClinico = actuializarHistorialClinico.InformaciondesparacitacionHistorialClinico,
+                PesoalnacerHistorialClinico = actuializarHistorialClinico.PesoalnacerHistorialClinico,
+                PesoactualHistorialClinico = actuializarHistorialClinico.PesoactualHistorialClinico,
+                GananciadepesodiariaHistorialClinico = actuializarHistorialClinico.GananciadepesodiariaHistorialClinico,
+                ObservacionesHistorialClinico = actuializarHistorialClinico.ObservacionesHistorialClinico,
+                EstadodesaludHistorialClinico = actuializarHistorialClinico.EstadodesaludHistorialClinico,
+                CostodeltratamientoHistorialClinico = actuializarHistorialClinico.CostodeltratamientoHistorialClinico,
+                SeguimientoHistorialClinico = actuializarHistorialClinico.SeguimientoHistorialClinico,
+                NumerodepartosHistorialClinico = actuializarHistorialClinico.NumerodepartosHistorialClinico,
+                IdGanado = actuializarHistorialClinico.IdGanado,
+                IdUsuario = actuializarHistorialClinico.IdUsuario,
+                Enfermo = actuializarHistorialClinico.Enfermo,
+            };
+
+            await _historialClinicoRepositorio.ActualizarHistorialClinico(historialClinico);
         }
 
-        public async Task AgregarHistorialClinico(bool estado, string vacunas, string tratamientos, string enfermedades, string resultadosExamenes, string infoDesparacitacion, int pesoAlNacer, int pesoActual, int gananciaPesoDiaria, string observaciones, string estadoSalud, decimal costoTratamiento, string seguimiento, int numeroPartos, int idGanado, int idUsuario, int idDatosReproduccion)
+        public async Task AgregarHistorialClinico(GuardarHistorialClinico actuializarHistorialClinico)
         {
             var fechaActual = DateTime.Now;
-            await _historialClinicoRepositorio.AgregarHistorialClinico(fechaActual, fechaActual, estado, vacunas, tratamientos, enfermedades, resultadosExamenes, infoDesparacitacion, pesoAlNacer, pesoActual, gananciaPesoDiaria, observaciones, estadoSalud, costoTratamiento, seguimiento, numeroPartos, idGanado, idUsuario, idDatosReproduccion);
+            var historialClinico = new HistorialClinico
+            {
+                FechadecreacionHistorialClinico = fechaActual,
+                FechademodificacionHistorialClinico = fechaActual,
+                EstadoHistorialClinico = actuializarHistorialClinico.EstadoHistorialClinico,
+                VacunaHistorialClinico = actuializarHistorialClinico.VacunaHistorialClinico,
+                TratamientoHistorialClinico = actuializarHistorialClinico.TratamientoHistorialClinico,
+                EnfermedadesHistorialClinico = actuializarHistorialClinico.EnfermedadesHistorialClinico,
+                ResultadodeExamenesHistorialClinico = actuializarHistorialClinico.ResultadodeExamenesHistorialClinico,
+                InformaciondesparacitacionHistorialClinico = actuializarHistorialClinico.InformaciondesparacitacionHistorialClinico,
+                PesoalnacerHistorialClinico = actuializarHistorialClinico.PesoalnacerHistorialClinico,
+                PesoactualHistorialClinico = actuializarHistorialClinico.PesoactualHistorialClinico,
+                GananciadepesodiariaHistorialClinico = actuializarHistorialClinico.GananciadepesodiariaHistorialClinico,
+                ObservacionesHistorialClinico = actuializarHistorialClinico.ObservacionesHistorialClinico,
+                EstadodesaludHistorialClinico = actuializarHistorialClinico.EstadodesaludHistorialClinico,
+                CostodeltratamientoHistorialClinico = actuializarHistorialClinico.CostodeltratamientoHistorialClinico,
+                SeguimientoHistorialClinico = actuializarHistorialClinico.SeguimientoHistorialClinico,
+                NumerodepartosHistorialClinico = actuializarHistorialClinico.NumerodepartosHistorialClinico,
+                IdGanado = actuializarHistorialClinico.IdGanado,
+                IdUsuario = actuializarHistorialClinico.IdUsuario,
+                Enfermo = actuializarHistorialClinico.Enfermo,
+            };
+            await _historialClinicoRepositorio.AgregarHistorialClinico(historialClinico);
         }
 
         public async Task EliminarHistorialClinico(int IdHistorialclinico)
@@ -53,6 +80,11 @@ namespace Agrolifenet.Infraestructura.Servicios
         public async Task<IEnumerable<HistorialClinicoDto>> ListarHistorialClinico(int IdGanado)
         {
             return await _historialClinicoRepositorio.ListarHistorialClinico(IdGanado);
+        }
+
+        public async Task<IEnumerable<HistorialClinico>> ListarHistorialClinicoGeneral()
+        {
+            return await _historialClinicoRepositorio.ListarHistorialClinicoGeneral();
         }
 
         public async Task<HistorialClinicoDto> SeleccionarHistorialClinico(int IdHistorialclinico)

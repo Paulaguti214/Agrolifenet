@@ -19,6 +19,6 @@
         public int NumerodepartosHistorialClinico { get; set; }
         public int IdGanado { get; set; }
         public int IdUsuario { get; set; }
-        public int IdDatosdeReproduccion { get; set; }
+        public bool Enfermo { get; set; }
     }
 }
