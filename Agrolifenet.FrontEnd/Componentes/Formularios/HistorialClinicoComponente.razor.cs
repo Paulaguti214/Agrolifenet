@@ -78,6 +78,14 @@ namespace Agrolifenet.FrontEnd.Componentes.Formularios
                 historialClinicoGuardar_Actualizar.PesoalnacerHistorialClinico = ganadoDto!.PesoNacido is null ? 0 : (int)ganadoDto.PesoNacido!;
                 await CalcularPeso(ganadoDto!.PesoNacido);
                 historialClinicos = historialClinicoGuardar_Actualizar.IdGanado is null ? [] : await ObtenerHistorialesClinicosDelGanadoSeleccionado((int)historialClinicoGuardar_Actualizar.IdGanado);
+                if (historialClinicos.Any(w => w.Enfermo))
+                {
+                    historialClinicos = historialClinicos.OrderBy(his => his.Enfermo);
+                }
+                else
+                {
+                    historialClinicos = historialClinicos.OrderByDescending(his => his.FechaDeCreacionHistorialClinico);
+                }
             }
             else
             {
