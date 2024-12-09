@@ -8,7 +8,7 @@ namespace Agrolifenet.FrontEnd.Pages
     {
         private decimal TotalVentas = 0;
         private decimal TotalGanado = 0;
-        private double PorcenatejeSanidad = 0;
+        private double PorcenatejeSanidad = 100;
         private string DescripsionEstadoFinca = string.Empty;
         private string ColorEstadoFinca = string.Empty;
 
@@ -26,8 +26,9 @@ namespace Agrolifenet.FrontEnd.Pages
             var resultado = await HttpConsumir.GetAsync<IEnumerable<VentaGuardarActualizarDto>>("/api/Venta/ListarVentas");
             if (!resultado.Error)
             {
+                var fechaActual = DateTime.Now;
                 var ventas = resultado.Response!;
-                TotalVentas = ventas.Where(venta => venta.FechaDeLaVenta == DateTime.Now.Date).Sum(mes => mes.PrecioVenta);
+                TotalVentas = ventas.Where(venta => venta.FechaDeLaVenta.Year == fechaActual.Year && venta.FechaDeLaVenta.Month == fechaActual.Month).Sum(mes => mes.PrecioVenta);
             }
 
         }
@@ -62,12 +63,12 @@ namespace Agrolifenet.FrontEnd.Pages
                 var cantidGanadoEnfermo = ultimosRegistrosHistorial.Count(historial => historial!.Enfermo);
 
 
-                PorcenatejeSanidad = ((double)cantidGanadoEnfermo / ganado.Count()) * 100;
+                PorcenatejeSanidad -= ((double)cantidGanadoEnfermo / ganado.Count()) * 100;
 
                 if (PorcenatejeSanidad >= 80)
                 {
-                    DescripsionEstadoFinca = "No Saludable";
-                    ColorEstadoFinca = "danger";
+                    DescripsionEstadoFinca = "Saludable";
+                    ColorEstadoFinca = "success";
                     return;
                 }
 
@@ -80,11 +81,10 @@ namespace Agrolifenet.FrontEnd.Pages
 
                 if (PorcenatejeSanidad >= 0 && PorcenatejeSanidad <= 49)
                 {
-                    DescripsionEstadoFinca = "Saludable";
-                    ColorEstadoFinca = "success";
+                    DescripsionEstadoFinca = "No Saludable";
+                    ColorEstadoFinca = "danger";
                     return;
                 }
-
             }
         }
     }
