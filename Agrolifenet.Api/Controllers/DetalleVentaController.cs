@@ -27,10 +27,10 @@ namespace Agrolifenet.Api.Controllers
             await _detalleVentaServicio.AgregarVariosDetalleVenta(detalleVentas);
         }
 
-        [HttpGet("ListarDetalleVenta")]
-        public async Task<IEnumerable<DetalleVentaDto>> ListarDetalleVenta(int IdVenta)
+        [HttpGet("ListarDetalleVentaPorVenta")]
+        public async Task<IEnumerable<DetalleVentaDto>> ListarDetalleVentaPorVenta(int IdVenta)
         {
-            return await _detalleVentaServicio.ListarDetalleVenta(IdVenta);
+            return await _detalleVentaServicio.ListarDetalleVentaPorVenta(IdVenta);
         }
 
         [HttpDelete("EliminarDetalleVenta")]
@@ -43,6 +43,12 @@ namespace Agrolifenet.Api.Controllers
         public async Task ActualizarDetalleVenta(int IdDetalledeventa, bool EstadoDetalledeventa, int IdVenta, int IdGanado)
         {
             await _detalleVentaServicio.ActualizarDetalleVenta(IdDetalledeventa, EstadoDetalledeventa, IdVenta, IdGanado);
+        }
+
+        [HttpGet("ListarDetalle")]
+        public async Task<IEnumerable<DetalleVentaDto>> ListarDetalle()
+        {
+            return await _detalleVentaServicio.ListarDetalle();
         }
     }
 }

@@ -18,23 +18,22 @@ namespace Agrolifenet.Infraestructura.Adaptador
 
 
 
-        public async Task AgregarAsync( string IdentificacionUsuario, string NombreUsuario, string ApellidoUsuario,
-             DateTime FechadenacimientoUsuario, string CorreoelectronicoUsuario, string NumerotelefonicoUsuario,
-             bool EstadoUsuario, DateTime FechadecreacionUsuario, DateTime Fechademodificacion, bool BloqueoUsuario)
+        public async Task AgregarAsync(Usuario usuario)
         {
             await AgregarAsync(NombreProcedimientoGuardarUsuario, new
             {
-                IdentificacionUsuario,
-                NombreUsuario,
-                ApellidoUsuario,
-                FechadenacimientoUsuario,
-                CorreoelectronicoUsuario,
-                NumerotelefonicoUsuario,
-                EstadoUsuario,
-                FechadecreacionUsuario,
-                Fechademodificacion,
-                BloqueoUsuario
-
+                usuario.IdentificacionUsuario,
+                usuario.NombreUsuario,
+                usuario.ApellidoUsuario,
+                usuario.FechadenacimientoUsuario,
+                usuario.CorreoelectronicoUsuario,
+                usuario.NumerotelefonicoUsuario,
+                usuario.EstadoUsuario,
+                usuario.FechadecreacionUsuario,
+                usuario.Fechademodificacion,
+                usuario.BloqueoUsuario,
+                usuario.UsuarioAsigando,
+                usuario.Contrasenia
             });
         }
         public async Task<IEnumerable<Usuario>> ListarUsuario()
@@ -59,7 +58,7 @@ namespace Agrolifenet.Infraestructura.Adaptador
         }
         public async Task ActualizarUsuario(int idUsuario, string IdentificacionUsuario, string NombreUsuario, string ApellidoUsuario,
              DateTime FechadenacimientoUsuario, string CorreoelectronicoUsuario, string NumerotelefonicoUsuario, DateTime Fechademodificacion,
-             bool EstadoUsuario,  bool BloqueoUsuario)
+             bool EstadoUsuario, bool BloqueoUsuario)
         {
             await ActualizarAsync(NombreProcedimientoActualizarUsuario, new
             {

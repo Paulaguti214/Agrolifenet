@@ -6,8 +6,9 @@ namespace Agrolifenet.Dominio.Servicios
     {
         Task AgregarDetalleVenta(DetalleVentaDto detalleVentaDto);
         Task AgregarVariosDetalleVenta(IEnumerable<DetalleVentaDto> detalleVentaDto);
-        Task<IEnumerable<DetalleVentaDto>> ListarDetalleVenta(int IdVenta);
+        Task<IEnumerable<DetalleVentaDto>> ListarDetalleVentaPorVenta(int IdVenta);
         Task EliminarDetalleVenta(int IdDetalledeventa);
         Task ActualizarDetalleVenta(int IdDetalledeventa, bool EstadoDetalledeventa, int IdVenta, int IdGanado);
+        Task<IEnumerable<DetalleVentaDto>> ListarDetalle();
     }
 }

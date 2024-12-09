@@ -5,9 +5,7 @@ namespace Agrolifenet.Dominio.Puerto
 {
     public interface IUsuarioRepositorio : IRepositorio<Usuario>
     {
-        Task AgregarAsync(string IdentificacionUsuario, string NombreUsuario, string ApellidoUsuario,
-             DateTime FechadenacimientoUsuario, string CorreoelectronicoUsuario, string NumerotelefonicoUsuario,
-             bool EstadoUsuario, DateTime FechadecreacionUsuario, DateTime Fechademodificacion, bool BloqueoUsuario);
+        Task AgregarAsync(Usuario usuario);
         Task<IEnumerable<Usuario>> ListarUsuario();
         Task<Usuario> SeleccionarUsuario(string identificacionUsuario, string? tipodecargo);
 

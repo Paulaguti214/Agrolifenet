@@ -1,0 +1,56 @@
+﻿@layout LoginLayout
+@page "/CrearCuenta"
+
+
+<div class="bg-gradient-primary" style="background: rgb(62, 208, 156);">
+    <div class="container">
+        <div class="card shadow-lg o-hidden border-0 my-5">
+            <div class="card-body p-0">
+                <div class="row">
+                    <div class="col-lg-5 d-none d-lg-flex">
+                        <div class="flex-grow-1 bg-login-image" style="background: url(&quot;assets/img/Icono/LogoAgroLifeNet.png&quot;) center / contain no-repeat, rgba(62,208,156,0.73);"></div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h4 class="text-dark mb-4">Crear Cuenta</h4>
+                            </div>
+                            <EditForm Model="@Usuario" OnValidSubmit="OnValidSubmit" FormName="FrmCuenta" class="user">
+                                <DataAnnotationsValidator />
+                                <ValidationSummary />
+                                <div class="row mb-3">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <InputText @bind-Value="@Usuario.NombreUsuario" class="form-control form-control-user" placeholder="Nombres" />
+                                        <ValidationMessage For="@(() => Usuario.NombreUsuario)" />
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <InputText @bind-Value="@Usuario.ApellidoUsuario" class="form-control form-control-user" placeholder="Apellidos" />
+                                        <ValidationMessage For="@(() => Usuario.ApellidoUsuario)" />
+                                    </div>
+                                </div>
+                                 <div class="row mb-3">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input class="form-control form-control-user" type="email" @bind-value="@Usuario.CorreoelectronicoUsuario" placeholder="Correo" />
+                                        <ValidationMessage For="@(() => Usuario.CorreoelectronicoUsuario)" />
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <InputText @bind-Value="@Usuario.Usuario" class="form-control form-control-user" placeholder="usuario" />
+                                        <ValidationMessage For="@(() => Usuario.Usuario)" />
+                                    </div>
+                                 </div>                               
+                                <div class="row mb-3">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input class="form-control form-control-user" @bind-value="@Usuario.Contrasenia" type="password" placeholder="Contraseña" />
+                                        <ValidationMessage For="@(() => Usuario.Contrasenia)" />
+                                    </div>                                    
+                                </div>
+                                 <button class="btn btn-success d-block btn-user w-100" type="submit">Crear</button>     
+                                <hr>
+                            </EditForm>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

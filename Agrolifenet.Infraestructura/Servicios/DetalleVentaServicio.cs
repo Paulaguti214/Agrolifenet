@@ -61,9 +61,14 @@ namespace Agrolifenet.Infraestructura.Servicios
             await _detalleVentaRepositorio.EliminarDetalleVenta(IdDetalledeventa);
         }
 
-        public async Task<IEnumerable<DetalleVentaDto>> ListarDetalleVenta(int IdVenta)
+        public async Task<IEnumerable<DetalleVentaDto>> ListarDetalle()
         {
-            return await _detalleVentaRepositorio.ListarDetalleVenta(IdVenta);
+            return await _detalleVentaRepositorio.ListarDetalle();
+        }
+
+        public async Task<IEnumerable<DetalleVentaDto>> ListarDetalleVentaPorVenta(int IdVenta)
+        {
+            return await _detalleVentaRepositorio.ListarDetalleVentaPorVenta(IdVenta);
         }
     }
 }

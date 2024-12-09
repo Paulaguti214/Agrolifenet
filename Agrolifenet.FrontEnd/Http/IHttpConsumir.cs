@@ -10,8 +10,5 @@ namespace Agrolifenet.FrontEnd.Http
         Task<HttpResponse<byte[]>> GetFileAsync<TRespuesta>(string url);
         Task<HttpResponse<object>> DeleleteAsync(string url);
         Task<HttpResponse<object>> PutAsync<ElementoEnviar>(string url, ElementoEnviar enviar);
-
-
-
     }
 }

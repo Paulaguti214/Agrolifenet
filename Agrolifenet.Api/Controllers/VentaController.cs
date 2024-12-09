@@ -49,5 +49,7 @@ namespace Agrolifenet.Api.Controllers
              IdentificaciondelcompradorVentas, Telefonodelcomprador, PrecioVenta, MetododepagoVenta, DestinoVenta, CondicionesdeVenta,
              EstadodelanimalenVenta, ObservacionesVenta, IdUsuario);
         }
+
+
     }
 }

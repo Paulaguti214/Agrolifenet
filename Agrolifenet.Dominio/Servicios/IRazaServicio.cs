@@ -1,5 +1,4 @@
 ﻿using Agrolifenet.Dominio.Dto;
-using Agrolifenet.Dominio.Entidades;
 
 namespace Agrolifenet.Dominio.Servicios
 {

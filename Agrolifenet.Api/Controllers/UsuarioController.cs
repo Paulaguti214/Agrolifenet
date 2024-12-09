@@ -1,4 +1,5 @@
-﻿using Agrolifenet.Dominio.Entidades;
+﻿using Agrolifenet.Dominio.Dto;
+using Agrolifenet.Dominio.Entidades;
 using Agrolifenet.Dominio.Servicios;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,10 +17,9 @@ namespace Agrolifenet.Api.Controllers
             _usuarioServicio = usuarioServicio;
         }
         [HttpPost("insertarUsuario")]
-        public async Task InsertarUsuario(string IdentificacionUsuario, string NombreUsuario, string ApellidoUsuario, DateTime FechadenacimientoUsuario, string CorreoelectronicoUsuario, string NumerotelefonicoUsuario, bool EstadoUsuario,  bool BloqueoUsuario)
+        public async Task InsertarUsuario(UsuarioDto usuario)
         {
-
-            await _usuarioServicio.Agregar(IdentificacionUsuario, NombreUsuario, ApellidoUsuario, FechadenacimientoUsuario, CorreoelectronicoUsuario, NumerotelefonicoUsuario, EstadoUsuario,  BloqueoUsuario);
+            await _usuarioServicio.Agregar(usuario);
         }
         [HttpGet("ListarUsuario")]
         public async Task<IEnumerable<Usuario>> ListarUsuario()

@@ -25,11 +25,22 @@ namespace Agrolifenet.Infraestructura.Servicios
             _configuracion = configuracion;
             _UsuarioTiposdeCargoServicio = usuarioTiposdeCargoServicio;
         }
-        public async Task Agregar(string IdentificacionUsuario, string NombreUsuario, string ApellidoUsuario, DateTime FechadenacimientoUsuario, string CorreoelectronicoUsuario, string NumerotelefonicoUsuario, bool EstadoUsuario, bool BloqueoUsuario)
+        public async Task Agregar(UsuarioDto usuarioDto)
         {
             var fechaActual = DateTime.Now;
-
-            await _usuarioRepositorio.AgregarAsync(IdentificacionUsuario, NombreUsuario, ApellidoUsuario, FechadenacimientoUsuario, CorreoelectronicoUsuario, NumerotelefonicoUsuario, EstadoUsuario, fechaActual, fechaActual, BloqueoUsuario);
+            var usuario = new Usuario
+            {
+                NombreUsuario = usuarioDto.NombreUsuario,
+                ApellidoUsuario = usuarioDto.ApellidoUsuario,
+                CorreoelectronicoUsuario = usuarioDto.CorreoelectronicoUsuario,
+                UsuarioAsigando = usuarioDto.Usuario,
+                Contrasenia = usuarioDto.Contrasenia,
+                BloqueoUsuario = false,
+                FechadecreacionUsuario = fechaActual,
+                Fechademodificacion = fechaActual,
+                EstadoUsuario = true
+            };
+            await _usuarioRepositorio.AgregarAsync(usuario);
 
         }
         public Task<IEnumerable<Usuario>> ListarUsuario()

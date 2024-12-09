@@ -52,13 +52,20 @@ namespace Agrolifenet.FrontEnd.Componentes.Formularios
                 return;
             }
 
-            if (ExisteGanadoRegistrado(NumeroChipBuscar))
+            var resultadoGanado = await HttpConsumir.GetAsync<GanadoDto>($"/api/Ganado/BuscarGanado?numeroChip={NumeroChipBuscar}");
+            if (!resultadoGanado.Error)
             {
-                await Swal.FireAsync("Ganado ya registrado", string.Empty, SweetAlertIcon.Warning);
-                return;
+                var existe = await ExisteGanadoRegistrado(NumeroChipBuscar, resultadoGanado.Response!.IdGanado);
+                if (existe)
+                {
+                    await Swal.FireAsync("Ganado ya registrado", string.Empty, SweetAlertIcon.Warning);
+                    return;
+                }
+
             }
 
-            var resultadoGanado = await HttpConsumir.GetAsync<GanadoDto>($"/api/Ganado/BuscarGanado?numeroChip={NumeroChipBuscar}");
+
+
 
             if (!resultadoGanado.Error)
             {
@@ -103,8 +110,18 @@ namespace Agrolifenet.FrontEnd.Componentes.Formularios
 
         }
 
-        private bool ExisteGanadoRegistrado(string numerodelchipGanado)
+        private async Task<bool> ExisteGanadoRegistrado(string numerodelchipGanado, int idGanado)
         {
+            var resultadoDetalleVenta = await HttpConsumir.GetAsync<IEnumerable<DetalleVentaGuardarActualizarDto>>($"/api/DetalleVenta/ListarDetalle");
+            if (!resultadoDetalleVenta.Error)
+            {
+                var detalleVenta = resultadoDetalleVenta.Response;
+                if (detalleVenta!.Any(detalle => detalle.EstadoDetalledeVenta && detalle.IdGanado == idGanado))
+                {
+                    return true;
+                };
+            }
+
             return ventaGuardarActualizar.detalleVentas.Any(detalle => detalle.Ganado.NumerodelchipGanado == numerodelchipGanado);
         }
 
