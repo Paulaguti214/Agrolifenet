@@ -32,6 +32,7 @@ namespace Agrolifenet.FrontEnd.Componentes.Formularios
                     await Swal.FireAsync("Exito", await resultado.ObetenerMensajeErrorAsync(), SweetAlertIcon.Success);
                     tipodeCargoListarDtos = await ObtenerListado();
                 }
+                tiposdeCargoGuardarActualizarDto = new();
             }
             else
             {

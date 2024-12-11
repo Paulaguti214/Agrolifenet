@@ -25,11 +25,11 @@
 
                 </div>
                 <div class="nav-item">
-                    <AuthorizeView  Roles="@Cargo.Administrador">
+                  @*   <AuthorizeView  Roles="@Cargo.Administrador">
                         <NavLink class="nav-link" href="CrearCuenta">
                             <i class="fas fa-user-circle"></i> <span>Registrar Usuario</span>
                         </NavLink>
-                    </AuthorizeView>
+                    </AuthorizeView> *@
                 </div>
                 <div class="nav-item">
                     <AuthorizeView  Roles="@($"{Cargo.Administrador},{Cargo.Veterinario}")">

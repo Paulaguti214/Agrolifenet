@@ -2,7 +2,7 @@
 {
     public enum LugarNacimiento
     {
-        Potrero,
-        Establo
+        Potrero = 1,
+        Establo = 2
     }
 }
